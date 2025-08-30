@@ -86,3 +86,4 @@ E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\unix\lib\net8.0\Sy
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.dll
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.pdb
+E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\Som-Service.sourcelink.json

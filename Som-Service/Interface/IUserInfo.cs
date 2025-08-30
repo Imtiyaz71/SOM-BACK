@@ -15,7 +15,7 @@ namespace Som_Service.Interface
         Task<UserInfoEducation> GetUserInfoEducationByUser(string Username);
         Task<string> SaveUserInfoEducation(UserInfoEducation user);
         //Task<string> EditUserInfoEducation(string Username, UserInfoEducation user);
-        //Task<string> DeleteUserInfoEducation(string Username);
+        Task<string> DeleteAllUserInfo(string Username);
         Task<string> SaveUserPhoto(IFormFile file,UserPhoto user);
     }
 }

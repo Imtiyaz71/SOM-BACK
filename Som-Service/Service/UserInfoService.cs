@@ -269,5 +269,9 @@ namespace Som_Service.Service
             }
         }
 
+        public Task<string> DeleteAllUserInfo(string Username)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

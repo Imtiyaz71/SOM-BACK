@@ -98,3 +98,4 @@ E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\Som-Models.dll
 E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\Som-Service.dll
 E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\Som-Models.pdb
 E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\Som-Service.pdb
+E:\My Projects\Som-Back\Som-Back\obj\Debug\net8.0\Som-Back.sourcelink.json
