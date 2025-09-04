@@ -194,6 +194,16 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.UserInfoController",
+    "Method": "GetMapDetails",
+    "RelativePath": "api/UserInfo/mapdetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.UserInfoController",
     "Method": "SaveBasicUserInfo",
     "RelativePath": "api/UserInfo/savebasicuserinfo",
     "HttpMethod": "POST",
@@ -203,6 +213,22 @@
       {
         "Name": "basic",
         "Type": "Som_Models.Models.UserInfoBasic",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.UserInfoController",
+    "Method": "SaveMapping",
+    "RelativePath": "api/UserInfo/savemapper",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "basic",
+        "Type": "Som_Models.Models.Mapper",
         "IsRequired": true
       }
     ],

@@ -5,6 +5,9 @@ using Som_Models.VW_Models;
 using Som_Service.Interface;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace Som_Service.Service
 {
@@ -272,6 +275,62 @@ namespace Som_Service.Service
         public Task<string> DeleteAllUserInfo(string Username)
         {
             throw new NotImplementedException();
+        }
+        private string ComputeSha256Hash(string rawData)
+        {
+            using var sha256 = SHA256.Create();
+            var bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(rawData));
+            var builder = new StringBuilder();
+            foreach (var b in bytes)
+                builder.Append(b.ToString("x2"));
+            return builder.ToString();
+        }
+        public async Task<string> UserMap(Mapper map)
+        {
+            string msg = "";
+            try
+            {
+                using var connection = new SqlConnection(_connectionString);
+                await connection.OpenAsync();
+                string pass = "123";
+                var passwordHash = ComputeSha256Hash(pass);
+                var parameters = new DynamicParameters();
+                parameters.Add("@username", map.username);
+                parameters.Add("@auth", map.auth);
+                parameters.Add("@password", passwordHash);
+                await connection.ExecuteAsync(
+                    "sp_giverole",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                msg = "Role assigned successfully.";
+            }
+            catch (SqlException ex)
+            {
+                // Duplicate role dile sp_giverole theke RAISERROR asbe
+                if (ex.Message.Contains("This user already has the given role"))
+                {
+                    msg = "This user already has the given role.";
+                }
+                else
+                {
+                    msg = "Error: " + ex.Message;
+                }
+            }
+            return msg;
+        }
+
+        public async Task<List<VW_MapperDetails>> GetMapdetails()
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var map = await connection.QueryAsync<VW_MapperDetails>(
+                "sp_MapperDetails",                 // Stored procedure name
+                commandType: CommandType.StoredProcedure
+            );
+
+            return map.AsList();
         }
     }
 }

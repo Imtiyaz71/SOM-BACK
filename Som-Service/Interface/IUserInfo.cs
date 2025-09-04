@@ -17,5 +17,8 @@ namespace Som_Service.Interface
         //Task<string> EditUserInfoEducation(string Username, UserInfoEducation user);
         Task<string> DeleteAllUserInfo(string Username);
         Task<string> SaveUserPhoto(IFormFile file,UserPhoto user);
+        Task<string> UserMap(Mapper map);
+        Task<List<VW_MapperDetails>> GetMapdetails();
+
     }
 }

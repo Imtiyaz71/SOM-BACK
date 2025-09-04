@@ -26,3 +26,4 @@ E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\refint\Som-Models.dll
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\Som-Models.pdb
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\Som-Models.genruntimeconfig.cache
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\ref\Som-Models.dll
+E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\Som-Models.sourcelink.json

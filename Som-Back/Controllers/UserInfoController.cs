@@ -66,6 +66,17 @@ namespace Som_Back.Controllers
             var fileBytes = System.IO.File.ReadAllBytes(filePath);
             return File(fileBytes, "image/jpeg"); // mime type dynamic korte paro
         }
+        [HttpGet("mapdetails")]
+        [Authorize]  // Require login for menu fetching (optional)
+        public async Task<IActionResult> GetMapDetails()
+        {
+            var map = await _usersinfoervice.GetMapdetails();
+
+            if (map == null || map.Count == 0)
+                return NotFound("No Details found for this role.");
+
+            return Ok(map);
+        }
         [HttpPost("savebasicuserinfo")]
         [Authorize]  // Require login for menu fetching (optional)
         public async Task<IActionResult> SaveBasicUserInfo([FromBody] UserInfoBasic basic)
@@ -136,6 +147,17 @@ namespace Som_Back.Controllers
             else
                 return BadRequest(new { message = resultMsg });
         }
+        [HttpPost("savemapper")]
+        [Authorize]  // Require login for menu fetching (optional)
+        public async Task<IActionResult> SaveMapping([FromBody] Mapper basic)
+        {
+           
+            var user = await _usersinfoervice.UserMap(basic);
 
+            if (user == null)
+                return BadRequest("Failed to save user info");
+
+            return Ok(user);
+        }
     }
 }

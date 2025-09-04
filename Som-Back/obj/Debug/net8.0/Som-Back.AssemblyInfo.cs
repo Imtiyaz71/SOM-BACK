@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Som-Back")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+737993595122709fe1aa87fefd3c05d60fa30d64")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+33a3f4c6a45a67fb99a49fa43c477796c4db9feb")]
 [assembly: System.Reflection.AssemblyProductAttribute("Som-Back")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Som-Back")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
