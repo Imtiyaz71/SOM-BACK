@@ -1,3 +1,7 @@
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.deps.json
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.runtimeconfig.json
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.staticwebassets.endpoints.json
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.exe
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\appsettings.Development.json
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\appsettings.json
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Service.staticwebassets.endpoints.json
@@ -27,6 +31,7 @@ E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Microsoft.IdentityModel.Tok
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Microsoft.SqlServer.Server.dll
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\System.ClientModel.dll
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\System.Configuration.ConfigurationManager.dll
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\System.Data.SqlClient.dll
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\System.Diagnostics.EventLog.dll
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\System.Memory.Data.dll
@@ -50,8 +55,15 @@ E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win\lib\net8.0\Mic
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win-arm64\native\Microsoft.Data.SqlClient.SNI.dll
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win-x64\native\Microsoft.Data.SqlClient.SNI.dll
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.dll
+E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.pdb
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\Som-Service.csproj.AssemblyReference.cache
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\rpswa.dswa.cache.json
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\Som-Service.GeneratedMSBuildEditorConfig.editorconfig
@@ -59,6 +71,7 @@ E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\Som-Service.AssemblyInfoInp
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\Som-Service.AssemblyInfo.cs
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\Som-Service.csproj.CoreCompileInputs.cache
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\Som-Service.MvcApplicationPartsAssemblyInfo.cache
+E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\Som-Service.sourcelink.json
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\rjimswa.dswa.cache.json
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
@@ -74,16 +87,3 @@ E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\refint\Som-Service.dll
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\Som-Service.pdb
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\Som-Service.genruntimeconfig.cache
 E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\ref\Som-Service.dll
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.deps.json
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.runtimeconfig.json
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.staticwebassets.endpoints.json
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.exe
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\System.Data.SqlClient.dll
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win-arm64\native\sni.dll
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win-x64\native\sni.dll
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win-x86\native\sni.dll
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\unix\lib\net8.0\System.Data.SqlClient.dll
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Data.SqlClient.dll
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.dll
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.pdb
-E:\My Projects\Som-Back\Som-Service\obj\Debug\net8.0\Som-Service.sourcelink.json

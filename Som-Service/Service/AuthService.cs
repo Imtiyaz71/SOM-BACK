@@ -51,17 +51,25 @@ namespace Som_Service.Service
                 return null;
 
             // 2. Role fetch
-            var role = await connection.QueryFirstOrDefaultAsync<string>(
-                "sp_roleck",
-                new { username = model.username },
-                commandType: CommandType.StoredProcedure
-            ) ?? "User";
+     
+            var userInfo = await connection.QueryFirstOrDefaultAsync<LoginResponse>(
+              "sp_roleck",
+              new { username = model.username },
+              commandType: CommandType.StoredProcedure
+          );
+
+            var role = userInfo?.Role ?? "User";
+        
+            var fullname = userInfo?.Fullname ?? "Unknown";
+  
+            var username = userInfo?.Username ?? "Unknown";
 
             // 3. JWT Token generate
             var claims = new[]
             {
-        new Claim(ClaimTypes.Name, model.username),
         new Claim(ClaimTypes.Role, role)
+    
+
     };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
@@ -80,7 +88,9 @@ namespace Som_Service.Service
             return new LoginResponse
             {
                 Token = tokenString,
-                Role = role
+                Role = role,
+                Fullname=fullname,
+                Username=username
             };
         }
 

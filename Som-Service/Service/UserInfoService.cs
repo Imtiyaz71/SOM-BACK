@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Reflection;
 using System.Security.Cryptography;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Som_Service.Service
 {
@@ -331,6 +332,40 @@ namespace Som_Service.Service
             );
 
             return map.AsList();
+        }
+
+        public async Task<string> DeleteUser(string username,string deleteby)
+        {
+            string msg = "";
+            try
+            {
+                string date=DateTime.Now.ToString("dd-MMMM-yyyy");
+                using var connection = new SqlConnection(_connectionString);
+                await connection.OpenAsync();
+
+                var parameters = new DynamicParameters();
+                parameters.Add("@username", username);
+                parameters.Add("@date", date);
+                parameters.Add("@deleteBy", deleteby);
+
+                await connection.ExecuteAsync(
+                    "sp_deleteuser",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                msg = "User deleted successfully";
+            }
+            catch (SqlException ex)
+            {
+                msg = "SQL Error: " + ex.Message;
+            }
+            catch (Exception ex)
+            {
+                msg = "Error: " + ex.Message;
+            }
+
+            return msg;
         }
     }
 }

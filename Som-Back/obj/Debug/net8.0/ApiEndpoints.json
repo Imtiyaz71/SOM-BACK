@@ -16,6 +16,165 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "GetUserDocument",
+    "RelativePath": "api/Memb/memberdocument",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "memno",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "GetAllMember",
+    "RelativePath": "api/Memb/memberinfoall",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "GetAllMemberById",
+    "RelativePath": "api/Memb/memberinfobyid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "memno",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "GetUserPhoto",
+    "RelativePath": "api/Memb/memberphoto",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "memno",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "SaveMemberInfo",
+    "RelativePath": "api/Memb/savemember",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "MemNo",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "GivenName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "SureName",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Phone",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Email",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "NiD",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "BiCNo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "PassportNo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Nationality",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Gender",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Father",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Mother",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Address",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdenDocu",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "Photo",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreateDate",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "CreateBy",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "UpdateDate",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MenuController",
     "Method": "GetChildMenus",
     "RelativePath": "api/Menu/childmenu",
@@ -43,6 +202,16 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.SelectedValueController",
+    "Method": "GetAllActivation",
+    "RelativePath": "api/SelectedValue/activationlist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.SelectedValueController",
     "Method": "GetAllAuthorizer",
     "RelativePath": "api/SelectedValue/authorizerlist",
     "HttpMethod": "GET",
@@ -62,6 +231,16 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Som_Back.Controllers.SelectedValueController",
+    "Method": "GetGender",
+    "RelativePath": "api/SelectedValue/genderlist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Som_Back.Controllers.TestController",
     "Method": "CheckRole",
     "RelativePath": "api/Test/checkrole",
@@ -69,6 +248,27 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.UserInfoController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/UserInfo/delete-userinfo",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "username",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "deleteby",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

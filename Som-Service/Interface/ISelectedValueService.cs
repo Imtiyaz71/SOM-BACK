@@ -6,5 +6,8 @@ namespace Som_Service.Interface
     {
         Task<List<Designation>> GetSelectedDesignation();
         Task<List<Authorizer>> GetSelectedAuthorizer();
+        Task<List<Gender>> GetGender();
+        Task<List<AdvisoryActivation>> GetActivation();
+
     }
 }

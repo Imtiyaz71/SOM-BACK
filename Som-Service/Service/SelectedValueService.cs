@@ -15,6 +15,33 @@ namespace Som_Service.Service
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
+
+        public async Task<List<AdvisoryActivation>> GetActivation()
+        {
+            using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync();
+
+            var actv = await connection.QueryAsync<AdvisoryActivation>(
+                "sp_activationdata",
+                commandType: CommandType.StoredProcedure
+            );
+
+            return actv.ToList();
+        }
+
+        public async Task<List<Gender>> GetGender()
+        {
+            using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync();
+
+            var gender = await connection.QueryAsync<Gender>(
+                "sp_genderdata",
+                commandType: CommandType.StoredProcedure
+            );
+
+            return gender.ToList();
+        }
+
         public async Task<List<Authorizer>> GetSelectedAuthorizer()
         {
             using var connection = new SqlConnection(_connectionString);

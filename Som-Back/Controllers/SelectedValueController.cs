@@ -14,6 +14,28 @@ namespace Som_Back.Controllers
         {
             _selectedService = selectedService;
         }
+        [HttpGet("genderlist")]
+        [Authorize]  // Require login for menu fetching (optional)
+        public async Task<IActionResult> GetGender()
+        {
+            var autho = await _selectedService.GetGender();
+
+            if (autho == null || autho.Count == 0)
+                return NotFound("No Gender found for this role.");
+
+            return Ok(autho);
+        }
+        [HttpGet("activationlist")]
+        [Authorize]  // Require login for menu fetching (optional)
+        public async Task<IActionResult> GetAllActivation()
+        {
+            var autho = await _selectedService.GetActivation();
+
+            if (autho == null || autho.Count == 0)
+                return NotFound("No Activation found for this role.");
+
+            return Ok(autho);
+        }
         [HttpGet("authorizerlist")]
         [Authorize]  // Require login for menu fetching (optional)
         public async Task<IActionResult> GetAllAuthorizer()

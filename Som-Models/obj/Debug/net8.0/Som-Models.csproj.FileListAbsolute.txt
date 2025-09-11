@@ -12,6 +12,7 @@ E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\Som-Models.AssemblyInfoInput
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\Som-Models.AssemblyInfo.cs
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\Som-Models.csproj.CoreCompileInputs.cache
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\Som-Models.MvcApplicationPartsAssemblyInfo.cache
+E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\Som-Models.sourcelink.json
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\rjimswa.dswa.cache.json
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
@@ -26,4 +27,3 @@ E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\refint\Som-Models.dll
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\Som-Models.pdb
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\Som-Models.genruntimeconfig.cache
 E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\ref\Som-Models.dll
-E:\My Projects\Som-Back\Som-Models\obj\Debug\net8.0\Som-Models.sourcelink.json

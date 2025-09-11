@@ -19,6 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="MemberDocu\" />
+    <Folder Include="MemberPhoto\" />
     <Folder Include="Uploads\" />
   </ItemGroup>
 

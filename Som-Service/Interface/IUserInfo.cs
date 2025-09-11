@@ -18,6 +18,7 @@ namespace Som_Service.Interface
         Task<string> DeleteAllUserInfo(string Username);
         Task<string> SaveUserPhoto(IFormFile file,UserPhoto user);
         Task<string> UserMap(Mapper map);
+        Task<string> DeleteUser(string username,string deleteby);
         Task<List<VW_MapperDetails>> GetMapdetails();
 
     }

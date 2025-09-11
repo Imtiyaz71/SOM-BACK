@@ -159,5 +159,17 @@ namespace Som_Back.Controllers
 
             return Ok(user);
         }
+        [HttpDelete("delete-userinfo")]
+        [Authorize]  // Require login for menu fetching (optional)
+        public async Task<IActionResult> DeleteUser(string username,string deleteby)
+        {
+
+            var result = await _usersinfoervice.DeleteUser(username, deleteby);
+
+            if (string.IsNullOrEmpty(result))
+                return BadRequest(new { message = "Failed to delete user info" });
+
+            return Ok(new { message = result });
+        }
     }
 }
