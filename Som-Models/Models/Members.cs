@@ -15,8 +15,8 @@
         public string Father { get; set; }
         public string Mother { get; set; }
         public string Address { get; set; }
-        public IFormFile IdenDocu { get; set; }   // varchar(max)
-        public IFormFile Photo { get; set; }      // varchar(max)
+        public string IdenDocu { get; set; }   // varchar(max)
+        public string Photo { get; set; }      // varchar(max)
         public string CreateDate { get; set; } // varchar(100)
         public string CreateBy { get; set; }
         public string UpdateDate { get; set; }

@@ -46,42 +46,47 @@ namespace Som_Service.Service
         {
             try
             {
-               
-                if (model.IdenDocu == null || model.IdenDocu.Length == 0)
-                    return "No file selected";
+                // Check Base64 strings
+                if (string.IsNullOrEmpty(model.IdenDocu))
+                    return "No identification document provided";
+                if (string.IsNullOrEmpty(model.Photo))
+                    return "No photo provided";
 
-                // Ensure Uploads directory exists
-                var uploadDir = Path.Combine(Directory.GetCurrentDirectory(), "MemberDocu");
-                if (!Directory.Exists(uploadDir))
-                    Directory.CreateDirectory(uploadDir);
+                // Ensure directories exist
+                var uploadDirDoc = Path.Combine(Directory.GetCurrentDirectory(), "MemberDocu");
+                var uploadDirPhoto = Path.Combine(Directory.GetCurrentDirectory(), "MemberPhoto");
+                if (!Directory.Exists(uploadDirDoc)) Directory.CreateDirectory(uploadDirDoc);
+                if (!Directory.Exists(uploadDirPhoto)) Directory.CreateDirectory(uploadDirPhoto);
 
-                // Generate unique file name and save
-                var docuname = $"{Guid.NewGuid()}_{model.IdenDocu.FileName}";
-                var docupath = Path.Combine(uploadDir, docuname);
-               
-                using (var stream = new FileStream(docupath, FileMode.Create))
-                {
-                    await model.IdenDocu.CopyToAsync(stream);
-                }
-                if (model.Photo == null || model.Photo.Length == 0)
-                    return "No file selected";
-                var uploadDir2 = Path.Combine(Directory.GetCurrentDirectory(), "MemberPhoto");
-                if (!Directory.Exists(uploadDir2))
-                    Directory.CreateDirectory(uploadDir2);
-                var photoname = $"{Guid.NewGuid()}_{model.Photo.FileName}";
-                var photopath = Path.Combine(uploadDir2, photoname);
+                // Save IdenDocu
+                var idenBytes = Convert.FromBase64String(model.IdenDocu.Split(',').Last());
+                var docExt = ".pdf"; // default extension
+                if (model.IdenDocu.Contains("application/vnd.openxmlformats-officedocument.wordprocessingml.document"))
+                    docExt = ".docx";
+                else if (model.IdenDocu.Contains("application/msword"))
+                    docExt = ".doc";
 
-                using (var stream = new FileStream(photopath, FileMode.Create))
-                {
-                    await model.Photo.CopyToAsync(stream);
-                }
-              
+                var docName = $"{Guid.NewGuid()}{docExt}";
+                var docPathFull = Path.Combine(uploadDirDoc, docName);
+                await File.WriteAllBytesAsync(docPathFull, idenBytes);
+
+                // Save Photo
+                var photoBytes = Convert.FromBase64String(model.Photo.Split(',').Last());
+                var photoExt = ".jpg"; // default extension
+                if (model.Photo.Contains("image/png")) photoExt = ".png";
+                else if (model.Photo.Contains("image/jpeg")) photoExt = ".jpg";
+
+                var photoName = $"{Guid.NewGuid()}{photoExt}";
+                var photoPathFull = Path.Combine(uploadDirPhoto, photoName);
+                await File.WriteAllBytesAsync(photoPathFull, photoBytes);
 
                 // Set dates
                 model.CreateDate = DateTime.Now.ToString("dd-MMMM-yyyy");
                 model.UpdateDate = DateTime.Now.ToString("dd-MMMM-yyyy");
-                string docpath = $"MemberDocu/{docuname}";
-                string photoPath = $"MemberPhoto/{photoname}";
+
+                string docDbPath = $"MemberDocu/{docName}";
+                string photoDbPath = $"MemberPhoto/{photoName}";
+
                 // Map to DB parameters
                 var parameters = new DynamicParameters();
                 parameters.Add("@GivenName", model.GivenName);
@@ -96,22 +101,20 @@ namespace Som_Service.Service
                 parameters.Add("@Father", model.Father);
                 parameters.Add("@Mother", model.Mother);
                 parameters.Add("@Address", model.Address);
-                parameters.Add("@Photo", photoPath);
-                parameters.Add("@IdenDocu", docpath);
+                parameters.Add("@Photo", photoDbPath);
+                parameters.Add("@IdenDocu", docDbPath);
                 parameters.Add("@CreateDate", model.CreateDate);
                 parameters.Add("@CreateBy", model.CreateBy);
                 parameters.Add("@UpdateDate", model.UpdateDate);
 
-                // Call stored procedure using Dapper
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     await connection.OpenAsync();
-                    var result = await connection.ExecuteAsync(
-                        "sp_InsertMember", // your stored procedure name
+                    await connection.ExecuteAsync(
+                        "sp_InsertMember",
                         parameters,
                         commandType: CommandType.StoredProcedure
                     );
-
                     return "Member saved successfully";
                 }
             }
@@ -120,5 +123,6 @@ namespace Som_Service.Service
                 return $"Error: {ex.Message}";
             }
         }
+
     }
 }

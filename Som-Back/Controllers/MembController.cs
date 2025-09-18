@@ -81,7 +81,7 @@ namespace Som_Back.Controllers
 
         [HttpPost("savemember")]
         [Authorize]
-        public async Task<IActionResult> SaveMemberInfo([FromForm] Members mem)
+        public async Task<IActionResult> SaveMemberInfo([FromBody] Members mem)
         {
             var member = await _memberervice.SaveMember(mem);
 
