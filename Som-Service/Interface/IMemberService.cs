@@ -8,5 +8,7 @@ namespace Som_Service.Interface
         public Task<List<VM_Member>> Getmember();
         public Task<VM_Member> GetmemberById(int Memno);
         public Task<string> SaveMember(Members model);
+        public Task<string> EditMember(Members model);
+        public Task<string> TransferMember(Members model);
     }
 }

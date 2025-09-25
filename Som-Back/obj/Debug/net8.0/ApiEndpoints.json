@@ -17,6 +17,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "EditMember",
+    "RelativePath": "api/Memb/editmember",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mem",
+        "Type": "Som_Models.Models.Members",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
     "Method": "GetUserDocument",
     "RelativePath": "api/Memb/memberdocument",
     "HttpMethod": "GET",
@@ -77,6 +93,22 @@
     "ContainingType": "Som_Back.Controllers.MembController",
     "Method": "SaveMemberInfo",
     "RelativePath": "api/Memb/savemember",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "mem",
+        "Type": "Som_Models.Models.Members",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "TransferMember",
+    "RelativePath": "api/Memb/transfermember",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

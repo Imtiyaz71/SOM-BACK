@@ -79,17 +79,64 @@ namespace Som_Back.Controllers
             return File(fileBytes, "application/pdf");
         }
 
-        [HttpPost("savemember")]
         [Authorize]
+        [HttpPost("savemember")]
         public async Task<IActionResult> SaveMemberInfo([FromBody] Members mem)
         {
-            var member = await _memberervice.SaveMember(mem);
+            if (mem == null)
+                return BadRequest(new { message = "Member data is null" });
+
+            try
+            {
+                var result = await _memberervice.SaveMember(mem);
+
+                // result যদি error string return করে তাহলে BadRequest
+                if (result.StartsWith("Error") || result.StartsWith("No"))
+                    return BadRequest(new { message = result });
+
+                // নাহলে OK message
+                return Ok(new { message = result });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Internal Server Error: {ex.Message}" });
+            }
+        }
+
+        [Authorize]
+        [HttpPost("transfermember")]
+        public async Task<IActionResult> TransferMember([FromBody] Members mem)
+        {
+            if (mem == null)
+                return BadRequest(new { message = "Member data is null" });
+
+            try
+            {
+                var result = await _memberervice.TransferMember(mem);
+
+                // result যদি error string return করে তাহলে BadRequest
+                if (result.StartsWith("Error") || result.StartsWith("No"))
+                    return BadRequest(new { message = result });
+
+                // নাহলে OK message
+                return Ok(new { message = result });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = $"Internal Server Error: {ex.Message}" });
+            }
+        }
+
+        [HttpPost("editmember")]
+        [Authorize]
+        public async Task<IActionResult> EditMember([FromBody] Members mem)
+        {
+            var member = await _memberervice.EditMember(mem);
 
             if (member == null)
-                return BadRequest("Failed to save Member Data");
+                return BadRequest("Failed to Edit Member Data");
 
             return Ok(member);
         }
-
     }
 }
