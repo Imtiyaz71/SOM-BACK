@@ -28,6 +28,28 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("archivememberall")]
+        [Authorize]
+        public async Task<IActionResult> GetArchiveMember()
+        {
+            var mem = await _memberervice.GetArchivemember();
+
+            if (mem == null)
+                return NotFound("No Member found.");
+
+            return Ok(mem);
+        }
+        [HttpGet("transferlogslist")]
+        [Authorize]
+        public async Task<IActionResult> GetTransferLogs()
+        {
+            var mem = await _memberervice.TransferLogsList();
+
+            if (mem == null)
+                return NotFound("No Member found.");
+
+            return Ok(mem);
+        }
         [HttpGet("memberinfobyid")]
         [Authorize]  
         public async Task<IActionResult> GetAllMemberById(int memno)

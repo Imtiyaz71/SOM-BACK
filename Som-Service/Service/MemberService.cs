@@ -116,6 +116,18 @@ namespace Som_Service.Service
             return "Member updated successfully";
         }
 
+        public async Task<List<ArchiveMember>> GetArchivemember()
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var mem = await connection.QueryAsync<ArchiveMember>(
+                "sp_acivememberList",
+                commandType: CommandType.StoredProcedure
+            );
+
+            return mem.ToList();
+        }
+
         public async Task<List<VM_Member>> Getmember()
         {
             using var connection = new SqlConnection(_connectionString);
@@ -253,6 +265,18 @@ namespace Som_Service.Service
             }
         }
 
+        public async Task<List<MemberTransferLogs>> TransferLogsList()
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var mem = await connection.QueryAsync<MemberTransferLogs>(
+                "sp_transferLogsHistory",
+                commandType: CommandType.StoredProcedure
+            );
+
+            return mem.ToList();
+        }
+
         public async Task<string> TransferMember(Members model)
         {
             try
@@ -337,5 +361,6 @@ namespace Som_Service.Service
                 return $"Error: {ex.Message}";
             }
         }
+ 
     }
 }

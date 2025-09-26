@@ -1,15 +1,16 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Dapper;
+using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Som_Models.Models;
+using Som_Service.Interface;
 using System.Data;
 using System.Data.SqlClient;
 using System.IdentityModel.Tokens.Jwt;
+using System.Reflection;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using Dapper;
 using System.Threading.Tasks;
-using Som_Service.Interface;
 
 namespace Som_Service.Service
 {
@@ -94,5 +95,103 @@ namespace Som_Service.Service
             };
         }
 
+        public async Task<CompanyInfo> CompanyInfo()
+        {
+            using var connection = new SqlConnection(_connectionString);
+            try
+            {
+                var companyInfo = await connection.QueryFirstOrDefaultAsync<CompanyInfo>(
+             "sp_companyInfo",
+             
+             commandType: CommandType.StoredProcedure
+         );
+                return new CompanyInfo
+                {
+                    Id = companyInfo.Id,
+                    cName = companyInfo.cName,
+                    cPhone = companyInfo.cPhone,
+                    cEmail = companyInfo.cEmail,
+                    cWebsite = companyInfo.cWebsite,
+                    cAddress = companyInfo.cAddress,
+                    cLogo = companyInfo.cLogo
+                };
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            
+            return new CompanyInfo
+            {
+                Id = 0,
+                cName = "",
+                cPhone = "",
+                cEmail = "",
+                cWebsite = "",
+                cAddress = "",
+                cLogo = ""
+            };
+        }
+
+        public async Task<string> SaveCompany(CompanyInfo info)
+        {
+            try
+            {
+               
+                if (string.IsNullOrEmpty(info.cLogo))
+                    return "No photo provided";
+
+                // ensure directories
+             
+                var uploadDirPhoto = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+               
+                Directory.CreateDirectory(uploadDirPhoto);
+
+              
+
+                // Save Photo
+                var photoBase64 = info.cLogo.Contains(",")
+                    ? info.cLogo.Split(',').Last()
+                    : info.cLogo;
+                var photoBytes = Convert.FromBase64String(photoBase64);
+                var photoExt = ".jpg";
+                if (info.cLogo.Contains("image/png")) photoExt = ".png";
+                else if (info.cLogo.Contains("image/jpeg")) photoExt = ".jpg";
+                var photoName = $"{Guid.NewGuid()}{photoExt}";
+                var photoPathFull = Path.Combine(uploadDirPhoto, photoName);
+                await File.WriteAllBytesAsync(photoPathFull, photoBytes);
+
+                // Set dates (DateTime হিসেবে)
+                info.createAt = DateTime.Now.ToString("dd-MM-yyyy");
+              
+                string photoDbPath = $"Uploads/{photoName}";
+                using var connection = new SqlConnection(_connectionString);
+                await connection.OpenAsync();
+
+                var parameters = new DynamicParameters();
+                parameters.Add("@cname", info.cName, DbType.String);
+                parameters.Add("@cphone", info.cPhone, DbType.String);
+                parameters.Add("@cemail", info.cEmail, DbType.String);
+                parameters.Add("@cwebsite", info.cWebsite, DbType.String);
+                parameters.Add("@caddress", info.cAddress, DbType.String);
+                parameters.Add("@clogo", photoDbPath, DbType.String);
+                parameters.Add("@createat", info.createAt, DbType.String);
+            
+
+                await connection.ExecuteAsync(
+                    "sp_addcompany",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return "Somity Information Add Your Password is 123";
+            }
+            catch (Exception ex)
+            {
+                // Optional: log error
+                return $"Error: {ex.Message}";
+            }
+        }
     }
 }

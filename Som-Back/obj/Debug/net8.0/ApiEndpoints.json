@@ -1,6 +1,32 @@
 [
   {
     "ContainingType": "Som_Back.Controllers.LogController",
+    "Method": "CompanyInfo",
+    "RelativePath": "api/Log/cominfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.LogController",
+    "Method": "Addcompany",
+    "RelativePath": "api/Log/companyadd",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.CompanyInfo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.LogController",
     "Method": "Login",
     "RelativePath": "api/Log/login",
     "HttpMethod": "POST",
@@ -13,6 +39,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "GetArchiveMember",
+    "RelativePath": "api/Memb/archivememberall",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -103,6 +139,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "GetTransferLogs",
+    "RelativePath": "api/Memb/transferlogslist",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
