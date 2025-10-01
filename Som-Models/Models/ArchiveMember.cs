@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public int MemNo { get; set; }
+        public int compId { get; set; }
         public string GivenName { get; set; }
         public string SureName { get; set; }
         public string Phone { get; set; }

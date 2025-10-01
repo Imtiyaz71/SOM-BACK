@@ -19,9 +19,9 @@ namespace Som_Back.Controllers
 
         [HttpGet("userbasicinfo")]
         [Authorize]  // Require login for menu fetching (optional)
-        public async Task<IActionResult> GetBasicUserInfo()
+        public async Task<IActionResult> GetBasicUserInfo(int cId)
        {
-            var user = await _usersinfoervice.GetUserInfoBasic();
+            var user = await _usersinfoervice.GetUserInfoBasic(cId);
 
             if (user == null)
                 return NotFound("No user found.");
@@ -109,12 +109,12 @@ namespace Som_Back.Controllers
         }
         [HttpPost("edituserinfo")]
         [Authorize]
-        public async Task<IActionResult> EditUserInfo([FromForm] IFormFile file, [FromForm] VW_UserInfo user)
+        public async Task<IActionResult> EditUserInfo([FromBody] VW_UserInfo user)
         {
             try
             {
                 // Service method call (photo path thakle save korbe, na thakle current photo use korbe)
-                var result = await _usersinfoervice.EditUserInfo(file, user);
+                var result = await _usersinfoervice.EditUserInfo(user);
 
                 if (result.Contains("Error"))
                     return BadRequest(new { message = result });
@@ -128,19 +128,15 @@ namespace Som_Back.Controllers
         }
         [HttpPost("uploadphoto")]
         [Authorize]
-        public async Task<IActionResult> UploadPhoto([FromForm] IFormFile file, [FromForm] string username)
+        public async Task<IActionResult> UploadPhoto([FromBody] UserPhoto p)
         {
-            if (string.IsNullOrEmpty(username))
+            if (string.IsNullOrEmpty(p.Username))
                 return BadRequest("Username is required");
 
-            // Create UserPhoto object
-            var userPhoto = new UserPhoto
-            {
-                Username = username
-            };
+        
 
             // Call service method
-            var resultMsg = await _usersinfoervice.SaveUserPhoto(file, userPhoto);
+            var resultMsg = await _usersinfoervice.SaveUserPhoto(p);
 
             if (resultMsg.Contains("successfully"))
                 return Ok(new { message = resultMsg });

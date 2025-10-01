@@ -21,5 +21,6 @@
         public string CreateDate { get; set; } // varchar(100)
         public string CreateBy { get; set; }
         public string UpdateDate { get; set; }
+        public int compId { get; set; }
     }
 }

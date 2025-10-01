@@ -1,5 +1,63 @@
 [
   {
+    "ContainingType": "Som_Back.Controllers.KistiCtrl",
+    "Method": "GetCrType",
+    "RelativePath": "api/KistiCtrl/crtype",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.KistiCtrl",
+    "Method": "GetKistiType",
+    "RelativePath": "api/KistiCtrl/kistytype",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.KistiCtrl",
+    "Method": "GetKistiTypeById",
+    "RelativePath": "api/KistiCtrl/kistytypebyid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.KistiCtrl",
+    "Method": "SaveKistiType",
+    "RelativePath": "api/KistiCtrl/savekistitype",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "k",
+        "Type": "Som_Models.Models.KistiTypes",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Som_Back.Controllers.LogController",
     "Method": "CompanyInfo",
     "RelativePath": "api/Log/cominfo",
@@ -48,7 +106,29 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "GetDeactiveLogs",
+    "RelativePath": "api/Memb/deactivelogs",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -62,6 +142,22 @@
       {
         "Name": "mem",
         "Type": "Som_Models.Models.Members",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "MemberDeactive",
+    "RelativePath": "api/Memb/memberdeactive",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Som_Models.VW_Models.VW_MemberDeactiveRequest",
         "IsRequired": true
       }
     ],
@@ -90,7 +186,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -148,7 +250,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -234,6 +342,54 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Som_Back.Controllers.SubscriptionCtrl",
+    "Method": "SaveKistiType",
+    "RelativePath": "api/SubscriptionCtrl/savesubscriptiontype",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "k",
+        "Type": "Som_Models.Models.SubscriptionTypes",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.SubscriptionCtrl",
+    "Method": "GetSubscriptionTypeById",
+    "RelativePath": "api/SubscriptionCtrl/subscriptiontypebyid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.SubscriptionCtrl",
+    "Method": "GetSubscriptionTypes",
+    "RelativePath": "api/SubscriptionCtrl/subscriptiontypes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Som_Back.Controllers.TestController",
     "Method": "CheckRole",
     "RelativePath": "api/Test/checkrole",
@@ -273,114 +429,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ContentType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ContentDisposition",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Headers",
-        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
-        "IsRequired": false
-      },
-      {
-        "Name": "Length",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "FileName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "Username",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Email",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "FullName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Address",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Phone",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "NiD",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Father",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Mother",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Degree",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "FieldOfStudy",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "SchoolName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "StartDate",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "EndDate",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Description",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Photo",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "user",
+        "Type": "Som_Models.VW_Models.VW_UserInfo",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -452,39 +503,9 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "ContentType",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "ContentDisposition",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "Headers",
-        "Type": "Microsoft.AspNetCore.Http.IHeaderDictionary",
-        "IsRequired": false
-      },
-      {
-        "Name": "Length",
-        "Type": "System.Int64",
-        "IsRequired": false
-      },
-      {
-        "Name": "Name",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "FileName",
-        "Type": "System.String",
-        "IsRequired": false
-      },
-      {
-        "Name": "username",
-        "Type": "System.String",
-        "IsRequired": false
+        "Name": "p",
+        "Type": "Som_Models.Models.UserPhoto",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -496,7 +517,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "cId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

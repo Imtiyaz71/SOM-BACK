@@ -15,5 +15,6 @@
         public string NiD { get; set; }
         public string Father { get; set; }
         public string Mother { get; set; }
+        public int cId { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using Som_Models.Models;
 using Som_Models.VW_Models;
 using Som_Service.Interface;
 using Som_Service.Service;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Som_Back.Controllers
 {
@@ -19,9 +20,9 @@ namespace Som_Back.Controllers
         }
         [HttpGet("memberinfoall")]
         [Authorize] 
-        public async Task<IActionResult> GetAllMember()
+        public async Task<IActionResult> GetAllMember(int compId)
         {
-            var mem = await _memberervice.Getmember();
+            var mem = await _memberervice.Getmember(compId);
 
             if (mem == null)
                 return NotFound("No Member found.");
@@ -30,9 +31,9 @@ namespace Som_Back.Controllers
         }
         [HttpGet("archivememberall")]
         [Authorize]
-        public async Task<IActionResult> GetArchiveMember()
+        public async Task<IActionResult> GetArchiveMember(int compId)
         {
-            var mem = await _memberervice.GetArchivemember();
+            var mem = await _memberervice.GetArchivemember(compId);
 
             if (mem == null)
                 return NotFound("No Member found.");
@@ -41,9 +42,20 @@ namespace Som_Back.Controllers
         }
         [HttpGet("transferlogslist")]
         [Authorize]
-        public async Task<IActionResult> GetTransferLogs()
+        public async Task<IActionResult> GetTransferLogs(int compId)
         {
-            var mem = await _memberervice.TransferLogsList();
+            var mem = await _memberervice.TransferLogsList(compId);
+
+            if (mem == null)
+                return NotFound("No Member found.");
+
+            return Ok(mem);
+        }
+        [HttpGet("deactivelogs")]
+        [Authorize]
+        public async Task<IActionResult> GetDeactiveLogs(int compId)
+        {
+            var mem = await _memberervice.DeactiveLogs(compId);
 
             if (mem == null)
                 return NotFound("No Member found.");
@@ -157,6 +169,18 @@ namespace Som_Back.Controllers
 
             if (member == null)
                 return BadRequest("Failed to Edit Member Data");
+
+            return Ok(member);
+        }
+
+        [HttpPost("memberdeactive")]
+        [Authorize]
+        public async Task<IActionResult> MemberDeactive([FromBody] VW_MemberDeactiveRequest request)
+        {
+            var member = await _memberervice.MemberDeactivation(request.MemNo, request.CompId, request.EntryBy);
+
+            if (member == null)
+                return BadRequest("Failed to Deactive Member Data");
 
             return Ok(member);
         }

@@ -5,6 +5,7 @@ using Som_Models.VW_Models;
 using Som_Service.Interface;
 using System.Data;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace Som_Service.Service
 {
@@ -15,6 +16,19 @@ namespace Som_Service.Service
         public MemberService(IConfiguration configuration)
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
+        }
+
+        public async Task<List<VW_DeactiveLogs>> DeactiveLogs(int compId)
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var mem = await connection.QueryAsync<VW_DeactiveLogs>(
+                "sp_deactivelogs",
+                new { compId = compId },
+                commandType: CommandType.StoredProcedure
+            );
+
+            return mem.ToList();
         }
 
         public async Task<string> EditMember(Members model)
@@ -116,28 +130,30 @@ namespace Som_Service.Service
             return "Member updated successfully";
         }
 
-        public async Task<List<ArchiveMember>> GetArchivemember()
+        public async Task<List<ArchiveMember>> GetArchivemember(int compId)
         {
             using var connection = new SqlConnection(_connectionString);
 
             var mem = await connection.QueryAsync<ArchiveMember>(
                 "sp_acivememberList",
+                new { compId=compId},
                 commandType: CommandType.StoredProcedure
             );
 
             return mem.ToList();
         }
 
-        public async Task<List<VM_Member>> Getmember()
+        public async Task<List<VM_Member>> Getmember(int compId)
         {
             using var connection = new SqlConnection(_connectionString);
-
             var mem = await connection.QueryAsync<VM_Member>(
-                "sp_memberList",                
-                commandType: CommandType.StoredProcedure
-            );
+    "sp_memberList",
+    new { compId = compId },   // <-- here 'new' is required
+    commandType: CommandType.StoredProcedure
+);
 
             return mem.ToList();
+
         }
 
         public async Task<VM_Member> GetmemberById(int Memno)
@@ -151,6 +167,28 @@ namespace Som_Service.Service
             );
 
             return mem;
+        }
+
+        public async Task<string> MemberDeactivation(int memNo, int compId, string entryBy)
+        {
+
+            try
+            {
+                using var connection = new SqlConnection(_connectionString);
+                await connection.OpenAsync();
+                var parameters = new DynamicParameters();
+                parameters.Add("@memNo", memNo);
+                parameters.Add("@compId", compId);
+                parameters.Add("@entryby", entryBy);
+                await connection.ExecuteAsync("sp_memberdeactive", parameters, commandType: CommandType.StoredProcedure);
+                return "Member Deactiveted";
+            }
+            catch (Exception ex)
+            {
+
+                return "Failed";
+            }
+
         }
 
         public async Task<string> SaveMember(Members model)
@@ -227,7 +265,7 @@ namespace Som_Service.Service
                     parameters.Add("@CreateDate", model.CreateDate);
                     parameters.Add("@CreateBy", model.CreateBy);
                     parameters.Add("@UpdateDate", model.UpdateDate);
-
+                    parameters.Add("@compId", model.compId);
                     await connection.ExecuteAsync("sp_InsertMember", parameters, commandType: CommandType.StoredProcedure);
                     return "Member saved successfully";
                 }
@@ -254,6 +292,7 @@ namespace Som_Service.Service
                     parameters.Add("@photo", photoDbPath);
                     parameters.Add("@idenDocu", docDbPath);
                     parameters.Add("@updateDate", model.UpdateDate);
+                    parameters.Add("@compId", model.compId);
 
                     await connection.ExecuteAsync("sp_editmember", parameters, commandType: CommandType.StoredProcedure);
                     return "Member updated successfully";
@@ -265,12 +304,13 @@ namespace Som_Service.Service
             }
         }
 
-        public async Task<List<MemberTransferLogs>> TransferLogsList()
+        public async Task<List<MemberTransferLogs>> TransferLogsList(int compId)
         {
             using var connection = new SqlConnection(_connectionString);
 
             var mem = await connection.QueryAsync<MemberTransferLogs>(
                 "sp_transferLogsHistory",
+               new { compId=compId},
                 commandType: CommandType.StoredProcedure
             );
 
@@ -346,7 +386,7 @@ namespace Som_Service.Service
                 parameters.Add("@createdate", model.CreateDate, DbType.String);
                 parameters.Add("@createby", model.CreateBy, DbType.String);
                 parameters.Add("@updatedate", model.UpdateDate, DbType.String);
-
+                parameters.Add("@compId", model.compId, DbType.Int32);
                 await connection.ExecuteAsync(
                     "sp_membertrnsfer",
                     parameters,

@@ -64,7 +64,8 @@ namespace Som_Service.Service
             var fullname = userInfo?.Fullname ?? "Unknown";
   
             var username = userInfo?.Username ?? "Unknown";
-
+            var cname = userInfo?.cName ?? "Unknown";
+            var cid = Convert.ToInt32(userInfo?.cId ?? 0);
             // 3. JWT Token generate
             var claims = new[]
             {
@@ -91,7 +92,9 @@ namespace Som_Service.Service
                 Token = tokenString,
                 Role = role,
                 Fullname=fullname,
-                Username=username
+                Username=username,
+                cName=cname,
+                cId=cid
             };
         }
 

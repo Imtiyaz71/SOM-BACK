@@ -62,6 +62,8 @@ builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<IUserInfo, UserInfoService>();
 builder.Services.AddScoped<ISelectedValueService, SelectedValueService>();
 builder.Services.AddScoped<IMemberService, MemberService>();
+builder.Services.AddScoped<IKistiService, KistiService>();
+builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 builder.Services.AddControllers();
 
 // Swagger configuration with JWT support

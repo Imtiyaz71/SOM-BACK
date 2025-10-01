@@ -5,6 +5,93 @@
     "version": "v1"
   },
   "paths": {
+    "/api/KistiCtrl/crtype": {
+      "get": {
+        "tags": [
+          "KistiCtrl"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/KistiCtrl/kistytype": {
+      "get": {
+        "tags": [
+          "KistiCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/KistiCtrl/kistytypebyid": {
+      "get": {
+        "tags": [
+          "KistiCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/KistiCtrl/savekistitype": {
+      "post": {
+        "tags": [
+          "KistiCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KistiTypes"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/KistiTypes"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/KistiTypes"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Log/login": {
       "post": {
         "tags": [
@@ -25,6 +112,327 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Login"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Log/cominfo": {
+      "get": {
+        "tags": [
+          "Log"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Log/companyadd": {
+      "post": {
+        "tags": [
+          "Log"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompanyInfo"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompanyInfo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/CompanyInfo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/memberinfoall": {
+      "get": {
+        "tags": [
+          "Memb"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/archivememberall": {
+      "get": {
+        "tags": [
+          "Memb"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/transferlogslist": {
+      "get": {
+        "tags": [
+          "Memb"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/deactivelogs": {
+      "get": {
+        "tags": [
+          "Memb"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/memberinfobyid": {
+      "get": {
+        "tags": [
+          "Memb"
+        ],
+        "parameters": [
+          {
+            "name": "memno",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/memberphoto": {
+      "get": {
+        "tags": [
+          "Memb"
+        ],
+        "parameters": [
+          {
+            "name": "memno",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/memberdocument": {
+      "get": {
+        "tags": [
+          "Memb"
+        ],
+        "parameters": [
+          {
+            "name": "memno",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/savemember": {
+      "post": {
+        "tags": [
+          "Memb"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Members"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Members"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Members"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/transfermember": {
+      "post": {
+        "tags": [
+          "Memb"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Members"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Members"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Members"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/editmember": {
+      "post": {
+        "tags": [
+          "Memb"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Members"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Members"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Members"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/memberdeactive": {
+      "post": {
+        "tags": [
+          "Memb"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_MemberDeactiveRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_MemberDeactiveRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_MemberDeactiveRequest"
               }
             }
           }
@@ -69,6 +477,30 @@
         }
       }
     },
+    "/api/SelectedValue/genderlist": {
+      "get": {
+        "tags": [
+          "SelectedValue"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SelectedValue/activationlist": {
+      "get": {
+        "tags": [
+          "SelectedValue"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/SelectedValue/authorizerlist": {
       "get": {
         "tags": [
@@ -93,6 +525,81 @@
         }
       }
     },
+    "/api/SubscriptionCtrl/subscriptiontypes": {
+      "get": {
+        "tags": [
+          "SubscriptionCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SubscriptionCtrl/subscriptiontypebyid": {
+      "get": {
+        "tags": [
+          "SubscriptionCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SubscriptionCtrl/savesubscriptiontype": {
+      "post": {
+        "tags": [
+          "SubscriptionCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionTypes"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionTypes"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SubscriptionTypes"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Test/checkrole": {
       "get": {
         "tags": [
@@ -109,6 +616,16 @@
       "get": {
         "tags": [
           "UserInfo"
+        ],
+        "parameters": [
+          {
+            "name": "cId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -130,6 +647,60 @@
               "type": "string"
             }
           }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserInfo/userinfoall": {
+      "get": {
+        "tags": [
+          "UserInfo"
+        ],
+        "parameters": [
+          {
+            "name": "Username",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserInfo/userphotobyusername": {
+      "get": {
+        "tags": [
+          "UserInfo"
+        ],
+        "parameters": [
+          {
+            "name": "Username",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserInfo/mapdetails": {
+      "get": {
+        "tags": [
+          "UserInfo"
         ],
         "responses": {
           "200": {
@@ -200,6 +771,127 @@
         }
       }
     },
+    "/api/UserInfo/edituserinfo": {
+      "post": {
+        "tags": [
+          "UserInfo"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_UserInfo"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_UserInfo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_UserInfo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserInfo/uploadphoto": {
+      "post": {
+        "tags": [
+          "UserInfo"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserPhoto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserPhoto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserPhoto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserInfo/savemapper": {
+      "post": {
+        "tags": [
+          "UserInfo"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mapper"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mapper"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Mapper"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/UserInfo/delete-userinfo": {
+      "delete": {
+        "tags": [
+          "UserInfo"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "deleteby",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/WeatherForecast": {
       "get": {
         "tags": [
@@ -242,6 +934,78 @@
   },
   "components": {
     "schemas": {
+      "CompanyInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cName": {
+            "type": "string",
+            "nullable": true
+          },
+          "cPhone": {
+            "type": "string",
+            "nullable": true
+          },
+          "cEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "cWebsite": {
+            "type": "string",
+            "nullable": true
+          },
+          "cAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "cLogo": {
+            "type": "string",
+            "nullable": true
+          },
+          "createAt": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "KistiTypes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "crid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "createdate": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedate": {
+            "type": "string",
+            "nullable": true
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "Login": {
         "type": "object",
         "properties": {
@@ -252,6 +1016,140 @@
           "password": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Mapper": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "auth": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Members": {
+        "type": "object",
+        "properties": {
+          "memNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "givenName": {
+            "type": "string",
+            "nullable": true
+          },
+          "sureName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "niD": {
+            "type": "string",
+            "nullable": true
+          },
+          "biCNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "passportNo": {
+            "type": "string",
+            "nullable": true
+          },
+          "nationality": {
+            "type": "string",
+            "nullable": true
+          },
+          "gender": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "father": {
+            "type": "string",
+            "nullable": true
+          },
+          "mother": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "idenDocu": {
+            "type": "string",
+            "nullable": true
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          },
+          "createDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "createBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SubscriptionTypes": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "crid": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "createdate": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedate": {
+            "type": "string",
+            "nullable": true
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -302,6 +1200,10 @@
           "mother": {
             "type": "string",
             "nullable": true
+          },
+          "cId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -346,6 +1248,120 @@
             "nullable": true
           },
           "updateDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserPhoto": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          },
+          "createDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VW_MemberDeactiveRequest": {
+        "type": "object",
+        "properties": {
+          "memNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "entryBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VW_UserInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "username": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "niD": {
+            "type": "string",
+            "nullable": true
+          },
+          "father": {
+            "type": "string",
+            "nullable": true
+          },
+          "mother": {
+            "type": "string",
+            "nullable": true
+          },
+          "degree": {
+            "type": "string",
+            "nullable": true
+          },
+          "fieldOfStudy": {
+            "type": "string",
+            "nullable": true
+          },
+          "schoolName": {
+            "type": "string",
+            "nullable": true
+          },
+          "startDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "photo": {
             "type": "string",
             "nullable": true
           }

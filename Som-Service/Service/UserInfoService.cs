@@ -20,15 +20,15 @@ namespace Som_Service.Service
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
-        public async Task<List<UserInfoBasic>> GetUserInfoBasic()
+        public async Task<List<UserInfoBasic>> GetUserInfoBasic(int cId)
         {
             using var connection = new SqlConnection(_connectionString);
 
             var user = await connection.QueryAsync<UserInfoBasic>(
-                "sp_UserInfoBasic",                 // Stored procedure name
-                commandType: CommandType.StoredProcedure
-            );
-
+                         "sp_UserInfoBasic",
+                      new { cId = cId },                    
+                 commandType: CommandType.StoredProcedure
+                     );
             return user.ToList();
         }
         public async Task<UserInfoBasic> GetUserInfoBasicByUser(string Username)
@@ -36,8 +36,8 @@ namespace Som_Service.Service
             using var connection = new SqlConnection(_connectionString);
 
             var user = await connection.QueryFirstOrDefaultAsync<UserInfoBasic>(
-                "sp_UserInfoBasicByUser",                     // Stored procedure name
-                new { users = Username },            // Parameter object (name must match SP param)
+                "sp_UserInfoBasicByUser",                 
+                new { users = Username },           
                 commandType: CommandType.StoredProcedure
             );
 
@@ -89,7 +89,7 @@ namespace Som_Service.Service
                 parameters.Add("@username", user.Username);
                 parameters.Add("@createdate", user.CreateDate);
                 parameters.Add("@updatedate", user.UpdateDate);
-
+                parameters.Add("@cId", user.cId);
                 var result = await connection.ExecuteScalarAsync<int>(
                     "sp_saveUserBasic",
                     parameters,
@@ -111,34 +111,38 @@ namespace Som_Service.Service
             }
             return msg;
         }
-        public async Task<string> SaveUserPhoto(IFormFile file, UserPhoto user)
+        public async Task<string> SaveUserPhoto(UserPhoto user)
         {
             string msg = "";
 
             try
             {
-                if (file == null || file.Length == 0)
-                    return "No file selected";
+                if (string.IsNullOrWhiteSpace(user.Photo))
+                    return "No photo data provided";
 
                 // Ensure Uploads directory exists
                 var uploadDir = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
                 if (!Directory.Exists(uploadDir))
                     Directory.CreateDirectory(uploadDir);
 
-                // Generate unique file name and save
-                var fileName = $"{Guid.NewGuid()}_{file.FileName}";
+                // Generate unique file name
+                var fileName = $"{Guid.NewGuid()}.jpg"; // or .png based on your input
                 var filePath = Path.Combine(uploadDir, fileName);
 
-                using (var stream = new FileStream(filePath, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
+                // Convert Base64 → Byte[]
+                var base64Data = user.Photo.Contains(",") ? user.Photo.Split(',')[1] : user.Photo;
+                byte[] imageBytes = Convert.FromBase64String(base64Data);
+
+                // Save file
+                await File.WriteAllBytesAsync(filePath, imageBytes);
 
                 using var connection = new SqlConnection(_connectionString);
 
                 // Set dates
                 user.CreateDate = DateTime.Now.ToString("dd-MMMM-yyyy");
                 user.UpdateDate = DateTime.Now.ToString("dd-MMMM-yyyy");
+
+                // Save only path in DB
                 user.Photo = $"Uploads/{fileName}";
 
                 var parameters = new DynamicParameters();
@@ -154,7 +158,6 @@ namespace Som_Service.Service
                     commandType: CommandType.StoredProcedure
                 );
 
-                // Result handling (optional, SP can return -1 if username exists)
                 if (result == -1)
                 {
                     msg = "Username already exists!";
@@ -171,6 +174,7 @@ namespace Som_Service.Service
 
             return msg;
         }
+
 
         public async Task<string> SaveUserInfoEducation(UserInfoEducation user)
         {
@@ -214,27 +218,27 @@ namespace Som_Service.Service
             return msg;
         }
 
-        public async Task<string> EditUserInfo(IFormFile file, VW_UserInfo user)
+        public async Task<string> EditUserInfo(VW_UserInfo user)
         {
             try
             {
                 string photoPath = user.Photo; // existing path
 
-                // === File upload ===
-                if (file != null && file.Length > 0)
+                // === Base64 photo handle ===
+                if (!string.IsNullOrWhiteSpace(user.Photo) && user.Photo.StartsWith("data:"))
                 {
-                    // Reuse logic from SaveUserPhoto
                     var uploadDir = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
                     if (!Directory.Exists(uploadDir))
                         Directory.CreateDirectory(uploadDir);
 
-                    var fileName = $"{Guid.NewGuid()}_{file.FileName}";
+                    var fileName = $"{Guid.NewGuid()}.jpg"; // or detect extension
                     var fullPath = Path.Combine(uploadDir, fileName);
 
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        await file.CopyToAsync(stream);
-                    }
+                    // Convert base64 → byte[]
+                    var base64Data = user.Photo.Contains(",") ? user.Photo.Split(',')[1] : user.Photo;
+                    byte[] imageBytes = Convert.FromBase64String(base64Data);
+
+                    await File.WriteAllBytesAsync(fullPath, imageBytes);
 
                     photoPath = $"Uploads/{fileName}";
                 }
@@ -272,6 +276,7 @@ namespace Som_Service.Service
                 return "Error: " + ex.Message;
             }
         }
+
 
         public Task<string> DeleteAllUserInfo(string Username)
         {
