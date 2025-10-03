@@ -15,9 +15,12 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularClient", policy =>
     {
-        policy.WithOrigins("http://localhost:4200")
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        policy.WithOrigins(
+                "http://localhost:4200",
+                "http://localhost:808"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod();
     });
 });
 
@@ -53,10 +56,9 @@ builder.Services.AddAuthorization(options =>
 {
     options.AddPolicy("AdminOnly", policy => policy.RequireRole("Admin"));
     options.AddPolicy("UserOnly", policy => policy.RequireRole("User"));
-    // Add more policies if needed
 });
 
-// Register your AuthService for dependency injection
+// Register DI services
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IMenuService, MenuService>();
 builder.Services.AddScoped<IUserInfo, UserInfoService>();
@@ -64,16 +66,17 @@ builder.Services.AddScoped<ISelectedValueService, SelectedValueService>();
 builder.Services.AddScoped<IMemberService, MemberService>();
 builder.Services.AddScoped<IKistiService, KistiService>();
 builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
+builder.Services.AddScoped<ILoanTypes, LoanTypeService>();
+
 builder.Services.AddControllers();
 
 // Swagger configuration with JWT support
 builder.Services.AddEndpointsApiExplorer();
-
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Som API", Version = "v1" });
 
-    // Define the BearerAuth scheme
+    // Define Bearer scheme
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
         Description = @"JWT Authorization header using the Bearer scheme.  
@@ -107,16 +110,18 @@ builder.Services.AddSwaggerGen(c =>
 
 var app = builder.Build();
 
-// Enable middleware for Swagger in development
-if (app.Environment.IsDevelopment())
+// Always enable Swagger (dev + prod)
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+    // Use relative path so that it works in IIS sub-applications too
+    c.SwaggerEndpoint("./v1/swagger.json", "My API V1");
+    c.RoutePrefix = "swagger"; // swagger UI available at /swagger
+});
 
 app.UseCors("AllowAngularClient");
 
-// Authentication & Authorization middleware order is important
+// Authentication & Authorization middleware
 app.UseAuthentication();
 app.UseAuthorization();
 

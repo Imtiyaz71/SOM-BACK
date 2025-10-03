@@ -2,8 +2,6 @@ E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.deps.json
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.runtimeconfig.json
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.staticwebassets.endpoints.json
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Models.exe
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\appsettings.Development.json
-E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\appsettings.json
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Service.staticwebassets.endpoints.json
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Service.exe
 E:\My Projects\Som-Back\Som-Service\bin\Debug\net8.0\Som-Service.deps.json
