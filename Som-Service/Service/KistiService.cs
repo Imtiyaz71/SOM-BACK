@@ -30,16 +30,29 @@ namespace Som_Service.Service
 
         public async Task<List<VM__KistiTypes>> GetKistiTypes(int compId)
         {
-            using var connection = new SqlConnection(_connectionString);
+            List<VM__KistiTypes> result = new List<VM__KistiTypes>();
 
-            var cr = await connection.QueryAsync<VM__KistiTypes>(
-                "sp_kistitypes",
-                new { compId=compId},
-                commandType: CommandType.StoredProcedure
-            );
+            try
+            {
+                using var connection = new SqlConnection(_connectionString);
 
-            return cr.ToList();
+                var cr = await connection.QueryAsync<VM__KistiTypes>(
+                    "sp_kistitypes",
+                    new { compId = compId },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                result = cr.ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                // optionally log here or rethrow
+            }
+
+            return result;
         }
+
 
         public async Task<VM__KistiTypes> GetKistiTypesById(int id)
         {
@@ -72,7 +85,7 @@ namespace Som_Service.Service
                         parameters.Add("@Amount", k.Amount);
               
                         parameters.Add("@compId", k.compId);
-
+                        parameters.Add("@projectid", k.projectid);
                         int rows = await con.ExecuteAsync(
                             "sp_savekistiType",
                             parameters,
@@ -90,7 +103,7 @@ namespace Som_Service.Service
                         parameters.Add("@TypeName", k.TypeName);
                         parameters.Add("@crid", k.crid);
                         parameters.Add("@Amount", k.Amount);
-                     
+                        parameters.Add("@projectid", k.projectid);
                         int rows = await con.ExecuteAsync(
                             "sp_editkistiType",
                             parameters,

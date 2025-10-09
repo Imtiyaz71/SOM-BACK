@@ -1,5 +1,69 @@
 [
   {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetKistiReceive",
+    "RelativePath": "api/AccountCtrl/kistireceive",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "SaveKistiAmount",
+    "RelativePath": "api/AccountCtrl/savekistiamount",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "k",
+        "Type": "Som_Models.VW_Models.VM_SaveKistiandSubs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "SaveSubscriptionAmount",
+    "RelativePath": "api/AccountCtrl/savesubscriptionamount",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "k",
+        "Type": "Som_Models.VW_Models.VM_SaveKistiandSubs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetSubscriptionReceive",
+    "RelativePath": "api/AccountCtrl/subscriptionreceive",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Som_Back.Controllers.KistiCtrl",
     "Method": "GetCrType",
     "RelativePath": "api/KistiCtrl/crtype",
@@ -350,6 +414,107 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Som_Back.Controllers.ProjectCtrl",
+    "Method": "GetAssign",
+    "RelativePath": "api/ProjectCtrl/getassign",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ProjectCtrl",
+    "Method": "GetAssignById",
+    "RelativePath": "api/ProjectCtrl/getassignbyproject",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "compid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ProjectCtrl",
+    "Method": "Getproject",
+    "RelativePath": "api/ProjectCtrl/getproject",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ProjectCtrl",
+    "Method": "GetprojectById",
+    "RelativePath": "api/ProjectCtrl/getprojectbyprojectid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "projectid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ProjectCtrl",
+    "Method": "SaveProjectAssign",
+    "RelativePath": "api/ProjectCtrl/save-assign-project",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.ProjectAssign",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ProjectCtrl",
+    "Method": "SaveProject",
+    "RelativePath": "api/ProjectCtrl/save-project",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.Project",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Som_Back.Controllers.SelectedValueController",
     "Method": "GetAllActivation",
     "RelativePath": "api/SelectedValue/activationlist",
@@ -491,7 +656,13 @@
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "cid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {

@@ -68,9 +68,9 @@ namespace Som_Back.Controllers
         }
         [HttpGet("mapdetails")]
         [Authorize]  // Require login for menu fetching (optional)
-        public async Task<IActionResult> GetMapDetails()
+        public async Task<IActionResult> GetMapDetails(int cid)
         {
-            var map = await _usersinfoervice.GetMapdetails();
+            var map = await _usersinfoervice.GetMapdetails(cid);
 
             if (map == null || map.Count == 0)
                 return NotFound("No Details found for this role.");

@@ -19,7 +19,7 @@ namespace Som_Service.Interface
         Task<string> SaveUserPhoto(UserPhoto user);
         Task<string> UserMap(Mapper map);
         Task<string> DeleteUser(string username,string deleteby);
-        Task<List<VW_MapperDetails>> GetMapdetails();
+        Task<List<VW_MapperDetails>> GetMapdetails(int cid);
 
     }
 }

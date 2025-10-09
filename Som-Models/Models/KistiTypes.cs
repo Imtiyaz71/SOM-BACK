@@ -9,5 +9,6 @@
         public string createdate { get; set; }
         public string updatedate { get; set; }
         public int compId { get; set; }
+        public int projectid { get; set; }
     }
 }

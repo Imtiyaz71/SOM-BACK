@@ -327,12 +327,13 @@ namespace Som_Service.Service
             return msg;
         }
 
-        public async Task<List<VW_MapperDetails>> GetMapdetails()
+        public async Task<List<VW_MapperDetails>> GetMapdetails(int cid)
         {
             using var connection = new SqlConnection(_connectionString);
 
             var map = await connection.QueryAsync<VW_MapperDetails>(
                 "sp_MapperDetails",                 // Stored procedure name
+                new { cid=cid},
                 commandType: CommandType.StoredProcedure
             );
 
