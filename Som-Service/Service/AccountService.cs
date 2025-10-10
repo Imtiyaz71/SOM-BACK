@@ -51,6 +51,7 @@ namespace Som_Service.Service
                 try
                 {
                     var parameters = new DynamicParameters();
+                    parameters.Add("@projectid", model.projectid);
                     parameters.Add("@typeid", model.typeid);
                     parameters.Add("@compId", model.compId);
                     parameters.Add("@memNo", model.memNo);

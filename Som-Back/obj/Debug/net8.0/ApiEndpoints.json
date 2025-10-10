@@ -107,6 +107,27 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.KistiCtrl",
+    "Method": "GetKistiTypeByProject",
+    "RelativePath": "api/KistiCtrl/kistytypebyproject",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "projectId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.KistiCtrl",
     "Method": "SaveKistiType",
     "RelativePath": "api/KistiCtrl/savekistitype",
     "HttpMethod": "POST",

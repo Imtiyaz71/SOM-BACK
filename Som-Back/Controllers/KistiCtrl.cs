@@ -49,6 +49,17 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("kistytypebyproject")]
+        [Authorize]
+        public async Task<IActionResult> GetKistiTypeByProject(int compId,int projectId)
+        {
+            var mem = await _kistiservice.GetKistiTypesByProject(compId,projectId);
+
+            if (mem == null)
+                return NotFound("No Project Type found.");
+
+            return Ok(mem);
+        }
         [HttpPost("savekistitype")]
         [Authorize]
         public async Task<IActionResult> SaveKistiType(KistiTypes k)

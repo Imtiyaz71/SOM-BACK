@@ -67,6 +67,31 @@ namespace Som_Service.Service
             return mem;
         }
 
+        public async Task<List<VM__KistiTypes>> GetKistiTypesByProject(int compId, int projectid)
+        {
+            List<VM__KistiTypes> result = new List<VM__KistiTypes>();
+
+            try
+            {
+                using var connection = new SqlConnection(_connectionString);
+
+                var cr = await connection.QueryAsync<VM__KistiTypes>(
+                    "sp_kistitypesByProjectId",
+                    new { compId= compId,projectid=projectid },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                result = cr.ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                // optionally log here or rethrow
+            }
+
+            return result;
+        }
+
         public async Task<string> SaveKistiType(KistiTypes k)
         {
             string result = "";

@@ -167,6 +167,36 @@
         }
       }
     },
+    "/api/KistiCtrl/kistytypebyproject": {
+      "get": {
+        "tags": [
+          "KistiCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/KistiCtrl/savekistitype": {
       "post": {
         "tags": [
@@ -1568,10 +1598,6 @@
             "type": "integer",
             "format": "int32"
           },
-          "assignDate": {
-            "type": "string",
-            "nullable": true
-          },
           "assignBy": {
             "type": "string",
             "nullable": true
@@ -1742,6 +1768,10 @@
       "VM_SaveKistiandSubs": {
         "type": "object",
         "properties": {
+          "projectid": {
+            "type": "integer",
+            "format": "int32"
+          },
           "typeid": {
             "type": "integer",
             "format": "int32"

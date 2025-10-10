@@ -2,6 +2,7 @@
 {
     public class VM_SaveKistiandSubs
     {
+        public int projectid { get; set; }
         public int typeid { get; set; }
         public int compId { get; set; }
         public int memNo { get; set; }
