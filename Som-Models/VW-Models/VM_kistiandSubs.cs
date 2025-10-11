@@ -15,6 +15,8 @@
         public string RecDate { get; set; }
         public string RecMonth { get; set; }
         public int RecYear { get; set; }
+        public int projectid { get; set; }
+        public string projectName { get; set; }
 
     }
 }

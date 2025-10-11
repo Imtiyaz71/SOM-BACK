@@ -593,6 +593,27 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.SubscriptionCtrl",
+    "Method": "GetSubscriptionByProject",
+    "RelativePath": "api/SubscriptionCtrl/subscriptionbyproject",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "projectid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.SubscriptionCtrl",
     "Method": "GetSubscriptionTypeById",
     "RelativePath": "api/SubscriptionCtrl/subscriptiontypebyid",
     "HttpMethod": "GET",

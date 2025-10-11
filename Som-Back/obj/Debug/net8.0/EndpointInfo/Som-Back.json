@@ -938,6 +938,36 @@
         }
       }
     },
+    "/api/SubscriptionCtrl/subscriptionbyproject": {
+      "get": {
+        "tags": [
+          "SubscriptionCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "projectid",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/SubscriptionCtrl/savesubscriptiontype": {
       "post": {
         "tags": [
@@ -1633,6 +1663,10 @@
             "nullable": true
           },
           "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectId": {
             "type": "integer",
             "format": "int32"
           }

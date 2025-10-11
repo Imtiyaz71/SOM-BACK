@@ -40,6 +40,17 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("subscriptionbyproject")]
+        [Authorize]
+        public async Task<IActionResult> GetSubscriptionByProject(int compId,int projectid)
+        {
+            var mem = await _subscriptionservice.GetSubscriptionTypesByProject(compId,projectid);
+
+            if (mem == null)
+                return NotFound("No Subscription Type found.");
+
+            return Ok(mem);
+        }
         [HttpPost("savesubscriptiontype")]
         [Authorize]
         public async Task<IActionResult> SaveKistiType(SubscriptionTypes k)

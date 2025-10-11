@@ -98,7 +98,7 @@ namespace Som_Service.Service
                     parameters.Add("@recmonth", model.recmonth);
                     parameters.Add("@recyear", model.recyear);
                     parameters.Add("@trnasBy", model.transby);
-
+                    parameters.Add("@projectid", model.projectid);
                     await connection.ExecuteAsync(
                         "sp_SaveSubscriptionReceive",
                         parameters,

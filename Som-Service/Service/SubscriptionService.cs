@@ -44,62 +44,69 @@ namespace Som_Service.Service
             return mem;
         }
 
-        public async Task<string> SaveSubscriptionType(SubscriptionTypes k)
+        public async Task<List<VM_SubscriptionTypes>> GetSubscriptionTypesByProject(int compId, int projectid)
         {
-            string result = "";
-            using (SqlConnection con = new SqlConnection(_connectionString))
+            List<VM_SubscriptionTypes> result = new List<VM_SubscriptionTypes>();
+
+            try
             {
+                using var connection = new SqlConnection(_connectionString);
 
-                try
-                {
+                var cr = await connection.QueryAsync<VM_SubscriptionTypes>(
+                    "sp_kistitypesByProjectId",
+                    new { compId = compId, projectid = projectid },
+                    commandType: CommandType.StoredProcedure
+                );
 
-
-                    if (k.Id == 0)
-                    {
-                        var parameters = new DynamicParameters();
-                        parameters.Add("@TypeName", k.TypeName);
-                        parameters.Add("@crid", k.crid);
-                        parameters.Add("@Amount", k.Amount);
-
-                        parameters.Add("@compId", k.compId);
-
-                        int rows = await con.ExecuteAsync(
-                            "sp_savesubscriptionType",
-                            parameters,
-                            commandType: CommandType.StoredProcedure);
-
-                        if (rows > 0)
-                        {
-                            result = "Type Added";
-                        }
-                    }
-                    else
-                    {
-                        var parameters = new DynamicParameters();
-                        parameters.Add("@id", k.Id);
-                        parameters.Add("@TypeName", k.TypeName);
-                        parameters.Add("@crid", k.crid);
-                        parameters.Add("@Amount", k.Amount);
-
-                        int rows = await con.ExecuteAsync(
-                            "sp_editsubscriptionType",
-                            parameters,
-                            commandType: CommandType.StoredProcedure);
-
-                        if (rows > 0)
-                        {
-                            result = "Type Update";
-                        }
-                    }
-                }
-                catch (Exception ex)
-                {
-
-                    result = "error: " + ex.Message;
-                }
+                result = cr.ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+                // optionally log here or rethrow
             }
 
             return result;
         }
+
+        public async Task<string> SaveSubscriptionType(SubscriptionTypes k)
+        {
+            using (var con = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    var parameters = new DynamicParameters();
+                    string storedProcedure = "";
+                    string successMessage = "";
+
+                    parameters.Add("@TypeName", k.TypeName);
+                    parameters.Add("@crid", k.crid);
+                    parameters.Add("@Amount", k.Amount);
+                    parameters.Add("@projectid", k.projectId);
+
+                
+                    if (k.Id == 0)
+                    {
+                        parameters.Add("@compId", k.compId);
+                        storedProcedure = "sp_savesubscriptionType";
+                        successMessage = "Type Added";
+                    }
+                    else
+                    {
+                        parameters.Add("@id", k.Id);
+                        storedProcedure = "sp_editsubscriptionType";
+                        successMessage = "Type Updated";
+                    }
+
+                    int rows = await con.ExecuteAsync(storedProcedure, parameters, commandType: CommandType.StoredProcedure);
+                    return rows > 0 ? successMessage : "No changes made.";
+                }
+                catch (Exception ex)
+                {
+                    return "error: " + ex.Message;
+                }
+            }
+        }
+
     }
 }

@@ -8,6 +8,7 @@ namespace Som_Service.Interface
        
         public Task<List<VM_SubscriptionTypes>> GetSubscriptionTypes(int compId);
         public Task<VM_SubscriptionTypes> GetSubscriptionTypesById(int id);
+        public Task<List<VM_SubscriptionTypes>> GetSubscriptionTypesByProject(int compId, int projectid);
         public Task<string> SaveSubscriptionType(SubscriptionTypes k);
     }
 }

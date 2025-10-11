@@ -9,5 +9,7 @@
         public double Amount { get; set; }
         public string createdate { get; set; }
         public string updatedate { get; set; }
+        public int projectId { get; set; }
+        public string ProjectName { get; set; }
     }
 }
