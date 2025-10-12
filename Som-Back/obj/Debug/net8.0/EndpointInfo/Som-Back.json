@@ -49,6 +49,28 @@
         }
       }
     },
+    "/api/AccountCtrl/regularsubscriptionreceive": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AccountCtrl/savekistiamount": {
       "post": {
         "tags": [
@@ -100,6 +122,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/VM_SaveKistiandSubs"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AccountCtrl/saveregularsubscription": {
+      "post": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VM_RegularSubs"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VM_RegularSubs"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VM_RegularSubs"
               }
             }
           }
@@ -924,6 +977,28 @@
         "parameters": [
           {
             "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SubscriptionCtrl/regularsubscription": {
+      "get": {
+        "tags": [
+          "SubscriptionCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -1793,6 +1868,48 @@
             "nullable": true
           },
           "updateDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VM_RegularSubs": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "memNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "paybleamount": {
+            "type": "number",
+            "format": "double"
+          },
+          "recamount": {
+            "type": "number",
+            "format": "double"
+          },
+          "recdate": {
+            "type": "string",
+            "nullable": true
+          },
+          "recmonth": {
+            "type": "string",
+            "nullable": true
+          },
+          "recyear": {
+            "type": "string",
+            "nullable": true
+          },
+          "trnasBy": {
             "type": "string",
             "nullable": true
           }

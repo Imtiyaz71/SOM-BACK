@@ -31,6 +31,19 @@ namespace Som_Service.Service
             return cr.ToList();
         }
 
+        public async Task<List<VW_RegularSubscription>> GetRegularSubscriptionReceive(int compId)
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var cr = await connection.QueryAsync<VW_RegularSubscription>(
+                "sp_getregularsubsreceive",
+                new { compId = compId },
+                commandType: CommandType.StoredProcedure
+            );
+
+            return cr.ToList();
+        }
+
         public async Task<List<VM_kistiandSubs>> GetSubscriptionReceive(int compId)
         {
             using var connection = new SqlConnection(_connectionString);
@@ -66,6 +79,41 @@ namespace Som_Service.Service
 
                     await connection.ExecuteAsync(
                         "sp_SavekistiReceive",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    return "Subscription receive saved successfully.";
+                }
+                catch (Exception ex)
+                {
+                    // handle or log exception properly
+                    return $"Error: {ex.Message}";
+                }
+            }
+        }
+
+        public async Task<string> SaveRegularSubs(VM_RegularSubs model)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    var parameters = new DynamicParameters();
+
+                    parameters.Add("@compId", model.compId);
+                    parameters.Add("@memNo", model.memNo);
+                    //parameters.Add("@crid", model.crid);
+                    parameters.Add("@paybleamount", model.paybleamount);
+                    parameters.Add("@recamount", model.recamount);
+
+                    parameters.Add("@recdate", model.recdate);
+                    parameters.Add("@recmonth", model.recmonth);
+                    parameters.Add("@recyear", model.recyear);
+                    parameters.Add("@trnasBy", model.trnasBy);
+
+                    await connection.ExecuteAsync(
+                        "sp_SaveRegularSubsReceive",
                         parameters,
                         commandType: CommandType.StoredProcedure
                     );

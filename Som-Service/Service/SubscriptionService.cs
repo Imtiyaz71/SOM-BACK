@@ -16,7 +16,19 @@ namespace Som_Service.Service
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
- 
+
+        public async Task<List<RegularSubscription>> GetRegularSubscription(int compId)
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var cr = await connection.QueryAsync<RegularSubscription>(
+                "sp_getregularsubscription",
+                new { compId = compId },
+                commandType: CommandType.StoredProcedure
+            );
+
+            return cr.ToList();
+        }
 
         public async Task<List<VM_SubscriptionTypes>> GetSubscriptionTypes(int compId)
         {
@@ -53,7 +65,7 @@ namespace Som_Service.Service
                 using var connection = new SqlConnection(_connectionString);
 
                 var cr = await connection.QueryAsync<VM_SubscriptionTypes>(
-                    "sp_kistitypesByProjectId",
+                    "sp_subscriptiontypesByProjectId",
                     new { compId = compId, projectid = projectid },
                     commandType: CommandType.StoredProcedure
                 );

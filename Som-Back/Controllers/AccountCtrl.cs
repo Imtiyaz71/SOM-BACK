@@ -39,6 +39,17 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("regularsubscriptionreceive")]
+        [Authorize]
+        public async Task<IActionResult> GetRegularSerbscriptionRec(int compId)
+        {
+            var mem = await _accountservice.GetRegularSubscriptionReceive(compId);
+
+            if (mem == null)
+                return NotFound("No Kisti Type found.");
+
+            return Ok(mem);
+        }
         [HttpPost("savekistiamount")]
         [Authorize]
         public async Task<IActionResult> SaveKistiAmount(VM_SaveKistiandSubs k)
@@ -56,6 +67,15 @@ namespace Som_Back.Controllers
 
             // Always return string, null hole "Failed" return
             return Ok(res ?? "Failed to save Kisti Type");
+        }
+        [HttpPost("saveregularsubscription")]
+        [Authorize]
+        public async Task<IActionResult> SaveSubscriptionRegular(VM_RegularSubs k)
+        {
+            var res = await _accountservice.SaveRegularSubs(k);
+
+            // Always return string, null hole "Failed" return
+            return Ok(res ?? "Failed to save Subscription");
         }
     }
 }

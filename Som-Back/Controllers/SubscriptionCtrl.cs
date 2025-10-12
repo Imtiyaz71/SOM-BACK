@@ -40,6 +40,17 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("regularsubscription")]
+        [Authorize]
+        public async Task<IActionResult> GetRegularSubscription(int compId)
+        {
+            var mem = await _subscriptionservice.GetRegularSubscription(compId);
+
+            if (mem == null)
+                return NotFound("No Subscription Type found.");
+
+            return Ok(mem);
+        }
         [HttpGet("subscriptionbyproject")]
         [Authorize]
         public async Task<IActionResult> GetSubscriptionByProject(int compId,int projectid)

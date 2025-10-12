@@ -17,6 +17,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetRegularSerbscriptionRec",
+    "RelativePath": "api/AccountCtrl/regularsubscriptionreceive",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "SaveKistiAmount",
     "RelativePath": "api/AccountCtrl/savekistiamount",
     "HttpMethod": "POST",
@@ -26,6 +42,22 @@
       {
         "Name": "k",
         "Type": "Som_Models.VW_Models.VM_SaveKistiandSubs",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "SaveSubscriptionRegular",
+    "RelativePath": "api/AccountCtrl/saveregularsubscription",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "k",
+        "Type": "Som_Models.VW_Models.VM_RegularSubs",
         "IsRequired": true
       }
     ],
@@ -573,6 +605,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.SubscriptionCtrl",
+    "Method": "GetRegularSubscription",
+    "RelativePath": "api/SubscriptionCtrl/regularsubscription",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": []
   },
   {
