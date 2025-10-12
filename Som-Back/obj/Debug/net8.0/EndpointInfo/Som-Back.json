@@ -5,6 +5,84 @@
     "version": "v1"
   },
   "paths": {
+    "/api/AccountCtrl/vendor": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AccountCtrl/accountbalance": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AccountCtrl/getvalancesegment": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AccountCtrl/getvalancesegmentbyid": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AccountCtrl/kistireceive": {
       "get": {
         "tags": [
@@ -64,6 +142,37 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AccountCtrl/savebalancesegment": {
+      "post": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BalanceSegemnt"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BalanceSegemnt"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BalanceSegemnt"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -1418,6 +1527,36 @@
   },
   "components": {
     "schemas": {
+      "BalanceSegemnt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "vendor": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "descri": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "createDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CompanyInfo": {
         "type": "object",
         "properties": {
@@ -1906,8 +2045,8 @@
             "nullable": true
           },
           "recyear": {
-            "type": "string",
-            "nullable": true
+            "type": "integer",
+            "format": "int32"
           },
           "trnasBy": {
             "type": "string",

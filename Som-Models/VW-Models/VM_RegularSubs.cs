@@ -9,7 +9,7 @@
         public double recamount { get; set; }
         public string recdate { get; set; }
         public string recmonth { get; set; }
-        public string recyear { get; set; }
+        public int recyear { get; set; }
         public string trnasBy { get; set; }
 
     }

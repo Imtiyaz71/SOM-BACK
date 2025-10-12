@@ -1,6 +1,54 @@
 [
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetAccountBalance",
+    "RelativePath": "api/AccountCtrl/accountbalance",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetBalanceSegment",
+    "RelativePath": "api/AccountCtrl/getvalancesegment",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetBalanceSegmentById",
+    "RelativePath": "api/AccountCtrl/getvalancesegmentbyid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "GetKistiReceive",
     "RelativePath": "api/AccountCtrl/kistireceive",
     "HttpMethod": "GET",
@@ -33,6 +81,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "SaveBalanceSegment",
+    "RelativePath": "api/AccountCtrl/savebalancesegment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.BalanceSegemnt",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "SaveKistiAmount",
     "RelativePath": "api/AccountCtrl/savekistiamount",
     "HttpMethod": "POST",
@@ -56,7 +120,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "k",
+        "Name": "model",
         "Type": "Som_Models.VW_Models.VM_RegularSubs",
         "IsRequired": true
       }
@@ -93,6 +157,16 @@
         "IsRequired": false
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetVendor",
+    "RelativePath": "api/AccountCtrl/vendor",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {

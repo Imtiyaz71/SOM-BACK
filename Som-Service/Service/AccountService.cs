@@ -18,6 +18,45 @@ namespace Som_Service.Service
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
+        public async Task<List<SomityAccounts>> GetAccountBalance(int compId)
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var cr = await connection.QueryAsync<SomityAccounts>(
+                "sp_GetAccountBalance",
+                new { compId = compId },
+                commandType: CommandType.StoredProcedure
+            );
+
+            return cr.ToList();
+        }
+
+        public async Task<List<VW_BalanceSegment>> GetBalanceSegment(int compId)
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var cr = await connection.QueryAsync<VW_BalanceSegment>(
+                "sp_GetBalancesegment",
+                new { compId = compId },
+                commandType: CommandType.StoredProcedure
+            );
+
+            return cr.ToList();
+        }
+
+        public async Task<List<VW_BalanceSegment>> GetBalanceSegmentById(int id)
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var cr = await connection.QueryAsync<VW_BalanceSegment>(
+                "sp_GetBalancesegmentById",
+                new { id = id },
+                commandType: CommandType.StoredProcedure
+            );
+
+            return cr.ToList();
+        }
+
         public async Task<List<VM_kistiandSubs>> GetKistiReceive(int compId)
         {
             using var connection = new SqlConnection(_connectionString);
@@ -55,6 +94,50 @@ namespace Som_Service.Service
             );
 
             return cr.ToList();
+        }
+
+        public async Task<List<Vendor>> GetVendor()
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var cr = await connection.QueryAsync<Vendor>(
+                "sp_getvendor",
+                
+                commandType: CommandType.StoredProcedure
+            );
+
+            return cr.ToList();
+        }
+
+        public async Task<string> SaveAccountSegment(BalanceSegemnt model)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@compId", model.compId);
+                    parameters.Add("@vendor", model.Vendor);
+
+                    parameters.Add("@descri", model.Descri);
+
+                    parameters.Add("@amount", model.Amount);
+
+
+                    await connection.ExecuteAsync(
+                        "sp_addBalancesegment",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    return "saved successfully.";
+                }
+                catch (Exception ex)
+                {
+                    // handle or log exception properly
+                    return $"Error: {ex.Message}";
+                }
+            }
         }
 
         public async Task<string> SaveKistiAmount(VM_SaveKistiandSubs model)

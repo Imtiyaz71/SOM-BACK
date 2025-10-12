@@ -1,4 +1,5 @@
-﻿using Som_Models.VW_Models;
+﻿using Som_Models.Models;
+using Som_Models.VW_Models;
 
 namespace Som_Service.Interface
 {
@@ -7,8 +8,13 @@ namespace Som_Service.Interface
         public Task<List<VM_kistiandSubs>> GetKistiReceive(int compId);
         public Task<List<VM_kistiandSubs>> GetSubscriptionReceive(int compId);
         public Task<List<VW_RegularSubscription>> GetRegularSubscriptionReceive(int compId);
+        public Task<List<SomityAccounts>> GetAccountBalance(int compId);
+        public Task<List<Vendor>> GetVendor();
+        public Task<List<VW_BalanceSegment>> GetBalanceSegment(int compId);
+        public Task<List<VW_BalanceSegment>> GetBalanceSegmentById(int id);
         public Task<string> SaveKistiAmount(VM_SaveKistiandSubs model);
         public Task<string> SavesubscriptionAmount(VM_SaveKistiandSubs model);
         public Task<string> SaveRegularSubs(VM_RegularSubs model);
+        public Task<string> SaveAccountSegment(BalanceSegemnt model);
     }
 }
