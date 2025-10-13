@@ -171,6 +171,37 @@
         }
       }
     },
+    "/api/AccountCtrl/getsomityacctransection": {
+      "post": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_AccDrCr"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_AccDrCr"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_AccDrCr"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AccountCtrl/savebalancesegment": {
       "post": {
         "tags": [
@@ -2137,6 +2168,28 @@
           "transby": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VW_AccDrCr": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "endDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "crType": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

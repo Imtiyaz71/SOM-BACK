@@ -33,6 +33,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetSomityTransection",
+    "RelativePath": "api/AccountCtrl/getsomityacctransection",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.VW_Models.VW_AccDrCr",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "GetBalanceSegment",
     "RelativePath": "api/AccountCtrl/getvalancesegment",
     "HttpMethod": "GET",

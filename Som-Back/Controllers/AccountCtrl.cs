@@ -105,6 +105,15 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpPost("getsomityacctransection")]
+        public async Task<IActionResult> GetSomityTransection([FromBody] VW_AccDrCr model)
+        {
+            if (model == null)
+                return BadRequest("Input is null");
+
+            var result = await _accountservice.GetSomityAccTransection(model);
+            return Ok(result);
+        }
         [HttpPost("savebalancesegment")]
         [Authorize]
         public async Task<IActionResult> SaveBalanceSegment(BalanceSegemnt model)

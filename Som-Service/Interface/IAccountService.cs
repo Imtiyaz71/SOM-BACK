@@ -13,6 +13,7 @@ namespace Som_Service.Interface
         public Task<List<VW_BalanceSegment>> GetBalanceSegment(int compId);
         public Task<List<VW_BalanceSegment>> GetBalanceSegmentById(int id);
         public Task<List<VW_BalanceAddHistory>> GetBalanceAddHistory(int compId);
+        public Task<List<VW_SomityAccTransection>> GetSomityAccTransection(VW_AccDrCr model);
         public Task<string> SaveKistiAmount(VM_SaveKistiandSubs model);
         public Task<string> SavesubscriptionAmount(VM_SaveKistiandSubs model);
         public Task<string> SaveRegularSubs(VM_RegularSubs model);

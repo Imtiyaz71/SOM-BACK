@@ -96,6 +96,26 @@ namespace Som_Service.Service
             return cr.ToList();
         }
 
+        public async Task<List<VW_SomityAccTransection>> GetSomityAccTransection(VW_AccDrCr model)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@startDate", model.startDate, DbType.Date);
+                parameters.Add("@endDate", model.endDate, DbType.Date);
+                parameters.Add("@compId", model.compId, DbType.Int32);
+                parameters.Add("@crType", model.crType, DbType.Int32);
+
+                var result = await conn.QueryAsync<VW_SomityAccTransection>(
+                    "sp_getAccDrCr",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.ToList();
+            }
+        }
+
         public async Task<List<VM_kistiandSubs>> GetSubscriptionReceive(int compId)
         {
             using var connection = new SqlConnection(_connectionString);
