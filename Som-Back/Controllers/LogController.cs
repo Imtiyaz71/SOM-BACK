@@ -27,9 +27,9 @@ namespace Som_Back.Controllers
         }
         [Authorize]
         [HttpGet("cominfo")]
-        public async Task<IActionResult> CompanyInfo()
+        public async Task<IActionResult> CompanyInfo(int cid)
         {
-            var info = await _authService.CompanyInfo();
+            var info = await _authService.CompanyInfo(cid);
             if (info == null)
                 return Unauthorized("Invalid credentials");
 

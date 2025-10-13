@@ -4,7 +4,7 @@ namespace Som_Service.Interface
     public interface IAuthService
     {
         Task<LoginResponse> LoginAsync(Login model);
-        Task<CompanyInfo> CompanyInfo();
+        Task<CompanyInfo> CompanyInfo(int cid);
         Task<string> SaveCompany(CompanyInfo info);
     }
 }

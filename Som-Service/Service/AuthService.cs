@@ -98,13 +98,14 @@ namespace Som_Service.Service
             };
         }
 
-        public async Task<CompanyInfo> CompanyInfo()
+        public async Task<CompanyInfo> CompanyInfo(int cid)
         {
             using var connection = new SqlConnection(_connectionString);
             try
             {
                 var companyInfo = await connection.QueryFirstOrDefaultAsync<CompanyInfo>(
              "sp_companyInfo",
+            new { cid=cid},
              
              commandType: CommandType.StoredProcedure
          );

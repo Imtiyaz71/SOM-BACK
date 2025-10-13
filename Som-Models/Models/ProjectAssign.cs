@@ -5,6 +5,7 @@
         public int Id { get; set; }
         public int projectId { get; set; }
         public int memNo { get; set; }
+        public double Amount { get; set; }
         public int compId { get; set; }
      //   public string assignDate { get; set; }
         public string assignBy { get; set; }

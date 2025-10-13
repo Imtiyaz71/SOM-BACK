@@ -523,6 +523,16 @@
         "tags": [
           "Log"
         ],
+        "parameters": [
+          {
+            "name": "cid",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -1859,6 +1869,10 @@
           "memNo": {
             "type": "integer",
             "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
           },
           "compId": {
             "type": "integer",

@@ -76,13 +76,20 @@ namespace Som_Service.Service
             var parameters = new DynamicParameters();
             string spName;
 
-           
+            if (model.Id != 0)
+            {
+                spName = "sp_editmemberassign";
+            
+            }
+            else
+            {
                 spName = "sp_addmemberassign";
+            }
                 parameters.Add("@compid", model.compId, DbType.Int32);
           
                 parameters.Add("@projectid", model.projectId, DbType.Int32);
                 parameters.Add("@memno", model.memNo, DbType.Int32);
-          
+                parameters.Add("@amount", model.Amount, DbType.Double);
 
             parameters.Add("@assignby", model.assignBy, DbType.String);
        

@@ -6,6 +6,7 @@
         public int MemNo { get; set; }           // pa.memNo
         public int projectid { get; set; }
         public string projectname { get; set; }
+        public double Amount { get; set; }
         public string GivenName { get; set; }    // m.GivenName
         public string SureName { get; set; }     // m.SureName
         public int CompId { get; set; }          // pa.compId
