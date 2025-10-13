@@ -149,6 +149,28 @@
         }
       }
     },
+    "/api/AccountCtrl/balance-add-history": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AccountCtrl/savebalancesegment": {
       "post": {
         "tags": [

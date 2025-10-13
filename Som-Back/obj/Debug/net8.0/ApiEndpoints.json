@@ -17,6 +17,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetBalanceAddHistory",
+    "RelativePath": "api/AccountCtrl/balance-add-history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "GetBalanceSegment",
     "RelativePath": "api/AccountCtrl/getvalancesegment",
     "HttpMethod": "GET",

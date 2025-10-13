@@ -94,6 +94,17 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("balance-add-history")]
+        [Authorize]
+        public async Task<IActionResult> GetBalanceAddHistory(int compId)
+        {
+            var mem = await _accountservice.GetBalanceAddHistory(compId);
+
+            if (mem == null)
+                return NotFound("No Data found.");
+
+            return Ok(mem);
+        }
         [HttpPost("savebalancesegment")]
         [Authorize]
         public async Task<IActionResult> SaveBalanceSegment(BalanceSegemnt model)

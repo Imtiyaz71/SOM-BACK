@@ -31,6 +31,19 @@ namespace Som_Service.Service
             return cr.ToList();
         }
 
+        public async Task<List<VW_BalanceAddHistory>> GetBalanceAddHistory(int compId)
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var cr = await connection.QueryAsync<VW_BalanceAddHistory>(
+                "sp_GetBalanceAddHistory",
+                new { compId = compId },
+                commandType: CommandType.StoredProcedure
+            );
+
+            return cr.ToList();
+        }
+
         public async Task<List<VW_BalanceSegment>> GetBalanceSegment(int compId)
         {
             using var connection = new SqlConnection(_connectionString);
@@ -115,30 +128,54 @@ namespace Som_Service.Service
             {
                 try
                 {
+                    // Validate input
+                    if (model == null)
+                        return "Error: Model cannot be null.";
+
+                    if (model.Amount <= 0)
+                        return "Error: Amount must be greater than zero.";
+
                     var parameters = new DynamicParameters();
-                    parameters.Add("@compId", model.compId);
-                    parameters.Add("@vendor", model.Vendor);
 
-                    parameters.Add("@descri", model.Descri);
-
+                    // Common parameters
+                    parameters.Add("@compId", model.compId);  // Ensure this type matches DB
                     parameters.Add("@amount", model.Amount);
+                    parameters.Add("@vendor", model.Vendor);
+                    parameters.Add("@descri", model.Descri ?? string.Empty);
+                    string spName;
 
+                    if (model.Id == 0)
+                    {
+                     
+                        // Insert new record
+                 
+                        spName = "sp_addBalancesegment";
+                    }
+                    else
+                    {
+                        // Update existing record
+                        parameters.Add("@id", model.Id);
+                        spName = "sp_EditBalancesegment";
+                    }
 
-                    await connection.ExecuteAsync(
-                        "sp_addBalancesegment",
-                        parameters,
-                        commandType: CommandType.StoredProcedure
-                    );
+                    // Execute stored procedure
+                    await connection.ExecuteAsync(spName, parameters, commandType: CommandType.StoredProcedure);
 
-                    return "saved successfully.";
+                    return model.Id == 0 ? "✅ Balance segment added successfully." : "✅ Balance segment updated successfully.";
+                }
+                catch (SqlException sqlEx)
+                {
+                
+                    return $"SQL Error: {sqlEx.Message}";
                 }
                 catch (Exception ex)
                 {
-                    // handle or log exception properly
+                  
                     return $"Error: {ex.Message}";
                 }
             }
         }
+
 
         public async Task<string> SaveKistiAmount(VM_SaveKistiandSubs model)
         {
