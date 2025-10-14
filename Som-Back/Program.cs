@@ -69,6 +69,7 @@ builder.Services.AddScoped<ISubscriptionService, SubscriptionService>();
 builder.Services.AddScoped<ILoanTypes, LoanTypeService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IProjectService, ProjectService>();
+builder.Services.AddScoped<IExpenseService, ExpenseService>();
 builder.Services.AddControllers();
 
 // Swagger configuration with JWT support

@@ -326,6 +326,81 @@
         }
       }
     },
+    "/api/ExpenseCtrl/get-expense-type": {
+      "get": {
+        "tags": [
+          "ExpenseCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ExpenseCtrl/save-expense-type": {
+      "post": {
+        "tags": [
+          "ExpenseCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExpenseType"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExpenseType"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExpenseType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ExpenseCtrl/delete-expense-type": {
+      "post": {
+        "tags": [
+          "ExpenseCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/KistiCtrl/crtype": {
       "get": {
         "tags": [
@@ -1652,6 +1727,24 @@
             "nullable": true
           },
           "createAt": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpenseType": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "typeName": {
             "type": "string",
             "nullable": true
           }

@@ -106,6 +106,7 @@ namespace Som_Back.Controllers
             return Ok(mem);
         }
         [HttpPost("getsomityacctransection")]
+        [Authorize]
         public async Task<IActionResult> GetSomityTransection([FromBody] VW_AccDrCr model)
         {
             if (model == null)

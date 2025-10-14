@@ -202,6 +202,54 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Som_Back.Controllers.ExpenseCtrl",
+    "Method": "DeleteExpenseType",
+    "RelativePath": "api/ExpenseCtrl/delete-expense-type",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ExpenseCtrl",
+    "Method": "GetExpenseType",
+    "RelativePath": "api/ExpenseCtrl/get-expense-type",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ExpenseCtrl",
+    "Method": "SaveExpenseType",
+    "RelativePath": "api/ExpenseCtrl/save-expense-type",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.ExpenseType",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Som_Back.Controllers.KistiCtrl",
     "Method": "GetCrType",
     "RelativePath": "api/KistiCtrl/crtype",
