@@ -28,6 +28,28 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("get-expense")]
+        [Authorize]
+        public async Task<IActionResult> GetExpense(int compId)
+        {
+            var mem = await _expenseservice.GetExpense(compId);
+
+            if (mem == null)
+                return NotFound("No Data found.");
+
+            return Ok(mem);
+        }
+        [HttpGet("get-monthly-expense")]
+        [Authorize]
+        public async Task<IActionResult> GetMonthExpense(int compId,int year)
+        {
+            var mem = await _expenseservice.GetMonthlyExpense(compId,year);
+
+            if (mem == null)
+                return NotFound("No Data found.");
+
+            return Ok(mem);
+        }
         [HttpPost("save-expense-type")]
         [Authorize]
         public async Task<IActionResult> SaveExpenseType(ExpenseType model)
@@ -35,12 +57,20 @@ namespace Som_Back.Controllers
             var res = await _expenseservice.AddExpenseType(model);
             return Ok(new { Message = res ?? "Failed to save" });
         }
+        [HttpPost("save-expense")]
+        [Authorize]
+        public async Task<IActionResult> SaveExpense(Expense model)
+        {
+            var res = await _expenseservice.AddExpense(model);
+            return Ok(new { Message = res ?? "Failed to save" });
+        }
+
 
         [HttpPost("delete-expense-type")]
         [Authorize]
         public async Task<IActionResult> DeleteExpenseType(int id)
         {
-            var res = await _expenseservice.DeleteExpense(id);
+            var res = await _expenseservice.DeleteExpenseType(id);
             return Ok(new { Message = res ?? "Failed to delete" });
         }
     }

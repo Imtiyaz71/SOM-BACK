@@ -219,6 +219,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.ExpenseCtrl",
+    "Method": "GetExpense",
+    "RelativePath": "api/ExpenseCtrl/get-expense",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ExpenseCtrl",
     "Method": "GetExpenseType",
     "RelativePath": "api/ExpenseCtrl/get-expense-type",
     "HttpMethod": "GET",
@@ -229,6 +245,43 @@
         "Name": "compId",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ExpenseCtrl",
+    "Method": "GetMonthExpense",
+    "RelativePath": "api/ExpenseCtrl/get-monthly-expense",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ExpenseCtrl",
+    "Method": "SaveExpense",
+    "RelativePath": "api/ExpenseCtrl/save-expense",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.Expense",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

@@ -1,4 +1,5 @@
 ﻿using Som_Models.Models;
+using Som_Models.VW_Models;
 
 namespace Som_Service.Interface
 {
@@ -6,6 +7,9 @@ namespace Som_Service.Interface
     {
         public Task<List<ExpenseType>> GetExpenseType(int compId);
         public Task<string> AddExpenseType(ExpenseType model);
-        public Task<string> DeleteExpense(int id);
+        public Task<string> DeleteExpenseType(int id);
+        public Task<List<VW_Expense>> GetExpense(int compId);
+        public Task<List<VW_MonthlyExpense>> GetMonthlyExpense(int compId,int year);
+        public Task<string> AddExpense(Expense model);
     }
 }

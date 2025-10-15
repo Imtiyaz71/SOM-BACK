@@ -348,6 +348,58 @@
         }
       }
     },
+    "/api/ExpenseCtrl/get-expense": {
+      "get": {
+        "tags": [
+          "ExpenseCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ExpenseCtrl/get-monthly-expense": {
+      "get": {
+        "tags": [
+          "ExpenseCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ExpenseCtrl/save-expense-type": {
       "post": {
         "tags": [
@@ -368,6 +420,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/ExpenseType"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ExpenseCtrl/save-expense": {
+      "post": {
+        "tags": [
+          "ExpenseCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Expense"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Expense"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Expense"
               }
             }
           }
@@ -1729,6 +1812,48 @@
           "createAt": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Expense": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "exType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "descri": {
+            "type": "string",
+            "nullable": true
+          },
+          "eDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "eMonth": {
+            "type": "string",
+            "nullable": true
+          },
+          "eBy": {
+            "type": "string",
+            "nullable": true
+          },
+          "eYear": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
