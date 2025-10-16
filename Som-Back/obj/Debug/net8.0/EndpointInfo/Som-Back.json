@@ -193,6 +193,44 @@
         }
       }
     },
+    "/api/AccountCtrl/memberprojectaccount": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "memNo",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AccountCtrl/getsomityacctransection": {
       "post": {
         "tags": [
@@ -399,6 +437,37 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/VWBounceBalanceWithdrwal"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AccountCtrl/repay-balance": {
+      "post": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RePay"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RePay"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RePay"
               }
             }
           }
@@ -1306,6 +1375,44 @@
             }
           }
         },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ProjectCtrl/cancel-assign": {
+      "post": {
+        "tags": [
+          "ProjectCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "memNo",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "projectId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
         "responses": {
           "200": {
             "description": "OK"
@@ -2260,6 +2367,36 @@
           "assignBy": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RePay": {
+        "type": "object",
+        "properties": {
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "memNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "payble": {
+            "type": "number",
+            "format": "float"
+          },
+          "paid": {
+            "type": "number",
+            "format": "float"
+          },
+          "withdrwalID": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

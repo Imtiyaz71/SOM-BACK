@@ -116,6 +116,23 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("memberprojectaccount")]
+        [Authorize]
+        public async Task<IActionResult> GetProjectAccountByMemberAndProject(
+          [FromQuery] int? compId,
+          [FromQuery] int? memNo,
+          [FromQuery] int? projectId)
+        {
+            try
+            {
+                var result = await _accountservice.GetProjectAccountByMemberAndProject(compId, memNo, projectId);
+                return Ok(result);
+            }
+            catch (System.Exception ex)
+            {
+                return StatusCode(500, new { Message = "Something went wrong", Details = ex.Message });
+            }
+        }
         [HttpPost("getsomityacctransection")]
         [Authorize]
         public async Task<IActionResult> GetSomityTransection([FromBody] VW_AccDrCr model)
@@ -177,6 +194,7 @@ namespace Som_Back.Controllers
           
         }
         [HttpPost("bounce-balance-withdraw")]
+        [Authorize]
         public async Task<IActionResult> Bounce([FromBody] VWBounceBalanceWithdrwal model)
         {
             var result = await _accountservice.BounceBalanceWithdraw(model);
@@ -184,6 +202,20 @@ namespace Som_Back.Controllers
                 return StatusCode(500, result);
 
             return Ok(new { Message = result ?? "Failed to save" });
+        }
+        [HttpPost("repay-balance")]
+        [Authorize]
+        public async Task<IActionResult> RePay([FromBody] RePay model)
+        {
+            if (model.Paid <= 0)
+                return BadRequest(new VW_Response { StatusCode = 0, Message = "Paid amount must be greater than zero." });
+
+            var result = await _accountservice.SaveRepay(model);
+
+            if (result.StatusCode == 0 && result.Message.StartsWith("Error"))
+                return StatusCode(500, result);
+
+            return Ok(result);
         }
     }
 }

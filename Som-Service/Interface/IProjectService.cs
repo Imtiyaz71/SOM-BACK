@@ -10,6 +10,7 @@ namespace Som_Service.Interface
         public Task<List<VW_Project>> GetProjectByProjectId(int projectid);
         public Task<(int StatusCode, string Message)> SaveProject(Project model);
         public Task<(int StatusCode, string Message)> saveassign(ProjectAssign model);
+        public Task<VW_Response> ProjectAssignCancle(int compId, int memNo, int projectId);
         public Task<List<VW_AssignProject>> GetProjectAssign(int compId);
         public Task<List<VW_AssignProject>> GetProjectAssignByprojectid(int projectid,int compid);
     }

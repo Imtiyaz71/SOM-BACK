@@ -8,6 +8,8 @@
         public int FProject { get; set; }
         public string ProjectName { get; set; }
         public double Amount { get; set; }
+        public double Paid { get; set; }
+        public double Due { get; set; }
         public string Remarks { get; set; }
         public string WDate { get; set; }
         public string WMonth { get; set; }

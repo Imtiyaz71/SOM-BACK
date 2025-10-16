@@ -86,5 +86,29 @@ namespace Som_Back.Controllers
             // Use different variable names to avoid conflict
             return StatusCode(result.StatusCode, new { message = result.Message });
         }
+        [HttpPost("cancel-assign")]
+        public async Task<IActionResult> CancelProjectAssign(int compId, int memNo, int projectId)
+        {
+            try
+            {
+                var result = await _projectservice.ProjectAssignCancle(compId, memNo, projectId);
+
+                if (result == null)
+                    return NotFound(new { StatusCode = -1, Message = "No response from database." });
+
+                if (result.StatusCode == 1)
+                    return Ok(result); // ✅ success
+
+                return BadRequest(result); // ❌ validation or logical error
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    StatusCode = -99,
+                    Message = "Internal server error: " + ex.Message
+                });
+            }
+        }
     }
 }

@@ -169,6 +169,26 @@ namespace Som_Service.Service
             return cr.ToList();
         }
 
+        public async Task<List<VW_MemberProjectAccount>> GetProjectAccountByMemberAndProject(int? compId, int? memNo, int? projectId)
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                await conn.OpenAsync();
+
+                var parameters = new DynamicParameters();
+                parameters.Add("@compId", compId, DbType.Int32);
+                parameters.Add("@memno", memNo, DbType.Int32);
+                parameters.Add("@projectid", projectId, DbType.Int32);
+
+                var result = await conn.QueryAsync<VW_MemberProjectAccount>(
+                    "sp_getmemberprojectaccount",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.ToList();
+            }
+        }
         public async Task<List<VW_RegularSubscription>> GetRegularSubscriptionReceive(int compId)
         {
             using var connection = new SqlConnection(_connectionString);
@@ -352,6 +372,51 @@ namespace Som_Service.Service
                     return $"Error: {ex.Message}";
                 }
             }
+        }
+
+        public async Task<VW_Response> SaveRepay(RePay model)
+        {
+            try
+            {
+                using (var con = new SqlConnection(_connectionString))
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@compId", model.CompId);
+                    parameters.Add("@memNo", model.MemNo);
+                    parameters.Add("@projectid", model.ProjectId);
+                    parameters.Add("@payble", model.Payble);
+                    parameters.Add("@paid", model.Paid);
+                    parameters.Add("@withdrwalID", model.WithdrwalID);
+
+                    // SP call
+                    var result = await con.QueryFirstOrDefaultAsync<VW_Response>(
+                        "sp_repay",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    // Null handling
+                    if (result == null)
+                    {
+                        return new VW_Response
+                        {
+                            StatusCode = 0,
+                            Message = "No response from database."
+                        };
+                    }
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                return new VW_Response
+                {
+                    StatusCode = 0,
+                    Message = "Error: " + ex.Message
+                };
+            }
+        
         }
 
         public async Task<string> SavesubscriptionAmount(VM_SaveKistiandSubs model)

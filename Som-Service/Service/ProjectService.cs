@@ -67,6 +67,46 @@ namespace Som_Service.Service
 
             return cr.ToList();
         }
+        public async Task<VW_Response> ProjectAssignCancle(int compId, int memNo, int projectId)
+        {
+            try
+            {
+                using (var con = new SqlConnection(_connectionString))
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@compId", compId);
+                    parameters.Add("@memNo", memNo);
+                    parameters.Add("@projectId", projectId);
+
+                    var result = await con.QueryFirstOrDefaultAsync<VW_Response>(
+                        "sp_projectassigncancle",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    // Null handling
+                    if (result == null)
+                    {
+                        return new VW_Response
+                        {
+                            StatusCode = -1,
+                            Message = "No response from stored procedure."
+                        };
+                    }
+
+                    return result;
+                }
+            }
+            catch (Exception ex)
+            {
+                // Exception handling
+                return new VW_Response
+                {
+                    StatusCode = -99,
+                    Message = "Error: " + ex.Message
+                };
+            }
+        }
 
         public async Task<(int StatusCode, string Message)> saveassign(ProjectAssign model)
         {
