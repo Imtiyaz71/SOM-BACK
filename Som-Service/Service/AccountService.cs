@@ -18,6 +18,67 @@ namespace Som_Service.Service
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
+        public async Task<string> AddBalanceWithdraw(BalanceWithdraw model)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@compId", model.compId);
+                parameters.Add("@memNo", model.memNo);
+                parameters.Add("@fProject", model.fProject);
+                parameters.Add("@amount", model.amount);
+                parameters.Add("@remarks", model.remarks);
+                parameters.Add("@wdate", model.wDate);
+                parameters.Add("@wMonth", model.wMonth);
+                parameters.Add("@wYear", model.wYear);
+                parameters.Add("@wBy", model.wBy);
+
+                try
+                {
+                    await connection.ExecuteAsync("sp_InsertBalanceWithdraw", parameters, commandType: CommandType.StoredProcedure);
+                    return "Balance withdraw successful.";
+                }
+                catch (Exception ex)
+                {
+                    return $"Error: {ex.Message}";
+                }
+            }
+        
+        }
+
+        public async Task<string> BounceBalanceWithdraw(VWBounceBalanceWithdrwal model)
+        {
+            if (model == null)
+                return "Invalid input.";
+
+            try
+            {
+                using (var conn = new SqlConnection(_connectionString))
+                {
+                    await conn.OpenAsync();
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@id", model.id, DbType.Int32);
+                    parameters.Add("@fProject", model.fProject, DbType.Int32);
+                    parameters.Add("@memNo", model.memNo, DbType.Int32);
+                    parameters.Add("@compId", model.compId, DbType.Int32);
+
+                    await conn.ExecuteAsync(
+                        "sp_bounceBalanceWithdraw",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    return "Bounce successful";
+                }
+            }
+            catch (Exception ex)
+            {
+                // log করতে পারো এখানে
+                return "Error: " + ex.Message;
+            }
+        }
+
         public async Task<List<SomityAccounts>> GetAccountBalance(int compId)
         {
             using var connection = new SqlConnection(_connectionString);
@@ -69,6 +130,31 @@ namespace Som_Service.Service
 
             return cr.ToList();
         }
+
+        public async Task<List<VW_BalanceWithdraw>> GetBalanceWithDraw(int compId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@compId", compId);
+
+                    var result = await connection.QueryAsync<VW_BalanceWithdraw>(
+                        "sp_GetBalanceWithdrawList",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    return result.ToList();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error fetching balance withdraw list: " + ex.Message);
+                }
+            }
+        }
+
 
         public async Task<List<VM_kistiandSubs>> GetKistiReceive(int compId)
         {

@@ -105,6 +105,17 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("get-Balance-withdraw")]
+        [Authorize]
+        public async Task<IActionResult> GetBalanceWithdraw(int compId)
+        {
+            var mem = await _accountservice.GetBalanceWithDraw(compId);
+
+            if (mem == null)
+                return NotFound("No Data found.");
+
+            return Ok(mem);
+        }
         [HttpPost("getsomityacctransection")]
         [Authorize]
         public async Task<IActionResult> GetSomityTransection([FromBody] VW_AccDrCr model)
@@ -148,6 +159,31 @@ namespace Som_Back.Controllers
         {
             var res = await _accountservice.SaveRegularSubs(model);
             return Ok(res ?? "Failed to save Subscription");
+        }
+        [HttpPost("save-withdraw")]
+        [Authorize]
+        public async Task<IActionResult> SaveWithdraw([FromBody] BalanceWithdraw model)
+        {
+            if (model == null)
+                return BadRequest("Invalid request data.");
+
+            var res = await _accountservice.AddBalanceWithdraw(model);
+
+            // result string check kore response return
+            if (res.StartsWith("Error"))
+                return StatusCode(500, res);
+            else
+                return Ok(new { Message = res ?? "Failed to save" });
+          
+        }
+        [HttpPost("bounce-balance-withdraw")]
+        public async Task<IActionResult> Bounce([FromBody] VWBounceBalanceWithdrwal model)
+        {
+            var result = await _accountservice.BounceBalanceWithdraw(model);
+            if (result.StartsWith("Error"))
+                return StatusCode(500, result);
+
+            return Ok(new { Message = result ?? "Failed to save" });
         }
     }
 }

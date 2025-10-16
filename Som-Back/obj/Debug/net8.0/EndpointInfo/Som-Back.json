@@ -171,6 +171,28 @@
         }
       }
     },
+    "/api/AccountCtrl/get-Balance-withdraw": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AccountCtrl/getsomityacctransection": {
       "post": {
         "tags": [
@@ -315,6 +337,68 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/VM_RegularSubs"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AccountCtrl/save-withdraw": {
+      "post": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BalanceWithdraw"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BalanceWithdraw"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/BalanceWithdraw"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AccountCtrl/bounce-balance-withdraw": {
+      "post": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VWBounceBalanceWithdrwal"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VWBounceBalanceWithdrwal"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VWBounceBalanceWithdrwal"
               }
             }
           }
@@ -1778,6 +1862,52 @@
         },
         "additionalProperties": false
       },
+      "BalanceWithdraw": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "memNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fProject": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "remarks": {
+            "type": "string",
+            "nullable": true
+          },
+          "wDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "wMonth": {
+            "type": "string",
+            "nullable": true
+          },
+          "wYear": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "wBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "CompanyInfo": {
         "type": "object",
         "properties": {
@@ -2386,6 +2516,28 @@
           "transby": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VWBounceBalanceWithdrwal": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fProject": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "memNo": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

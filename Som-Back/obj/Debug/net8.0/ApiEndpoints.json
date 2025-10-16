@@ -33,6 +33,38 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "Bounce",
+    "RelativePath": "api/AccountCtrl/bounce-balance-withdraw",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.VW_Models.VWBounceBalanceWithdrwal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetBalanceWithdraw",
+    "RelativePath": "api/AccountCtrl/get-Balance-withdraw",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "GetSomityTransection",
     "RelativePath": "api/AccountCtrl/getsomityacctransection",
     "HttpMethod": "POST",
@@ -107,6 +139,22 @@
         "Name": "compId",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "SaveWithdraw",
+    "RelativePath": "api/AccountCtrl/save-withdraw",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.BalanceWithdraw",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
