@@ -133,6 +133,24 @@ namespace Som_Back.Controllers
                 return StatusCode(500, new { Message = "Something went wrong", Details = ex.Message });
             }
         }
+        [HttpGet("getmemberbalancehistory")]
+        [Authorize]
+        public async Task<IActionResult> GetMemberBalance(int compId)
+        {
+            try
+            {
+                var data = await _accountservice.GetMemberBalance(compId);
+
+                if (data == null || !data.Any())
+                    return NotFound("No member balances found for this company.");
+
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
         [HttpPost("getsomityacctransection")]
         [Authorize]
         public async Task<IActionResult> GetSomityTransection([FromBody] VW_AccDrCr model)
@@ -145,12 +163,10 @@ namespace Som_Back.Controllers
         }
         [HttpPost("savebalancesegment")]
         [Authorize]
-        public async Task<IActionResult> SaveBalanceSegment(BalanceSegemnt model)
+        public async Task<IActionResult> SaveBalanceSegment([FromBody] BalanceSegemnt model)
         {
-            var res = await _accountservice.SaveAccountSegment(model);
-
-            // Always return string, null hole "Failed" return
-            return Ok(res ?? "Failed to save Balance Segment");
+            var message = await _accountservice.SaveAccountSegment(model);
+            return Ok(string.IsNullOrEmpty(message) ? "Failed to save Balance Segment" : message);
         }
         [HttpPost("savekistiamount")]
         [Authorize]

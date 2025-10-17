@@ -92,6 +92,24 @@ namespace Som_Service.Service
             return result;
         }
 
+        public async Task<List<VW_KistiRecHistory>> KistiReceiveHistory(int compId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                if (connection.State == ConnectionState.Closed)
+                    await connection.OpenAsync();
+
+                var result = await connection.QueryAsync<VW_KistiRecHistory>(
+                    "sp_kistiRecHistory",
+                    new { compId },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.ToList();
+            }
+        }
+
+
         public async Task<string> SaveKistiType(KistiTypes k)
         {
             string result = "";

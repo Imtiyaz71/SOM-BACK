@@ -169,6 +169,23 @@ namespace Som_Service.Service
             return cr.ToList();
         }
 
+        public async Task<List<VW_MemberBalance>> GetMemberBalance(int compId)
+        {
+            using (IDbConnection db = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@CompId", compId, DbType.Int32);
+
+                var result = await db.QueryAsync<VW_MemberBalance>(
+                    "sp_GetMemberBalances",   // stored procedure name
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.ToList();
+            }
+        }
+
         public async Task<List<VW_MemberProjectAccount>> GetProjectAccountByMemberAndProject(int? compId, int? memNo, int? projectId)
         {
             using (var conn = new SqlConnection(_connectionString))
@@ -254,7 +271,7 @@ namespace Som_Service.Service
             {
                 try
                 {
-                    // Validate input
+                    // 🧠 Basic validation
                     if (model == null)
                         return "Error: Model cannot be null.";
 
@@ -263,18 +280,16 @@ namespace Som_Service.Service
 
                     var parameters = new DynamicParameters();
 
-                    // Common parameters
-                    parameters.Add("@compId", model.compId);  // Ensure this type matches DB
+                    parameters.Add("@compId", model.compId);
                     parameters.Add("@amount", model.Amount);
                     parameters.Add("@vendor", model.Vendor);
                     parameters.Add("@descri", model.Descri ?? string.Empty);
+
                     string spName;
 
                     if (model.Id == 0)
                     {
-                     
-                        // Insert new record
-                 
+                        // New insert
                         spName = "sp_addBalancesegment";
                     }
                     else
@@ -284,24 +299,33 @@ namespace Som_Service.Service
                         spName = "sp_EditBalancesegment";
                     }
 
-                    // Execute stored procedure
-                    await connection.ExecuteAsync(spName, parameters, commandType: CommandType.StoredProcedure);
+                    // ⚡ Execute SP and get SQL message
+                    var message = await connection.QueryFirstOrDefaultAsync<string>(
+                        spName,
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
 
-                    return model.Id == 0 ? "✅ Balance segment added successfully." : "✅ Balance segment updated successfully.";
+                    // যদি stored procedure message না ফেরায়, fallback message দেই
+                    if (string.IsNullOrEmpty(message))
+                    {
+                        message = model.Id == 0
+                            ? "✅ Balance segment added successfully."
+                            : "✅ Balance segment updated successfully.";
+                    }
+
+                    return message;
                 }
                 catch (SqlException sqlEx)
                 {
-                
                     return $"SQL Error: {sqlEx.Message}";
                 }
                 catch (Exception ex)
                 {
-                  
                     return $"Error: {ex.Message}";
                 }
             }
         }
-
 
         public async Task<string> SaveKistiAmount(VM_SaveKistiandSubs model)
         {

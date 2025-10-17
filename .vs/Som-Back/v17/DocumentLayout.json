@@ -7,40 +7,52 @@
       "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\accountctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\accountctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\service\\subscriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\subscriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\interface\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\interface\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\membcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\membcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\service\\memberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\memberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\interface\\imemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\interface\\imemberservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\subscriptionctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\subscriptionctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\interface\\isubscriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\interface\\isubscriptionservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A128EEE0-3FD7-47FB-A3F6-83F8E241378C}|Som-Models\\Som-Models.csproj|e:\\my projects\\som-back\\som-models\\vw-models\\vw_kistirechistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A128EEE0-3FD7-47FB-A3F6-83F8E241378C}|Som-Models\\Som-Models.csproj|solutionrelative:som-models\\vw-models\\vw_kistirechistory.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\kistictrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\kistictrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\service\\kistiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\kistiservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\service\\projectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\projectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\projectctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\projectctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\accountctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\accountctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\interface\\iprojectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\interface\\iprojectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A128EEE0-3FD7-47FB-A3F6-83F8E241378C}|Som-Models\\Som-Models.csproj|e:\\my projects\\som-back\\som-models\\vw-models\\vwbouncebalancewithdrwal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A128EEE0-3FD7-47FB-A3F6-83F8E241378C}|Som-Models\\Som-Models.csproj|solutionrelative:som-models\\vw-models\\vwbouncebalancewithdrwal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\expensectrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\expensectrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\service\\expenseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\expenseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\interface\\iexpenseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\interface\\iexpenseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\interface\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\interface\\iaccountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,53 +66,54 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ProjectCtrl.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\ProjectCtrl.cs",
-              "RelativeDocumentMoniker": "Som-Back\\Controllers\\ProjectCtrl.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\ProjectCtrl.cs",
-              "RelativeToolTip": "Som-Back\\Controllers\\ProjectCtrl.cs",
-              "ViewState": "AgIAAFYAAAAAAAAAAAAgwG8AAAAIAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "MembController.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\MembController.cs",
+              "RelativeDocumentMoniker": "Som-Back\\Controllers\\MembController.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\MembController.cs",
+              "RelativeToolTip": "Som-Back\\Controllers\\MembController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwDUAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T13:27:08.23Z",
+              "WhenOpened": "2025-10-17T18:09:11.572Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IAccountService.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IAccountService.cs",
+              "RelativeDocumentMoniker": "Som-Service\\Interface\\IAccountService.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IAccountService.cs",
+              "RelativeToolTip": "Som-Service\\Interface\\IAccountService.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAzwBIAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T14:47:38.453Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ProjectService.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\ProjectService.cs",
-              "RelativeDocumentMoniker": "Som-Service\\Service\\ProjectService.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\ProjectService.cs",
-              "RelativeToolTip": "Som-Service\\Service\\ProjectService.cs",
-              "ViewState": "AgIAAFkAAAAAAAAAAAApwG8AAAAIAAAAAAAAAA==",
+              "Title": "MemberService.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\MemberService.cs",
+              "RelativeDocumentMoniker": "Som-Service\\Service\\MemberService.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\MemberService.cs",
+              "RelativeToolTip": "Som-Service\\Service\\MemberService.cs",
+              "ViewState": "AgIAAC8BAAAAAAAAAAAIwEwBAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T12:59:17.153Z",
+              "WhenOpened": "2025-10-17T14:17:47.318Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ExpenseCtrl.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\ExpenseCtrl.cs",
-              "RelativeDocumentMoniker": "Som-Back\\Controllers\\ExpenseCtrl.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\ExpenseCtrl.cs",
-              "RelativeToolTip": "Som-Back\\Controllers\\ExpenseCtrl.cs",
-              "ViewState": "AgIAADYAAAAAAAAAAAA7wD8AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "KistiService.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\KistiService.cs",
+              "RelativeDocumentMoniker": "Som-Service\\Service\\KistiService.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\KistiService.cs",
+              "RelativeToolTip": "Som-Service\\Service\\KistiService.cs",
+              "ViewState": "AgIAAFQAAAAAAAAAAAAowGwAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T06:15:21.646Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AccountCtrl.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\AccountCtrl.cs",
-              "RelativeDocumentMoniker": "Som-Back\\Controllers\\AccountCtrl.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\AccountCtrl.cs",
-              "RelativeToolTip": "Som-Back\\Controllers\\AccountCtrl.cs",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAYwIYAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T04:30:55.537Z",
+              "WhenOpened": "2025-10-17T14:17:47.369Z",
               "EditorCaption": ""
             },
             {
@@ -111,73 +124,114 @@
               "RelativeDocumentMoniker": "Som-Service\\Service\\AccountService.cs",
               "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\AccountService.cs",
               "RelativeToolTip": "Som-Service\\Service\\AccountService.cs",
-              "ViewState": "AgIAACEBAAAAAAAAAAAlwDMBAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAKwBAAAAAAAAAAAlwL4BAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T08:06:13.056Z",
+              "WhenOpened": "2025-10-17T11:12:18.408Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IMemberService.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IMemberService.cs",
+              "RelativeDocumentMoniker": "Som-Service\\Interface\\IMemberService.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IMemberService.cs",
+              "RelativeToolTip": "Som-Service\\Interface\\IMemberService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T18:03:49.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SubscriptionService.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\SubscriptionService.cs",
+              "RelativeDocumentMoniker": "Som-Service\\Service\\SubscriptionService.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\SubscriptionService.cs",
+              "RelativeToolTip": "Som-Service\\Service\\SubscriptionService.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAhwDsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T14:17:47.431Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "VW_KistiRecHistory.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Models\\VW-Models\\VW_KistiRecHistory.cs",
+              "RelativeDocumentMoniker": "Som-Models\\VW-Models\\VW_KistiRecHistory.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Models\\VW-Models\\VW_KistiRecHistory.cs",
+              "RelativeToolTip": "Som-Models\\VW-Models\\VW_KistiRecHistory.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA7wBQAAABDAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T16:21:39.446Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "IProjectService.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IProjectService.cs",
-              "RelativeDocumentMoniker": "Som-Service\\Interface\\IProjectService.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IProjectService.cs",
-              "RelativeToolTip": "Som-Service\\Interface\\IProjectService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAUAAAAAAAAAA==",
+              "Title": "SubscriptionCtrl.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\SubscriptionCtrl.cs",
+              "RelativeDocumentMoniker": "Som-Back\\Controllers\\SubscriptionCtrl.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\SubscriptionCtrl.cs",
+              "RelativeToolTip": "Som-Back\\Controllers\\SubscriptionCtrl.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAiwEsAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T13:15:47.574Z",
+              "WhenOpened": "2025-10-17T17:08:54.666Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IAccountService.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IAccountService.cs",
-              "RelativeDocumentMoniker": "Som-Service\\Interface\\IAccountService.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IAccountService.cs",
-              "RelativeToolTip": "Som-Service\\Interface\\IAccountService.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAxwBEAAAB+AAAAAAAAAA==",
+              "DocumentIndex": 10,
+              "Title": "ProjectService.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\ProjectService.cs",
+              "RelativeDocumentMoniker": "Som-Service\\Service\\ProjectService.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\ProjectService.cs",
+              "RelativeToolTip": "Som-Service\\Service\\ProjectService.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAApwG8AAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T06:10:26.81Z",
+              "WhenOpened": "2025-10-17T14:17:47.411Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "VWBounceBalanceWithdrwal.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Models\\VW-Models\\VWBounceBalanceWithdrwal.cs",
-              "RelativeDocumentMoniker": "Som-Models\\VW-Models\\VWBounceBalanceWithdrwal.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Models\\VW-Models\\VWBounceBalanceWithdrwal.cs",
-              "RelativeToolTip": "Som-Models\\VW-Models\\VWBounceBalanceWithdrwal.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAUAAAAAAAAAA==",
+              "Title": "ISubscriptionService.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\ISubscriptionService.cs",
+              "RelativeDocumentMoniker": "Som-Service\\Interface\\ISubscriptionService.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\ISubscriptionService.cs",
+              "RelativeToolTip": "Som-Service\\Interface\\ISubscriptionService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-16T10:33:44.053Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "ExpenseService.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\ExpenseService.cs",
-              "RelativeDocumentMoniker": "Som-Service\\Service\\ExpenseService.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\ExpenseService.cs",
-              "RelativeToolTip": "Som-Service\\Service\\ExpenseService.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAD4v5UAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T08:43:17.928Z",
+              "WhenOpened": "2025-10-17T17:01:44.979Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IExpenseService.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IExpenseService.cs",
-              "RelativeDocumentMoniker": "Som-Service\\Interface\\IExpenseService.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IExpenseService.cs",
-              "RelativeToolTip": "Som-Service\\Interface\\IExpenseService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABSAAAAAAAAAA==",
+              "DocumentIndex": 8,
+              "Title": "KistiCtrl.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\KistiCtrl.cs",
+              "RelativeDocumentMoniker": "Som-Back\\Controllers\\KistiCtrl.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\KistiCtrl.cs",
+              "RelativeToolTip": "Som-Back\\Controllers\\KistiCtrl.cs",
+              "ViewState": "AgIAACkAAAAAAAAAAAAgwD0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-15T09:03:47.037Z"
+              "WhenOpened": "2025-10-17T16:24:54.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AccountCtrl.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\AccountCtrl.cs",
+              "RelativeDocumentMoniker": "Som-Back\\Controllers\\AccountCtrl.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\AccountCtrl.cs",
+              "RelativeToolTip": "Som-Back\\Controllers\\AccountCtrl.cs",
+              "ViewState": "AgIAAHgAAAAAAAAAAAA3wIcAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-10-17T11:39:54.694Z",
+              "EditorCaption": ""
             }
           ]
         }

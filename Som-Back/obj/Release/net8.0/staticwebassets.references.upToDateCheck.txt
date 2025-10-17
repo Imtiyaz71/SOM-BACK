@@ -32,3 +32,7 @@ E:\My Projects\Som-Back\Som-Models\obj\Release\net8.0\staticwebassets.build.json
 E:\My Projects\Som-Back\Som-Service\obj\Release\net8.0\staticwebassets.build.json
 E:\My Projects\Som-Back\Som-Models\obj\Release\net8.0\staticwebassets.build.json
 E:\My Projects\Som-Back\Som-Service\obj\Release\net8.0\staticwebassets.build.json
+E:\My Projects\Som-Back\Som-Models\obj\Release\net8.0\staticwebassets.build.json
+E:\My Projects\Som-Back\Som-Service\obj\Release\net8.0\staticwebassets.build.json
+E:\My Projects\Som-Back\Som-Models\obj\Release\net8.0\staticwebassets.build.json
+E:\My Projects\Som-Back\Som-Service\obj\Release\net8.0\staticwebassets.build.json

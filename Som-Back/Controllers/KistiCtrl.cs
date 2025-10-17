@@ -49,6 +49,17 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("kistireceivehistory")]
+        [Authorize]
+        public async Task<IActionResult> GetKistiReceiveHistory(int compId)
+        {
+            var mem = await _kistiservice.KistiReceiveHistory(compId);
+
+            if (mem == null)
+                return NotFound("No Kisti History found.");
+
+            return Ok(mem);
+        }
         [HttpGet("kistytypebyproject")]
         [Authorize]
         public async Task<IActionResult> GetKistiTypeByProject(int compId,int projectId)

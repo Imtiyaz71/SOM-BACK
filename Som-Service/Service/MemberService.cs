@@ -169,6 +169,23 @@ namespace Som_Service.Service
             return mem;
         }
 
+        public async Task<List<VW_ProjectWiseMemberReceive>> KistiPaidHistory(int compId)
+        {
+            using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync();
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@CompId", compId, DbType.Int32);
+
+            var result = await connection.QueryAsync<VW_ProjectWiseMemberReceive>(
+                "sp_MemberKistiReceiveHistory",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+
+            return result.ToList();
+        }
+
         public async Task<string> MemberDeactivation(int memNo, int compId, string entryBy)
         {
 
@@ -302,6 +319,23 @@ namespace Som_Service.Service
             {
                 return $"Error: {ex.Message}";
             }
+        }
+
+        public async Task<List<VW_ProjectWiseMemberReceive>> SUbscriptionPaidHistory(int compId)
+        {
+            using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync();
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@CompId", compId, DbType.Int32);
+
+            var result = await connection.QueryAsync<VW_ProjectWiseMemberReceive>(
+                "sp_MemberSubscriptionReceiveHistory",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+
+            return result.ToList();
         }
 
         public async Task<List<MemberTransferLogs>> TransferLogsList(int compId)

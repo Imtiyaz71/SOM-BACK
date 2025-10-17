@@ -14,5 +14,7 @@ namespace Som_Service.Interface
         public Task<string> TransferMember(Members model);
         public Task<string> MemberDeactivation(int memNo,int compId,string entryBy);
         public Task<List<VW_DeactiveLogs>> DeactiveLogs(int compId);
+        public Task<List<VW_ProjectWiseMemberReceive>> KistiPaidHistory(int compId);
+        public Task<List<VW_ProjectWiseMemberReceive>> SUbscriptionPaidHistory(int compId);
     }
 }

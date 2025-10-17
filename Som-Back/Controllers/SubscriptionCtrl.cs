@@ -62,6 +62,28 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("subscriptionreceivehistroy")]
+        [Authorize]
+        public async Task<IActionResult> GetSubscriptionReceiveHistory(int compId)
+        {
+            var mem = await _subscriptionservice.SubscriptionReceiveHistory(compId);
+
+            if (mem == null)
+                return NotFound("No Subscription History found.");
+
+            return Ok(mem);
+        }
+        [HttpGet("regularsubscriptionreceivehistroy")]
+        [Authorize]
+        public async Task<IActionResult> GetRegularSubscriptionReceiveHistory(int compId)
+        {
+            var mem = await _subscriptionservice.regularSubscriptionReceiveHistory(compId);
+
+            if (mem == null)
+                return NotFound("No Subscription History found.");
+
+            return Ok(mem);
+        }
         [HttpPost("savesubscriptiontype")]
         [Authorize]
         public async Task<IActionResult> SaveKistiType(SubscriptionTypes k)

@@ -16,6 +16,7 @@ namespace Som_Service.Interface
         public Task<List<VW_SomityAccTransection>> GetSomityAccTransection(VW_AccDrCr model);
         public Task<List<VW_BalanceWithdraw>> GetBalanceWithDraw(int compId);
         public Task<List<VW_MemberProjectAccount>> GetProjectAccountByMemberAndProject(int? compId, int? memNo, int? projectId);
+        public Task<List<VW_MemberBalance>> GetMemberBalance(int compId);
         public Task<string> SaveKistiAmount(VM_SaveKistiandSubs model);
         public Task<string> SavesubscriptionAmount(VM_SaveKistiandSubs model);
         public Task<string> SaveRegularSubs(VM_RegularSubs model);

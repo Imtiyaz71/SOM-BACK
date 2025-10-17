@@ -65,6 +65,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetMemberBalance",
+    "RelativePath": "api/AccountCtrl/getmemberbalancehistory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "GetSomityTransection",
     "RelativePath": "api/AccountCtrl/getsomityacctransection",
     "HttpMethod": "POST",
@@ -404,6 +420,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.KistiCtrl",
+    "Method": "GetKistiReceiveHistory",
+    "RelativePath": "api/KistiCtrl/kistireceivehistory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.KistiCtrl",
     "Method": "GetKistiType",
     "RelativePath": "api/KistiCtrl/kistytype",
     "HttpMethod": "GET",
@@ -617,6 +649,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "GetMemberKistiPaidHistory",
+    "RelativePath": "api/Memb/kistipaidhistory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
     "Method": "MemberDeactive",
     "RelativePath": "api/Memb/memberdeactive",
     "HttpMethod": "POST",
@@ -707,6 +755,22 @@
         "Name": "mem",
         "Type": "Som_Models.Models.Members",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "GetMemberSubscriptionPaidHistory",
+    "RelativePath": "api/Memb/subscriptionpaidhistory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -954,6 +1018,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.SubscriptionCtrl",
+    "Method": "GetRegularSubscriptionReceiveHistory",
+    "RelativePath": "api/SubscriptionCtrl/regularsubscriptionreceivehistroy",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.SubscriptionCtrl",
     "Method": "SaveKistiType",
     "RelativePath": "api/SubscriptionCtrl/savesubscriptiontype",
     "HttpMethod": "POST",
@@ -983,6 +1063,22 @@
       },
       {
         "Name": "projectid",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.SubscriptionCtrl",
+    "Method": "GetSubscriptionReceiveHistory",
+    "RelativePath": "api/SubscriptionCtrl/subscriptionreceivehistroy",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
         "Type": "System.Int32",
         "IsRequired": false
       }

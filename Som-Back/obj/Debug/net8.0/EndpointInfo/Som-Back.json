@@ -231,6 +231,28 @@
         }
       }
     },
+    "/api/AccountCtrl/getmemberbalancehistory": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AccountCtrl/getsomityacctransection": {
       "post": {
         "tags": [
@@ -693,6 +715,28 @@
         }
       }
     },
+    "/api/KistiCtrl/kistireceivehistory": {
+      "get": {
+        "tags": [
+          "KistiCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/KistiCtrl/kistytypebyproject": {
       "get": {
         "tags": [
@@ -936,6 +980,50 @@
       }
     },
     "/api/Memb/archivememberall": {
+      "get": {
+        "tags": [
+          "Memb"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/kistipaidhistory": {
+      "get": {
+        "tags": [
+          "Memb"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/Memb/subscriptionpaidhistory": {
       "get": {
         "tags": [
           "Memb"
@@ -1550,6 +1638,50 @@
           },
           {
             "name": "projectid",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SubscriptionCtrl/subscriptionreceivehistroy": {
+      "get": {
+        "tags": [
+          "SubscriptionCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/SubscriptionCtrl/regularsubscriptionreceivehistroy": {
+      "get": {
+        "tags": [
+          "SubscriptionCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
             "in": "query",
             "schema": {
               "type": "integer",

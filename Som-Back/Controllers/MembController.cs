@@ -40,6 +40,28 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("kistipaidhistory")]
+        [Authorize]
+        public async Task<IActionResult> GetMemberKistiPaidHistory(int compId)
+        {
+            var mem = await _memberervice.KistiPaidHistory(compId);
+
+            if (mem == null)
+                return NotFound("No Data found.");
+
+            return Ok(mem);
+        }
+        [HttpGet("subscriptionpaidhistory")]
+        [Authorize]
+        public async Task<IActionResult> GetMemberSubscriptionPaidHistory(int compId)
+        {
+            var mem = await _memberervice.SUbscriptionPaidHistory(compId);
+
+            if (mem == null)
+                return NotFound("No Data found.");
+
+            return Ok(mem);
+        }
         [HttpGet("transferlogslist")]
         [Authorize]
         public async Task<IActionResult> GetTransferLogs(int compId)

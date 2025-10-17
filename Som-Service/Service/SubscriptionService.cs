@@ -81,6 +81,23 @@ namespace Som_Service.Service
             return result;
         }
 
+        public async Task<List<VW_RegularSubsReceive>> regularSubscriptionReceiveHistory(int compId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                if (connection.State == ConnectionState.Closed)
+                    await connection.OpenAsync();
+
+                var result = await connection.QueryAsync<VW_RegularSubsReceive>(
+                    "sp_regularSubscriptionRecHistory",
+                    new { compId },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.ToList();
+            }
+        }
+
         public async Task<string> SaveSubscriptionType(SubscriptionTypes k)
         {
             using (var con = new SqlConnection(_connectionString))
@@ -120,5 +137,21 @@ namespace Som_Service.Service
             }
         }
 
+        public async Task<List<VW_KistiRecHistory>> SubscriptionReceiveHistory(int compId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                if (connection.State == ConnectionState.Closed)
+                    await connection.OpenAsync();
+
+                var result = await connection.QueryAsync<VW_KistiRecHistory>(
+                    "sp_SubscriptionRecHistory",
+                    new { compId },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.ToList();
+            }
+        }
     }
 }

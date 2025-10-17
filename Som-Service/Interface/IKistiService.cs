@@ -9,6 +9,7 @@ namespace Som_Service.Interface
         public Task<List<VM__KistiTypes>> GetKistiTypes(int compId);
         public Task<List<VM__KistiTypes>> GetKistiTypesByProject(int compId, int projectid);
         public Task<VM__KistiTypes> GetKistiTypesById(int id);
+        public Task<List<VW_KistiRecHistory>> KistiReceiveHistory(int compId);
         public Task<string> SaveKistiType(KistiTypes k);
     }
 }
