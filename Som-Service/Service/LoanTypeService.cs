@@ -45,59 +45,55 @@ namespace Som_Service.Service
         public async Task<string> SaveLoanType(LoanTypes k)
         {
             string result = "";
+
             using (SqlConnection con = new SqlConnection(_connectionString))
             {
-
                 try
                 {
-
+                    var parameters = new DynamicParameters();
 
                     if (k.Id == 0)
                     {
-                        var parameters = new DynamicParameters();
+                        // Insert
+                        parameters.Add("@CompId", k.CompId);
                         parameters.Add("@TypeName", k.TypeName);
-                        parameters.Add("@crid", k.crid);
-                        parameters.Add("@Amount", k.Amount);
+                        parameters.Add("@Interest", k.Interest);
+                        parameters.Add("@TimePeriodMonths", k.TimePeriodMonths);
+                        parameters.Add("@UpdateBy", k.UpdateBy);
 
-                        parameters.Add("@compId", k.compId);
-
-                        int rows = await con.ExecuteAsync(
-                            "sp_saveloanType",
+                        await con.ExecuteAsync(
+                            "sp_SaveLoanType",
                             parameters,
                             commandType: CommandType.StoredProcedure);
 
-                        if (rows > 0)
-                        {
-                            result = "Type Added";
-                        }
+                        result = "Type Added"; // rows ignore
                     }
                     else
                     {
-                        var parameters = new DynamicParameters();
-                        parameters.Add("@id", k.Id);
+                        // Update
+                        parameters.Add("@Id", k.Id);
+                        parameters.Add("@CompId", k.CompId);
                         parameters.Add("@TypeName", k.TypeName);
-                        parameters.Add("@crid", k.crid);
-                        parameters.Add("@Amount", k.Amount);
+                        parameters.Add("@Interest", k.Interest);
+                        parameters.Add("@TimePeriodMonths", k.TimePeriodMonths);
+                        parameters.Add("@UpdateBy", k.UpdateBy);
 
-                        int rows = await con.ExecuteAsync(
-                            "sp_editloanType",
+                        await con.ExecuteAsync(
+                            "sp_EditLoanType",
                             parameters,
                             commandType: CommandType.StoredProcedure);
 
-                        if (rows > 0)
-                        {
-                            result = "Type Update";
-                        }
+                        result = "Type Updated"; // rows ignore
                     }
                 }
                 catch (Exception ex)
                 {
-
-                    result = "error: " + ex.Message;
+                    result = "Error: " + ex.Message;
                 }
             }
 
             return result;
         }
+
     }
 }

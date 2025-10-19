@@ -74,6 +74,22 @@ namespace Som_Back.Controllers
 
             return StatusCode(500, result); // unexpected errors
         }
+        [HttpPost("deactivate-staff")]
+        [Authorize]
+        public async Task<IActionResult> DeactivateStaff(int id)
+        {
+            var result = await _staffservice.DeactiveStaff(id);
 
+            if (result.StatusCode == 200)
+                return Ok(result);
+            else
+                return StatusCode(result.StatusCode, result);
+        }
+        [HttpGet("get-archive-staff")]
+        public async Task<IActionResult> GetArchiveStaff(int compId)
+        {
+            var result = await _staffservice.GetArchiveStaff(compId);
+            return Ok(result);
+        }
     }
 }

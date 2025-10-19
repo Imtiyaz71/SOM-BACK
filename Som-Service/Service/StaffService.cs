@@ -16,6 +16,38 @@ namespace Som_Service.Service
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
 
+        public async Task<VW_Response> DeactiveStaff(int id)
+        {
+            var response = new VW_Response();
+
+            try
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@id", id);
+
+                    // Stored procedure call
+                    var result = await connection.QueryFirstOrDefaultAsync<string>(
+                        "sp_deactivestaff",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    response.StatusCode = 200; // ✅ success
+                    response.Message = result ?? "Staff successfully deactivated and archived.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.StatusCode = 500; // ❌ error
+                response.Message = "Error: " + ex.Message;
+            }
+
+            return response;
+        }
+
+
         public async Task<VW_Response> DeleteStaffDesignation(int Id, int compId)
         {
             try
@@ -51,6 +83,21 @@ namespace Som_Service.Service
                     Message = $"Error occurred: {ex.Message}"
                 };
             }
+        }
+
+        public async Task<List<VW_ArchiveStaff>> GetArchiveStaff(int compId)
+        {
+            using var connection = new SqlConnection(_connectionString);
+            var parameters = new DynamicParameters();
+            parameters.Add("@compId", compId, DbType.Int32);
+
+            var result = await connection.QueryAsync<VW_ArchiveStaff>(
+                "sp_getArchiveStaffByComp",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+
+            return result.AsList();
         }
 
         public async Task<List<StaffDesignation>> GetStaffDesignation(int compId)

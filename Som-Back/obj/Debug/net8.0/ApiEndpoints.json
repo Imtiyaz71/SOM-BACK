@@ -1034,6 +1034,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.StaffCtrl",
+    "Method": "DeactivateStaff",
+    "RelativePath": "api/StaffCtrl/deactivate-staff",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.StaffCtrl",
     "Method": "DeleteStaffDesignation",
     "RelativePath": "api/StaffCtrl/delete-staff-designation",
     "HttpMethod": "POST",
@@ -1045,6 +1061,22 @@
         "Type": "System.Int32",
         "IsRequired": false
       },
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.StaffCtrl",
+    "Method": "GetArchiveStaff",
+    "RelativePath": "api/StaffCtrl/get-archive-staff",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
       {
         "Name": "compId",
         "Type": "System.Int32",

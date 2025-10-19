@@ -1736,6 +1736,50 @@
         }
       }
     },
+    "/api/StaffCtrl/deactivate-staff": {
+      "post": {
+        "tags": [
+          "StaffCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/StaffCtrl/get-archive-staff": {
+      "get": {
+        "tags": [
+          "StaffCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/SubscriptionCtrl/subscriptiontypes": {
       "get": {
         "tags": [
@@ -2470,29 +2514,35 @@
             "type": "integer",
             "format": "int32"
           },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
           "typeName": {
             "type": "string",
             "nullable": true
           },
-          "crid": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "amount": {
+          "interest": {
             "type": "number",
             "format": "double"
           },
-          "createdate": {
-            "type": "string",
-            "nullable": true
-          },
-          "updatedate": {
-            "type": "string",
-            "nullable": true
-          },
-          "compId": {
+          "timePeriodMonths": {
             "type": "integer",
             "format": "int32"
+          },
+          "createDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updateDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "updateBy": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

@@ -10,5 +10,7 @@ namespace Som_Service.Interface
         public Task<VW_Response> SaveStaffDesignation(StaffDesignation model);
         public Task<VW_Response> DeleteStaffDesignation(int Id,int compId);
         public Task<VW_Response> SaveStaffInfo(Staff model);
+        public Task<VW_Response> DeactiveStaff(int id);
+        public Task<List<VW_ArchiveStaff>> GetArchiveStaff(int compId);
     }
 }

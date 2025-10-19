@@ -2,12 +2,13 @@
 {
     public class VM_LoanTypes
     {
-        public int Id { get; set; }
-        public string TypeName { get; set; }
-        public int crid { get; set; }
-        public string Crname { get; set; }
-        public double Amount { get; set; }
-        public string createdate { get; set; }
-        public string updatedate { get; set; }
+        public int Id { get; set; }               // Primary Key
+        public int CompId { get; set; }           // Company Id
+        public string TypeName { get; set; }      // Loan type name
+        public decimal Interest { get; set; }     // Interest rate (e.g., 12.50)
+        public int TimePeriodMonths { get; set; } // Loan period in months
+        public DateTime? CreateDate { get; set; }  // Created date
+        public DateTime? UpdateDate { get; set; } // Updated date (nullable)
+        public string UpdateBy { get; set; }
     }
 }
