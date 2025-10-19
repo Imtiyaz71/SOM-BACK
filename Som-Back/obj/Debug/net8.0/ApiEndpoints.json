@@ -65,6 +65,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetJournal",
+    "RelativePath": "api/AccountCtrl/getjournal",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "GetMemberBalance",
     "RelativePath": "api/AccountCtrl/getmemberbalancehistory",
     "HttpMethod": "GET",
@@ -665,14 +681,14 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.MembController",
-    "Method": "MemberDeactive",
+    "Method": "DeactivateMember",
     "RelativePath": "api/Memb/memberdeactive",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
+        "Name": "model",
         "Type": "Som_Models.VW_Models.VW_MemberDeactiveRequest",
         "IsRequired": true
       }
@@ -737,6 +753,22 @@
     "Parameters": [
       {
         "Name": "memno",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MembController",
+    "Method": "GetRegularSubscriptionPaidHistory",
+    "RelativePath": "api/Memb/regularsubscriptionpaidhistory",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -998,6 +1030,91 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.StaffCtrl",
+    "Method": "DeleteStaffDesignation",
+    "RelativePath": "api/StaffCtrl/delete-staff-designation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.StaffCtrl",
+    "Method": "GetStaffDesignation",
+    "RelativePath": "api/StaffCtrl/getstaffdesignation",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.StaffCtrl",
+    "Method": "GetStaffInfo",
+    "RelativePath": "api/StaffCtrl/getstaffinfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.StaffCtrl",
+    "Method": "SaveStaff",
+    "RelativePath": "api/StaffCtrl/save-staff",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.Staff",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.StaffCtrl",
+    "Method": "GetSomityTransection",
+    "RelativePath": "api/StaffCtrl/save-staff-designation",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.StaffDesignation",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {

@@ -116,6 +116,25 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("getjournal")]
+        [Authorize]
+        public async Task<IActionResult> GetJournal(int compId)
+        {
+            try
+            {
+                var result = await _accountservice.GetJournal(compId);
+
+                if (result == null || result.Count == 0)
+                    return NotFound(new { message = "No journal data found for this company." });
+
+                return Ok(result); // status code 200
+            }
+            catch (Exception ex)
+            {
+                // log the exception if needed
+                return StatusCode(500, new { message = $"Error fetching journal: {ex.Message}" });
+            }
+        }
         [HttpGet("memberprojectaccount")]
         [Authorize]
         public async Task<IActionResult> GetProjectAccountByMemberAndProject(

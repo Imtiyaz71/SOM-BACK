@@ -62,6 +62,17 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("regularsubscriptionpaidhistory")]
+        [Authorize]
+        public async Task<IActionResult> GetRegularSubscriptionPaidHistory(int compId)
+        {
+            var mem = await _memberervice.RegularSUbscriptionPaidHistory(compId);
+
+            if (mem == null)
+                return NotFound("No Data found.");
+
+            return Ok(mem);
+        }
         [HttpGet("transferlogslist")]
         [Authorize]
         public async Task<IActionResult> GetTransferLogs(int compId)
@@ -197,14 +208,11 @@ namespace Som_Back.Controllers
 
         [HttpPost("memberdeactive")]
         [Authorize]
-        public async Task<IActionResult> MemberDeactive([FromBody] VW_MemberDeactiveRequest request)
+        public async Task<IActionResult> DeactivateMember([FromBody] VW_MemberDeactiveRequest model)
         {
-            var member = await _memberervice.MemberDeactivation(request.MemNo, request.CompId, request.EntryBy);
+            var result = await _memberervice.MemberDeactivation(model.MemNo, model.CompId, model.EntryBy);
 
-            if (member == null)
-                return BadRequest("Failed to Deactive Member Data");
-
-            return Ok(member);
+            return StatusCode(result.StatusCode, result);
         }
     }
 }

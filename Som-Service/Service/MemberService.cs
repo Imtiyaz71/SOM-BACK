@@ -186,26 +186,63 @@ namespace Som_Service.Service
             return result.ToList();
         }
 
-        public async Task<string> MemberDeactivation(int memNo, int compId, string entryBy)
+        public async Task<VW_Response> MemberDeactivation(int memNo, int compId, string entryBy)
         {
-
             try
             {
                 using var connection = new SqlConnection(_connectionString);
                 await connection.OpenAsync();
+
                 var parameters = new DynamicParameters();
                 parameters.Add("@memNo", memNo);
                 parameters.Add("@compId", compId);
-                parameters.Add("@entryby", entryBy);
-                await connection.ExecuteAsync("sp_memberdeactive", parameters, commandType: CommandType.StoredProcedure);
-                return "Member Deactiveted";
+                parameters.Add("@entryBy", entryBy);
+
+                // SP returns structured response: StatusCode + Message
+                var response = await connection.QueryFirstOrDefaultAsync<VW_Response>(
+                    "sp_memberdeactive",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                // In case SP returns null (unlikely)
+                if (response == null)
+                {
+                    response = new VW_Response
+                    {
+                        StatusCode = 500,
+                        Message = "❌ No response from stored procedure."
+                    };
+                }
+
+                return response;
             }
             catch (Exception ex)
             {
-
-                return "Failed";
+                return new VW_Response
+                {
+                    StatusCode = 500,
+                    Message = $"❌ Exception: {ex.Message}"
+                };
             }
+        }
 
+
+        public async Task<List<VW_MemberRegularSubscriptionReceive>> RegularSUbscriptionPaidHistory(int compId)
+        {
+            using var connection = new SqlConnection(_connectionString);
+            await connection.OpenAsync();
+
+            var parameters = new DynamicParameters();
+            parameters.Add("@CompId", compId, DbType.Int32);
+
+            var result = await connection.QueryAsync<VW_MemberRegularSubscriptionReceive>(
+                "sp_MemberRegularSubscriptionReceiveHistory",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+
+            return result.ToList();
         }
 
         public async Task<string> SaveMember(Members model)

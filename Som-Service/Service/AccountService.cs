@@ -155,6 +155,28 @@ namespace Som_Service.Service
             }
         }
 
+        public async Task<List<VW_Journal>> GetJournal(int compId)
+        {
+            try
+            {
+                using var connection = new SqlConnection(_connectionString);
+                await connection.OpenAsync();
+
+                var result = await connection.QueryAsync<VW_Journal>(
+                    "sp_GetJournalSummary",               // Stored Procedure name
+                    new { compId = compId },              // Parameter
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.ToList();
+            }
+            catch (Exception ex)
+            {
+                // Optional: log exception
+                Console.WriteLine($"Error fetching journal: {ex.Message}");
+                return new List<VW_Journal>();
+            }
+        }
 
         public async Task<List<VM_kistiandSubs>> GetKistiReceive(int compId)
         {

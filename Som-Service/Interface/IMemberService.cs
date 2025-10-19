@@ -12,9 +12,10 @@ namespace Som_Service.Interface
         public Task<string> SaveMember(Members model);
         public Task<string> EditMember(Members model);
         public Task<string> TransferMember(Members model);
-        public Task<string> MemberDeactivation(int memNo,int compId,string entryBy);
+        public Task<VW_Response> MemberDeactivation(int memNo,int compId,string entryBy);
         public Task<List<VW_DeactiveLogs>> DeactiveLogs(int compId);
         public Task<List<VW_ProjectWiseMemberReceive>> KistiPaidHistory(int compId);
         public Task<List<VW_ProjectWiseMemberReceive>> SUbscriptionPaidHistory(int compId);
+        public Task<List<VW_MemberRegularSubscriptionReceive>> RegularSUbscriptionPaidHistory(int compId);
     }
 }
