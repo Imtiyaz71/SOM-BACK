@@ -97,6 +97,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetProjectAccountSummary",
+    "RelativePath": "api/AccountCtrl/getprojectaccountsummary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "GetSomityTransection",
     "RelativePath": "api/AccountCtrl/getsomityacctransection",
     "HttpMethod": "POST",
@@ -325,6 +341,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.ExpenseCtrl",
+    "Method": "AddProjectExpense",
+    "RelativePath": "api/ExpenseCtrl/add-project-expense",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.ProjectWiseExpense",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ExpenseCtrl",
     "Method": "DeleteExpenseType",
     "RelativePath": "api/ExpenseCtrl/delete-expense-type",
     "HttpMethod": "POST",
@@ -386,6 +418,22 @@
       },
       {
         "Name": "year",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.ExpenseCtrl",
+    "Method": "GetProjectExpense",
+    "RelativePath": "api/ExpenseCtrl/get-project-expense",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
         "Type": "System.Int32",
         "IsRequired": false
       }

@@ -11,5 +11,7 @@ namespace Som_Service.Interface
         public Task<List<VW_Expense>> GetExpense(int compId);
         public Task<List<VW_MonthlyExpense>> GetMonthlyExpense(int compId,int year);
         public Task<string> AddExpense(Expense model);
+        public Task<VW_Response> AddProjectWiseExpense(ProjectWiseExpense model);
+        public Task<List<VW_ProjectWiseExpense>> GetProjectExpense(int compId);
     }
 }

@@ -170,6 +170,24 @@ namespace Som_Back.Controllers
                 return StatusCode(500, $"Internal server error: {ex.Message}");
             }
         }
+        [HttpGet("getprojectaccountsummary")]
+        [Authorize]
+        public async Task<IActionResult> GetProjectAccountSummary(int compId)
+        {
+            try
+            {
+                var data = await _accountservice.GetProjectAccountSummary(compId);
+
+                if (data == null || !data.Any())
+                    return NotFound("No Data Found.");
+
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, $"Internal server error: {ex.Message}");
+            }
+        }
         [HttpPost("getsomityacctransection")]
         [Authorize]
         public async Task<IActionResult> GetSomityTransection([FromBody] VW_AccDrCr model)

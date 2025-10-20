@@ -275,6 +275,28 @@
         }
       }
     },
+    "/api/AccountCtrl/getprojectaccountsummary": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AccountCtrl/getsomityacctransection": {
       "post": {
         "tags": [
@@ -597,6 +619,28 @@
         }
       }
     },
+    "/api/ExpenseCtrl/get-project-expense": {
+      "get": {
+        "tags": [
+          "ExpenseCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ExpenseCtrl/save-expense-type": {
       "post": {
         "tags": [
@@ -674,6 +718,37 @@
             }
           }
         ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/ExpenseCtrl/add-project-expense": {
+      "post": {
+        "tags": [
+          "ExpenseCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectWiseExpense"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectWiseExpense"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ProjectWiseExpense"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "OK"
@@ -2727,6 +2802,48 @@
             "format": "int32"
           },
           "assignBy": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProjectWiseExpense": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "projectId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "purpose": {
+            "type": "string",
+            "nullable": true
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "eDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "eMonth": {
+            "type": "string",
+            "nullable": true
+          },
+          "eYear": {
+            "type": "string",
+            "nullable": true
+          },
+          "eBy": {
             "type": "string",
             "nullable": true
           }

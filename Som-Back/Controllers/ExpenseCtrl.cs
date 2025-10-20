@@ -50,6 +50,24 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("get-project-expense")]
+        [Authorize]
+        public async Task<IActionResult> GetProjectExpense(int compId)
+        {
+            try
+            {
+                var data = await _expenseservice.GetProjectExpense(compId);
+
+                if (data == null || !data.Any())
+                    return NotFound(new { message = "No project expenses found." });
+
+                return Ok(data);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal server error: " + ex.Message });
+            }
+        }
         [HttpPost("save-expense-type")]
         [Authorize]
         public async Task<IActionResult> SaveExpenseType(ExpenseType model)
@@ -72,6 +90,27 @@ namespace Som_Back.Controllers
         {
             var res = await _expenseservice.DeleteExpenseType(id);
             return Ok(new { Message = res ?? "Failed to delete" });
+        }
+        [HttpPost]
+        [Route("add-project-expense")]
+        [Authorize]
+        public async Task<IActionResult> AddProjectExpense([FromBody] ProjectWiseExpense model)
+        {
+            if (model == null)
+            {
+                return BadRequest(new VW_Response
+                {
+                    StatusCode = 400,
+                    Message = "Invalid expense data"
+                });
+            }
+
+            var response = await _expenseservice.AddProjectWiseExpense(model);
+
+            if (response.StatusCode == 200)
+                return Ok(response);
+            else
+                return BadRequest(response);
         }
     }
 }

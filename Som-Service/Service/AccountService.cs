@@ -228,6 +228,24 @@ namespace Som_Service.Service
                 return result.ToList();
             }
         }
+
+        public async Task<List<VW_ProjectAccountSummary>> GetProjectAccountSummary(int compId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var param = new DynamicParameters();
+                param.Add("@compId", compId);
+
+                var result = await connection.QueryAsync<VW_ProjectAccountSummary>(
+                    "sp_ProjectBalanceSummary",
+                    param,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.ToList();
+            }
+        }
+
         public async Task<List<VW_RegularSubscription>> GetRegularSubscriptionReceive(int compId)
         {
             using var connection = new SqlConnection(_connectionString);
