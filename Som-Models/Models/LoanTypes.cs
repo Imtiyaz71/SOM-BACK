@@ -10,5 +10,7 @@
         public DateTime? CreateDate { get; set; }  // Created date
         public DateTime? UpdateDate { get; set; } // Updated date (nullable)
         public string UpdateBy { get; set; }
+        public decimal DelayInterest { get; set; }
+        public int ActivityPeriod { get; set; }
     }
 }

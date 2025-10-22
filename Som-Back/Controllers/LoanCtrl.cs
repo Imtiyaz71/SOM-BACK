@@ -58,5 +58,33 @@ namespace Som_Back.Controllers
 
             return Ok(res ?? "Failed to save Loan Type");
         }
+        [HttpGet("borrowerloan")]
+        [Authorize]
+        public async Task<IActionResult> GetLoanBorrower([FromQuery] int compId)
+        {
+            if (compId <= 0)
+                return BadRequest("Invalid Company Id.");
+
+            var mem = await _loanservice.GetBorrowerLoanInfo(compId);
+
+            if (mem == null || !mem.Any())
+                return NotFound("No Loan  found.");
+
+            return Ok(mem);
+        }
+        [HttpPost("SaveLoanSension")]
+        [Authorize]
+        public async Task<IActionResult> SaveLoanSension([FromBody] VW_LoanSensionRequest model)
+        {
+            if (model == null)
+                return BadRequest(new VW_Response { StatusCode = 0, Message = "Invalid request" });
+
+            var response = await _loanservice.SaveLoanSension(model);
+
+            if (response.StatusCode == 1)
+                return Ok(response);
+            else
+                return BadRequest(response);
+        }
     }
 }

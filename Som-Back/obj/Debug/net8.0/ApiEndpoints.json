@@ -356,6 +356,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Som_Back.Controllers.DashboardCtrl",
+    "Method": "GetReceiveSummary",
+    "RelativePath": "api/DashboardCtrl/dashrecsummary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Som_Back.Controllers.ExpenseCtrl",
     "Method": "AddProjectExpense",
     "RelativePath": "api/ExpenseCtrl/add-project-expense",
@@ -585,6 +601,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.LoanCtrl",
+    "Method": "GetLoanBorrower",
+    "RelativePath": "api/LoanCtrl/borrowerloan",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.LoanCtrl",
     "Method": "GetLoanType",
     "RelativePath": "api/LoanCtrl/loantype",
     "HttpMethod": "GET",
@@ -611,6 +643,22 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.LoanCtrl",
+    "Method": "SaveLoanSension",
+    "RelativePath": "api/LoanCtrl/SaveLoanSension",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.VW_Models.VW_LoanSensionRequest",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

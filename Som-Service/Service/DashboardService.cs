@@ -32,5 +32,16 @@ namespace Som_Service.Service
             }
         }
 
+        public async Task<VW_ReceiveDashboardSummary> GetReceiveDashboardSummaryAsync(int compId)
+        {
+            using var connection = new SqlConnection(_connectionString);
+            var parameters = new { CompId = compId };
+
+            return await connection.QueryFirstOrDefaultAsync<VW_ReceiveDashboardSummary>(
+                "dbo.usp_GetReceiveSummaryByCompId",
+                parameters,
+                commandType: CommandType.StoredProcedure
+            );
+        }
     }
 }

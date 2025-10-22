@@ -567,6 +567,28 @@
         }
       }
     },
+    "/api/DashboardCtrl/dashrecsummary": {
+      "get": {
+        "tags": [
+          "DashboardCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/ExpenseCtrl/get-expense-type": {
       "get": {
         "tags": [
@@ -981,6 +1003,59 @@
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/LoanTypes"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/LoanCtrl/borrowerloan": {
+      "get": {
+        "tags": [
+          "LoanCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/LoanCtrl/SaveLoanSension": {
+      "post": {
+        "tags": [
+          "LoanCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_LoanSensionRequest"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_LoanSensionRequest"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VW_LoanSensionRequest"
               }
             }
           }
@@ -2640,6 +2715,14 @@
           "updateBy": {
             "type": "string",
             "nullable": true
+          },
+          "delayInterest": {
+            "type": "number",
+            "format": "double"
+          },
+          "activityPeriod": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -3271,6 +3354,76 @@
           "crType": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "VW_LoanSensionRequest": {
+        "type": "object",
+        "properties": {
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "bAddress": {
+            "type": "string",
+            "nullable": true
+          },
+          "nId": {
+            "type": "string",
+            "nullable": true
+          },
+          "dob": {
+            "type": "string",
+            "nullable": true
+          },
+          "father": {
+            "type": "string",
+            "nullable": true
+          },
+          "mother": {
+            "type": "string",
+            "nullable": true
+          },
+          "photo": {
+            "type": "string",
+            "nullable": true
+          },
+          "loanType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "sDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "sMonth": {
+            "type": "string",
+            "nullable": true
+          },
+          "sYear": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sBy": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

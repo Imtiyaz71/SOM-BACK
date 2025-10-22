@@ -28,5 +28,16 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("dashrecsummary")]
+        [Authorize]
+        public async Task<IActionResult> GetReceiveSummary(int compId)
+        {
+            var mem = await _dashboardservice.GetReceiveDashboardSummaryAsync(compId);
+
+            if (mem == null)
+                return NotFound("No Data found.");
+
+            return Ok(mem);
+        }
     }
 }

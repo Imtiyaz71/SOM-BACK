@@ -16,6 +16,22 @@ namespace Som_Service.Service
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
+
+
+        public async Task<List<VW_BorrowerLoanInfo>> GetBorrowerLoanInfo(int compId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                var result = await connection.QueryAsync<VW_BorrowerLoanInfo>(
+                    "sp_GetBorrowerWithLoan",
+                    new { CompId = compId },
+                    commandType: CommandType.StoredProcedure
+                );
+                return result.ToList(); // convert IEnumerable to List
+            }
+        }
+
         public async Task<VM_LoanTypes> GetLoanTypeById(int id)
         {
             using var connection = new SqlConnection(_connectionString);
@@ -42,6 +58,112 @@ namespace Som_Service.Service
             return cr.ToList();
         }
 
+        public async Task<VW_Response> SaveLoanSension(VW_LoanSensionRequest model)
+        {
+            try
+            {
+                using var connection = new SqlConnection(_connectionString);
+                await connection.OpenAsync();
+
+                // -----------------------------
+                // 1️⃣ Handle Photo (Base64 → file)
+                // -----------------------------
+                string photoDbPath = null;
+
+                if (!string.IsNullOrEmpty(model.Photo))
+                {
+                    try
+                    {
+                        // Directory setup
+                        var uploadDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "borrowers");
+                        if (!Directory.Exists(uploadDir))
+                            Directory.CreateDirectory(uploadDir);
+
+                        // Base64 cleanup
+                        var base64Data = model.Photo.Contains(",") ? model.Photo.Split(',').Last() : model.Photo;
+                        byte[] photoBytes = Convert.FromBase64String(base64Data);
+
+                        // Unique file name
+                        var ext = ".jpg"; // default
+                        if (model.Photo.Contains("image/png")) ext = ".png";
+                        else if (model.Photo.Contains("image/jpeg")) ext = ".jpg";
+
+                        var fileName = $"photo_{DateTime.Now:yyyyMMddHHmmssfff}_{new Random().Next(1000, 9999)}{ext}";
+                        var fullPath = Path.Combine(uploadDir, fileName);
+
+                        // Save file
+                        await File.WriteAllBytesAsync(fullPath, photoBytes);
+
+                        // Relative path DB te rakhbo
+                        photoDbPath = Path.Combine("uploads", "borrowers", fileName).Replace("\\", "/");
+                    }
+                    catch (Exception ex)
+                    {
+                        return new VW_Response
+                        {
+                            StatusCode = 0,
+                            Message = "Photo processing failed: " + ex.Message
+                        };
+                    }
+                }
+
+                // -----------------------------
+                // 2️⃣ SP Parameters
+                // -----------------------------
+                var parameters = new DynamicParameters();
+                parameters.Add("@compId", model.CompId);
+                parameters.Add("@fullName", model.FullName);
+                parameters.Add("@phone", model.Phone);
+                parameters.Add("@email", model.Email);
+                parameters.Add("@bAddress", model.BAddress);
+                parameters.Add("@nId", model.NId);
+                parameters.Add("@dOB", model.DOB);
+                parameters.Add("@father", model.Father);
+                parameters.Add("@mother", model.Mother);
+                parameters.Add("@photo", photoDbPath); // relative path DB te
+                parameters.Add("@loanType", model.LoanType);
+                parameters.Add("@Amount", model.Amount);
+                parameters.Add("@sDate", model.SDate);
+                parameters.Add("@sMonth", model.SMonth);
+                parameters.Add("@sYear", model.SYear);
+                parameters.Add("@sBy", model.SBy);
+
+                // SQL Messages capture
+                string sqlMsg = null;
+                connection.InfoMessage += (sender, e) => { sqlMsg = e.Message; };
+
+                // Call SP
+                var newBrwId = await connection.QuerySingleAsync<int>(
+                    "sp_LoanSension",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return new VW_Response
+                {
+                    StatusCode = 1,
+                    Message = sqlMsg ?? $"Loan sension successful. New Borrower ID: {newBrwId}"
+                };
+            }
+            catch (SqlException ex)
+            {
+                return new VW_Response
+                {
+                    StatusCode = 0,
+                    Message = ex.Message
+                };
+            }
+            catch (Exception ex)
+            {
+                return new VW_Response
+                {
+                    StatusCode = 0,
+                    Message = $"Error: {ex.Message}"
+                };
+            }
+        }
+
+
         public async Task<string> SaveLoanType(LoanTypes k)
         {
             string result = "";
@@ -60,7 +182,8 @@ namespace Som_Service.Service
                         parameters.Add("@Interest", k.Interest);
                         parameters.Add("@TimePeriodMonths", k.TimePeriodMonths);
                         parameters.Add("@UpdateBy", k.UpdateBy);
-
+                        parameters.Add("@ActivityPeriod", k.ActivityPeriod);
+                        parameters.Add("@DelayInterest", k.DelayInterest);
                         await con.ExecuteAsync(
                             "sp_SaveLoanType",
                             parameters,
@@ -77,6 +200,8 @@ namespace Som_Service.Service
                         parameters.Add("@Interest", k.Interest);
                         parameters.Add("@TimePeriodMonths", k.TimePeriodMonths);
                         parameters.Add("@UpdateBy", k.UpdateBy);
+                        parameters.Add("@ActivityPeriod", k.ActivityPeriod);
+                        parameters.Add("@DelayInterest", k.DelayInterest);
 
                         await con.ExecuteAsync(
                             "sp_EditLoanType",
