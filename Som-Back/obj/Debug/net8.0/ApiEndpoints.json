@@ -617,6 +617,38 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.LoanCtrl",
+    "Method": "GetLoanPaidHistory",
+    "RelativePath": "api/LoanCtrl/loan-paid-history",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.LoanCtrl",
+    "Method": "GetLoanSensionDetails",
+    "RelativePath": "api/LoanCtrl/loanpaiddetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.LoanCtrl",
     "Method": "GetLoanType",
     "RelativePath": "api/LoanCtrl/loantype",
     "HttpMethod": "GET",
@@ -643,6 +675,22 @@
         "Name": "id",
         "Type": "System.Int32",
         "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.LoanCtrl",
+    "Method": "SaveLoanPaid",
+    "RelativePath": "api/LoanCtrl/save-loan-paid",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.LoanPaidHistory",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

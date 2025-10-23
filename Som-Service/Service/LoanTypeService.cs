@@ -32,6 +32,23 @@ namespace Som_Service.Service
             }
         }
 
+        public async Task<List<VW_LoanSensionViewModel>> GetLoanSensionDetails(int compId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+
+                // Stored Procedure call
+                var result = await connection.QueryAsync<VW_LoanSensionViewModel>(
+                    "sp_GetLoanSensionByCompId",
+                    new { CompId = compId },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.ToList();
+            }
+        }
+
         public async Task<VM_LoanTypes> GetLoanTypeById(int id)
         {
             using var connection = new SqlConnection(_connectionString);
@@ -56,6 +73,61 @@ namespace Som_Service.Service
             );
 
             return cr.ToList();
+        }
+
+        public async Task<List<VW_LoanPaidHistory>> LoanPaidHistory(int compId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+
+                var result = await connection.QueryAsync<VW_LoanPaidHistory>(
+                    "sp_GetLoanPaidHistory",
+                    new { CompId = compId },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.AsList();
+            }
+        }
+
+        public async Task<VW_Response> SaveLoanPaid(LoanPaidHistory model)
+        {
+            VW_Response response = new VW_Response();
+
+            try
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@compId", model.CompId, DbType.Int32);
+                    parameters.Add("@loanId", model.LoanId, DbType.Int32);
+                    parameters.Add("@paybleAmount", model.Payble, DbType.Decimal);
+                    parameters.Add("@paidAmount", model.PaidAmount, DbType.Decimal);
+                    parameters.Add("@principle", model.Principle, DbType.Decimal);
+                    parameters.Add("@interest", model.Interest, DbType.Decimal);
+                    parameters.Add("@pDate", model.PDate, DbType.String);
+                    parameters.Add("@pMonth", model.PMonth, DbType.String);
+                    parameters.Add("@pYear", model.PYear, DbType.Int32);
+                    parameters.Add("@pBy", model.pBy, DbType.String);
+
+                    await connection.ExecuteAsync(
+                        "sp_LoanPaid",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    response.StatusCode = 200;
+                    response.Message = "Loan payment saved successfully.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.StatusCode = 500;
+                response.Message = $"Error: {ex.Message}";
+            }
+
+            return response;
         }
 
         public async Task<VW_Response> SaveLoanSension(VW_LoanSensionRequest model)

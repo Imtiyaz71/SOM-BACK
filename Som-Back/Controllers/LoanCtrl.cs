@@ -86,5 +86,42 @@ namespace Som_Back.Controllers
             else
                 return BadRequest(response);
         }
+        [HttpGet("loanpaiddetails")]
+        public async Task<IActionResult> GetLoanSensionDetails(int compId)
+        {
+            try
+            {
+                var loanDetails = await _loanservice.GetLoanSensionDetails(compId);
+
+                if (loanDetails == null || !loanDetails.Any())
+                    return NotFound(new { message = "No loan data found for this company." });
+
+                return Ok(loanDetails);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred", error = ex.Message });
+            }
+        }
+        [HttpPost("save-loan-paid")]
+        [Authorize]
+        public async Task<IActionResult> SaveLoanPaid([FromBody] LoanPaidHistory model)
+        {
+            if (model == null)
+                return BadRequest(new VW_Response { StatusCode = 400, Message = "Invalid data." });
+
+            var result = await _loanservice.SaveLoanPaid(model);
+
+            if (result.StatusCode == 200)
+                return Ok(result);
+            else
+                return StatusCode(500, result);
+        }
+        [HttpGet("loan-paid-history")]
+        public async Task<IActionResult> GetLoanPaidHistory(int compId)
+        {
+            var data = await _loanservice.LoanPaidHistory(compId);
+            return Ok(data);
+        }
     }
 }

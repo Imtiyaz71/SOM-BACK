@@ -1067,6 +1067,81 @@
         }
       }
     },
+    "/api/LoanCtrl/loanpaiddetails": {
+      "get": {
+        "tags": [
+          "LoanCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/LoanCtrl/save-loan-paid": {
+      "post": {
+        "tags": [
+          "LoanCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoanPaidHistory"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoanPaidHistory"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LoanPaidHistory"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/LoanCtrl/loan-paid-history": {
+      "get": {
+        "tags": [
+          "LoanCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/Log/login": {
       "post": {
         "tags": [
@@ -2675,6 +2750,56 @@
           "projectid": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoanPaidHistory": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "loanId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "payble": {
+            "type": "number",
+            "format": "float"
+          },
+          "paidAmount": {
+            "type": "number",
+            "format": "float"
+          },
+          "principle": {
+            "type": "number",
+            "format": "float"
+          },
+          "interest": {
+            "type": "number",
+            "format": "float"
+          },
+          "pDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "pMonth": {
+            "type": "string",
+            "nullable": true
+          },
+          "pYear": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pBy": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false

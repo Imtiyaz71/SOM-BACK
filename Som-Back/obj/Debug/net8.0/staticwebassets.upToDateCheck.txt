@@ -1,1 +1,2 @@
 wwwroot\uploads\borrowers\photo_20251022141943492_3519.png
+wwwroot\uploads\borrowers\photo_20251022153522500_2344.png
