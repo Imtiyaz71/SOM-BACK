@@ -191,6 +191,19 @@ namespace Som_Service.Service
             return cr.ToList();
         }
 
+        public async Task<List<VM_kistiandSubs>> GetKistiReceiveById(int compId,int id)
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var cr = await connection.QueryAsync<VM_kistiandSubs>(
+                "sp_GetkistireceiveById",
+                new { compId = compId,id=id },
+                commandType: CommandType.StoredProcedure
+            );
+
+            return cr.ToList();
+        }
+
         public async Task<List<VW_MemberBalance>> GetMemberBalance(int compId)
         {
             using (IDbConnection db = new SqlConnection(_connectionString))
@@ -259,6 +272,58 @@ namespace Som_Service.Service
             return cr.ToList();
         }
 
+        public async Task<List<VW_RegularSubscription>> GetRegularSubscriptionReceiveById(int compId, int id)
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var cr = await connection.QueryAsync<VW_RegularSubscription>(
+                "sp_getregularsubsreceiveById",
+                new { compId = compId,id=id },
+                commandType: CommandType.StoredProcedure
+            );
+
+            return cr.ToList();
+        }
+
+        public async Task<List<VW_MonthlyExpense>> GetRevenue(int compId,int? year=null)
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var cr = await connection.QueryAsync<VW_MonthlyExpense>(
+                "SP_GetMonthlyRevenue_ByCompId",
+                new { compId = compId,year=year },
+                commandType: CommandType.StoredProcedure
+            );
+
+            return cr.ToList();
+        }
+
+        public async Task<List<VW_RevenueSummary>> GetRevenueSummary(int compId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    // Open connection
+                    await connection.OpenAsync();
+
+                    // Execute stored procedure
+                    var result = await connection.QueryAsync<VW_RevenueSummary>(
+                        "sp_GetRevenueSummary",                         // Stored Procedure Name
+                        new { compId = compId },                         // Input parameter
+                        commandType: CommandType.StoredProcedure);
+
+                    // Return result as list
+                    return result.ToList();
+                }
+                catch (Exception ex)
+                {
+                    // Log or handle as needed
+                    throw new Exception("Error fetching revenue summary: " + ex.Message, ex);
+                }
+            }
+        }
+
         public async Task<List<VW_SomityAccTransection>> GetSomityAccTransection(VW_AccDrCr model)
         {
             using (var conn = new SqlConnection(_connectionString))
@@ -286,6 +351,19 @@ namespace Som_Service.Service
             var cr = await connection.QueryAsync<VM_kistiandSubs>(
                 "sp_Getsubscriptionreceive",
                 new { compId = compId },
+                commandType: CommandType.StoredProcedure
+            );
+
+            return cr.ToList();
+        }
+
+        public async Task<List<VM_kistiandSubs>> GetSubscriptionReceiveById(int compId, int id)
+        {
+            using var connection = new SqlConnection(_connectionString);
+
+            var cr = await connection.QueryAsync<VM_kistiandSubs>(
+                "sp_GetsubscriptionreceiveById",
+                new { compId = compId,id=id },
                 commandType: CommandType.StoredProcedure
             );
 

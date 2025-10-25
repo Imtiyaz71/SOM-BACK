@@ -2,27 +2,38 @@
 {
     public class VW_LoanSensionViewModel
     {
-        public int Id { get; set; }
-        public string FullName { get; set; } = string.Empty;
-        public string Phone { get; set; } = string.Empty;
-        public string TypeName { get; set; } = string.Empty;
-        public int TimePeriodMonths { get; set; }
-        public int ActivityPeriod { get; set; }
-        public decimal Interest { get; set; }
+        public int LoanId { get; set; }
+        public string BorrowerName { get; set; }
+        public string Phone { get; set; }
+        public string LoanType { get; set; }
+
+        public int TotalMonths { get; set; }
+        public int ActiveMonths { get; set; }
+
+        public decimal InterestRate { get; set; }
         public decimal DelayInterestRate { get; set; }
+
         public decimal Principal { get; set; }
-        public DateTime SDate { get; set; }
-        public DateTime EndContractAt { get; set; }
-        public int MonthsPassed { get; set; }
-        public int ActiveMonthRunning { get; set; }
-        public int PaidMonths { get; set; }
-        public int RemainingMonth { get; set; }
-        public decimal MonthWiseInterest { get; set; }
-        public decimal MonthlyPrincipal { get; set; }
-        public decimal MonthlyPrinciplePayable { get; set; }
-        public decimal RunningInterestTotal { get; set; }
-        public decimal CalculatedDelayInterest { get; set; }
-        public decimal TotalPayable { get; set; }
+        public DateTime StartDate { get; set; }
         public int CompId { get; set; }
+
+        // Calculated / Derived Fields
+        public DateTime EndContractAt { get; set; }
+        public DateTime ActiveStartDate { get; set; }
+
+        public int PaidMonths { get; set; }
+        public int ActiveMonthRunning { get; set; }
+        public int RemainingMonths { get; set; }
+
+        public decimal MonthlyPrincipal { get; set; }
+        public decimal MonthlyInterest { get; set; }
+
+        public decimal AccruedInterest { get; set; }
+        public decimal DelayInterest { get; set; }
+        public decimal TotalInterestTillNow { get; set; }
+
+        public decimal TotalPaidAmount { get; set; }
+        public decimal TotalPayableAmount { get; set; }
+        public decimal RemainingPayable { get; set; }
     }
 }

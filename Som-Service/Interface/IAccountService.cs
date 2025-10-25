@@ -6,8 +6,11 @@ namespace Som_Service.Interface
     public interface IAccountService
     {
         public Task<List<VM_kistiandSubs>> GetKistiReceive(int compId);
+        public Task<List<VM_kistiandSubs>> GetKistiReceiveById(int compId,int id);
         public Task<List<VM_kistiandSubs>> GetSubscriptionReceive(int compId);
+        public Task<List<VM_kistiandSubs>> GetSubscriptionReceiveById(int compId,int id);
         public Task<List<VW_RegularSubscription>> GetRegularSubscriptionReceive(int compId);
+        public Task<List<VW_RegularSubscription>> GetRegularSubscriptionReceiveById(int compId,int id);
         public Task<List<SomityAccounts>> GetAccountBalance(int compId);
         public Task<List<Vendor>> GetVendor();
         public Task<List<VW_BalanceSegment>> GetBalanceSegment(int compId);
@@ -26,5 +29,7 @@ namespace Som_Service.Interface
         public Task<string> AddBalanceWithdraw(BalanceWithdraw model);
         public Task<string> BounceBalanceWithdraw(VWBounceBalanceWithdrwal model);
         public Task<VW_Response> SaveRepay(RePay model);
+        public Task<List<VW_MonthlyExpense>> GetRevenue(int compId,int? year=null);
+        public Task<List<VW_RevenueSummary>> GetRevenueSummary(int compId);
     }
 }

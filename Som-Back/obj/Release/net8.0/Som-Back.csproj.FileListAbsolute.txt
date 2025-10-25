@@ -99,3 +99,4 @@ E:\My Projects\Som-Back\Som-Back\obj\Release\net8.0\refint\Som-Back.dll
 E:\My Projects\Som-Back\Som-Back\obj\Release\net8.0\Som-Back.pdb
 E:\My Projects\Som-Back\Som-Back\obj\Release\net8.0\Som-Back.genruntimeconfig.cache
 E:\My Projects\Som-Back\Som-Back\obj\Release\net8.0\ref\Som-Back.dll
+E:\My Projects\Som-Back\Som-Back\bin\Release\net8.0\Som-Back.staticwebassets.runtime.json

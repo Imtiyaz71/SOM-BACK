@@ -15,6 +15,7 @@
 
         // Loan info (nullable because LEFT JOIN)
         public int? LoanType { get; set; }
+        public string? LoanTypeName { get; set; }
         public double? Amount { get; set; }
         public string SDate { get; set; }
         public string SMonth { get; set; }

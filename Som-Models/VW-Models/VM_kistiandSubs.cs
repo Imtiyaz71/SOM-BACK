@@ -8,6 +8,8 @@
         public int memNo { get; set; }
         public string GivenName { get; set; }
         public string SureName { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
         public double PaybleAmount { get; set; }
         public double RecAmount { get; set; }
         public double Due { get; set; }

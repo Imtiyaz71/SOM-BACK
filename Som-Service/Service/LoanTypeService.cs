@@ -32,6 +32,20 @@ namespace Som_Service.Service
             }
         }
 
+        public async Task<List<VW_BorrowerLoanInfo>> GetBorrowerLoanInfoByBrwId(int compId, int brwId)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+                var result = await connection.QueryAsync<VW_BorrowerLoanInfo>(
+                    "sp_GetBorrowerWithLoanByBrwId",
+                    new { CompId = compId, brwId= brwId },
+                    commandType: CommandType.StoredProcedure
+                );
+                return result.ToList(); // convert IEnumerable to List
+            }
+        }
+
         public async Task<List<VW_LoanSensionViewModel>> GetLoanSensionDetails(int compId)
         {
             using (var connection = new SqlConnection(_connectionString))
@@ -84,6 +98,22 @@ namespace Som_Service.Service
                 var result = await connection.QueryAsync<VW_LoanPaidHistory>(
                     "sp_GetLoanPaidHistory",
                     new { CompId = compId },
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.AsList();
+            }
+        }
+
+        public async Task<List<VW_LoanPaidHistory>> LoanPaidHistoryByLoanId(int compId, int loanid)
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                await connection.OpenAsync();
+
+                var result = await connection.QueryAsync<VW_LoanPaidHistory>(
+                    "sp_GetLoanPaidHistoryByLoanId",
+                    new { CompId = compId,loanid=loanid },
                     commandType: CommandType.StoredProcedure
                 );
 
@@ -147,7 +177,8 @@ namespace Som_Service.Service
                     try
                     {
                         // Directory setup
-                        var uploadDir = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "uploads", "borrowers");
+                
+                        var uploadDir = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
                         if (!Directory.Exists(uploadDir))
                             Directory.CreateDirectory(uploadDir);
 
@@ -167,7 +198,7 @@ namespace Som_Service.Service
                         await File.WriteAllBytesAsync(fullPath, photoBytes);
 
                         // Relative path DB te rakhbo
-                        photoDbPath = Path.Combine("uploads", "borrowers", fileName).Replace("\\", "/");
+                        photoDbPath = Path.Combine("Uploads", fileName).Replace("\\", "/");
                     }
                     catch (Exception ex)
                     {

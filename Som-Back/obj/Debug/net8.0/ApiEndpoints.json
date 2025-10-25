@@ -113,6 +113,27 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetRevenue",
+    "RelativePath": "api/AccountCtrl/getrevenue",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "year",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=8.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "GetSomityTransection",
     "RelativePath": "api/AccountCtrl/getsomityacctransection",
     "HttpMethod": "POST",
@@ -177,6 +198,27 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetKistiReceiveById",
+    "RelativePath": "api/AccountCtrl/kistireceivebyid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "GetProjectAccountByMemberAndProject",
     "RelativePath": "api/AccountCtrl/memberprojectaccount",
     "HttpMethod": "GET",
@@ -219,6 +261,27 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetRegularSerbscriptionRec",
+    "RelativePath": "api/AccountCtrl/regularsubscriptionreceivebyid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
     "Method": "RePay",
     "RelativePath": "api/AccountCtrl/repay-balance",
     "HttpMethod": "POST",
@@ -229,6 +292,22 @@
         "Name": "model",
         "Type": "Som_Models.Models.RePay",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetRevenueSummary",
+    "RelativePath": "api/AccountCtrl/revenuesummary",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -323,6 +402,27 @@
     "Parameters": [
       {
         "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AccountCtrl",
+    "Method": "GetSubscriptionReceiveById",
+    "RelativePath": "api/AccountCtrl/subscriptionreceivebyid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -617,6 +717,48 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.LoanCtrl",
+    "Method": "GetLoanBorrowerById",
+    "RelativePath": "api/LoanCtrl/borrowerloanById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "brwId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.LoanCtrl",
+    "Method": "GetUserPhoto",
+    "RelativePath": "api/LoanCtrl/borrowerphoto",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "brwId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.LoanCtrl",
     "Method": "GetLoanPaidHistory",
     "RelativePath": "api/LoanCtrl/loan-paid-history",
     "HttpMethod": "GET",
@@ -625,6 +767,27 @@
     "Parameters": [
       {
         "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.LoanCtrl",
+    "Method": "GetLoanPaidHistoryByLoanId",
+    "RelativePath": "api/LoanCtrl/loan-paid-history-loanid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "loanid",
         "Type": "System.Int32",
         "IsRequired": false
       }

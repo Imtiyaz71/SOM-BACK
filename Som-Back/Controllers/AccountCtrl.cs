@@ -28,6 +28,34 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("getrevenue")]
+        [Authorize]
+        public async Task<IActionResult> GetRevenue(int compId,int? year=null)
+        {
+            var mem = await _accountservice.GetRevenue(compId,year);
+
+            if (mem == null)
+                return NotFound("No Data found.");
+
+            return Ok(mem);
+        }
+        [HttpGet("revenuesummary")]
+        public async Task<IActionResult> GetRevenueSummary(int compId)
+        {
+            try
+            {
+                var result = await _accountservice.GetRevenueSummary(compId);
+
+                if (result == null || result.Count == 0)
+                    return NotFound(new { message = "No revenue data found for this company." });
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "An error occurred while fetching data.", error = ex.Message });
+            }
+        }
         [HttpGet("accountbalance")]
         [Authorize]
         public async Task<IActionResult> GetAccountBalance(int compId)
@@ -72,11 +100,33 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("kistireceivebyid")]
+        [Authorize]
+        public async Task<IActionResult> GetKistiReceiveById(int compId,int id)
+        {
+            var mem = await _accountservice.GetKistiReceiveById(compId,id);
+
+            if (mem == null)
+                return NotFound("No Kisti Type found.");
+
+            return Ok(mem);
+        }
         [HttpGet("subscriptionreceive")]
         [Authorize]
         public async Task<IActionResult> GetSubscriptionReceive(int compId)
         {
             var mem = await _accountservice.GetSubscriptionReceive(compId);
+
+            if (mem == null)
+                return NotFound("No Kisti Type found.");
+
+            return Ok(mem);
+        }
+        [HttpGet("subscriptionreceivebyid")]
+        [Authorize]
+        public async Task<IActionResult> GetSubscriptionReceiveById(int compId,int id)
+        {
+            var mem = await _accountservice.GetSubscriptionReceiveById(compId,id);
 
             if (mem == null)
                 return NotFound("No Kisti Type found.");
@@ -90,7 +140,18 @@ namespace Som_Back.Controllers
             var mem = await _accountservice.GetRegularSubscriptionReceive(compId);
 
             if (mem == null)
-                return NotFound("No Kisti Type found.");
+                return NotFound("No Subscription Type found.");
+
+            return Ok(mem);
+        }
+        [HttpGet("regularsubscriptionreceivebyid")]
+        [Authorize]
+        public async Task<IActionResult> GetRegularSerbscriptionRec(int compId,int id)
+        {
+            var mem = await _accountservice.GetRegularSubscriptionReceiveById(compId,id);
+
+            if (mem == null)
+                return NotFound("No Subscription Type found.");
 
             return Ok(mem);
         }

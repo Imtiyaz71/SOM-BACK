@@ -4,6 +4,7 @@
     {
         public int Id { get; set; }
         public int LoanId { get; set; }
+        public string typeName { get; set; }
         public decimal Payble { get; set; }
         public decimal PaidAmount { get; set; }
         public decimal Interest { get; set; }

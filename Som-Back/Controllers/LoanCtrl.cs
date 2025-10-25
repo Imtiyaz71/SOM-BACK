@@ -12,10 +12,11 @@ namespace Som_Back.Controllers
     public class LoanCtrl : ControllerBase
     {
         private readonly ILoanTypes _loanservice;
-
-        public LoanCtrl(ILoanTypes loanservice)
+        private readonly IWebHostEnvironment _env;
+        public LoanCtrl(ILoanTypes loanservice, IWebHostEnvironment env)
         {
             _loanservice = loanservice;
+            _env = env;
         }
         [HttpGet("loantype")]
         [Authorize]
@@ -72,6 +73,20 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpGet("borrowerloanById")]
+        [Authorize]
+        public async Task<IActionResult> GetLoanBorrowerById([FromQuery] int compId,int brwId)
+        {
+            if (compId <= 0)
+                return BadRequest("Invalid Company Id.");
+
+            var mem = await _loanservice.GetBorrowerLoanInfoByBrwId(compId,brwId);
+
+            if (mem == null || !mem.Any())
+                return NotFound("No Loan  found.");
+
+            return Ok(mem);
+        }
         [HttpPost("SaveLoanSension")]
         [Authorize]
         public async Task<IActionResult> SaveLoanSension([FromBody] VW_LoanSensionRequest model)
@@ -118,10 +133,52 @@ namespace Som_Back.Controllers
                 return StatusCode(500, result);
         }
         [HttpGet("loan-paid-history")]
+        [Authorize]
         public async Task<IActionResult> GetLoanPaidHistory(int compId)
         {
             var data = await _loanservice.LoanPaidHistory(compId);
             return Ok(data);
+        }
+        [HttpGet("loan-paid-history-loanid")]
+        [Authorize]
+        public async Task<IActionResult> GetLoanPaidHistoryByLoanId(int compId,int loanid)
+        {
+            var data = await _loanservice.LoanPaidHistoryByLoanId(compId,loanid);
+            return Ok(data);
+        }
+        [HttpGet("borrowerphoto")]
+        [Authorize]
+        public async Task<IActionResult> GetUserPhoto(int compId, int brwId)
+        {
+            var users = await _loanservice.GetBorrowerLoanInfoByBrwId(compId, brwId);
+            if (users == null || users.Count == 0)
+                return NotFound();
+
+            var user = users[0]; // প্রথম borrower
+            string relativePath = user.Photo;
+
+            // শুধু filename extract করো (security reason)
+            var fileName = Path.GetFileName(relativePath);
+
+            // root path + Uploads folder
+            var uploadsPath = Path.Combine(_env.ContentRootPath, "Uploads", fileName);
+
+            if (!System.IO.File.Exists(uploadsPath))
+                return NotFound();
+
+            // Detect MIME type
+            var ext = Path.GetExtension(fileName).ToLower();
+            string mime = ext switch
+            {
+                ".jpg" or ".jpeg" => "image/jpeg",
+                ".png" => "image/png",
+                ".gif" => "image/gif",
+                ".bmp" => "image/bmp",
+                _ => "application/octet-stream"
+            };
+
+            var fileBytes = await System.IO.File.ReadAllBytesAsync(uploadsPath);
+            return File(fileBytes, mime);
         }
     }
 }

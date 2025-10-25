@@ -17,6 +17,58 @@
         }
       }
     },
+    "/api/AccountCtrl/getrevenue": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "year",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AccountCtrl/revenuesummary": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AccountCtrl/accountbalance": {
       "get": {
         "tags": [
@@ -105,6 +157,36 @@
         }
       }
     },
+    "/api/AccountCtrl/kistireceivebyid": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AccountCtrl/subscriptionreceive": {
       "get": {
         "tags": [
@@ -127,6 +209,36 @@
         }
       }
     },
+    "/api/AccountCtrl/subscriptionreceivebyid": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AccountCtrl/regularsubscriptionreceive": {
       "get": {
         "tags": [
@@ -135,6 +247,36 @@
         "parameters": [
           {
             "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AccountCtrl/regularsubscriptionreceivebyid": {
+      "get": {
+        "tags": [
+          "AccountCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "id",
             "in": "query",
             "schema": {
               "type": "integer",
@@ -1036,6 +1178,36 @@
         }
       }
     },
+    "/api/LoanCtrl/borrowerloanById": {
+      "get": {
+        "tags": [
+          "LoanCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "brwId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/LoanCtrl/SaveLoanSension": {
       "post": {
         "tags": [
@@ -1128,6 +1300,66 @@
         "parameters": [
           {
             "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/LoanCtrl/loan-paid-history-loanid": {
+      "get": {
+        "tags": [
+          "LoanCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "loanid",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/LoanCtrl/borrowerphoto": {
+      "get": {
+        "tags": [
+          "LoanCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "brwId",
             "in": "query",
             "schema": {
               "type": "integer",
