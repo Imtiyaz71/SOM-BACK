@@ -440,6 +440,117 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Som_Back.Controllers.AdvisoryCtrl",
+    "Method": "AddAdvisory",
+    "RelativePath": "api/AdvisoryCtrl/add-advisory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.Advisory",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AdvisoryCtrl",
+    "Method": "AddAdvisoryRole",
+    "RelativePath": "api/AdvisoryCtrl/add-advisory-role",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.AdvisoryRole",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AdvisoryCtrl",
+    "Method": "DeactiveAdvisory",
+    "RelativePath": "api/AdvisoryCtrl/deactiveadvisory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AdvisoryCtrl",
+    "Method": "DeleteAdvisoryRole",
+    "RelativePath": "api/AdvisoryCtrl/delete-advisory-role",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AdvisoryCtrl",
+    "Method": "GetAdvisoryList",
+    "RelativePath": "api/AdvisoryCtrl/get-advisory-list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "cStatus",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AdvisoryCtrl",
+    "Method": "GetAdvisoryRole",
+    "RelativePath": "api/AdvisoryCtrl/get-advisory-role",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Som_Back.Controllers.DashboardCtrl",
     "Method": "GetAccountBalance",
     "RelativePath": "api/DashboardCtrl/dashcount",
@@ -934,6 +1045,59 @@
         "Name": "model",
         "Type": "Som_Models.Models.Login",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MeetingCtrl",
+    "Method": "AddMeeting",
+    "RelativePath": "api/MeetingCtrl/add-meeting",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.Meeting",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MeetingCtrl",
+    "Method": "GetMeeting",
+    "RelativePath": "api/MeetingCtrl/get-meeting",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.MeetingCtrl",
+    "Method": "GetMeetingById",
+    "RelativePath": "api/MeetingCtrl/get-meeting-id",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
