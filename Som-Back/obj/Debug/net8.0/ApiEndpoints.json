@@ -1344,12 +1344,76 @@
   },
   {
     "ContainingType": "MenuController",
+    "Method": "GetChildMenusByRole",
+    "RelativePath": "api/Menu/get-child-menus-byrole",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "parentId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "roleName",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MenuController",
     "Method": "GetParentMenu",
     "RelativePath": "api/Menu/parentmenu",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MenuController",
+    "Method": "SaveEligibility",
+    "RelativePath": "api/Menu/save-menu-eligibility",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.EligMenu",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MenuController",
+    "Method": "SaveModule",
+    "RelativePath": "api/Menu/save-module",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.CompanyModule",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
