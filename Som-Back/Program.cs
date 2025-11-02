@@ -74,6 +74,7 @@ builder.Services.AddScoped<IStaffService, StaffService>();
 builder.Services.AddScoped<IDashboardService, DashboardService>();
 builder.Services.AddScoped<IAdvisoryService, AdvisoryService>();
 builder.Services.AddScoped<IMeetingService, MeetingService>();
+builder.Services.AddScoped<IAdminPanel, AdminPanelService>();
 builder.Services.AddControllers();
 
 // Swagger configuration with JWT support

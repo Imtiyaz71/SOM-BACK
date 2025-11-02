@@ -35,7 +35,7 @@ namespace Som_Back.Controllers
 
             return Ok(new { info });
         }
-
+        [Authorize]
         [HttpPost("companyadd")]
         public async Task<IActionResult> Addcompany([FromBody] CompanyInfo model)
         {
@@ -45,5 +45,16 @@ namespace Som_Back.Controllers
 
             return Ok(new { res });
         }
+        [Authorize]
+        [HttpGet("allcominfo")]
+        public async Task<IActionResult> AllCompanyInfo()
+        {
+            var info = await _authService.GetAllCompanyInfo();
+            if (info == null)
+                return Unauthorized("Invalid credentials");
+
+            return Ok(new { info });
+        }
+      
     }
 }

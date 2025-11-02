@@ -14,14 +14,26 @@ public class MenuService : IMenuService
     {
         _connectionString = configuration.GetConnectionString("DefaultConnection");
     }
-
-    public async Task<List<Menu>> GetMenusByRoleAsync(string roleName)
+    public async Task<List<ParentMenu>> GetModule()
     {
         using var connection = new SqlConnection(_connectionString);
 
-        var menus = await connection.QueryAsync<Menu>(
+        var menus = await connection.QueryAsync<ParentMenu>(
+            "sp_getModule",
+            param: null,
+            commandType: CommandType.StoredProcedure
+        );
+
+        return menus.AsList();
+    }
+
+    public async Task<List<ChildMenu>> GetMenusByParent(int parentid)
+    {
+        using var connection = new SqlConnection(_connectionString);
+
+        var menus = await connection.QueryAsync<ChildMenu>(
             "sp_childmenu",                     // Stored procedure name
-            new { role = roleName },            // Parameter object (name must match SP param)
+            new { parentid = parentid },            // Parameter object (name must match SP param)
             commandType: CommandType.StoredProcedure
         );
 
@@ -54,6 +66,8 @@ public class MenuService : IMenuService
             return new List<ChildMenu>(); // return empty list on error
         }
     }
+
+
 
     public async Task<List<ParentMenu>> GetParentMenu(int compId)
     {
@@ -113,22 +127,64 @@ public class MenuService : IMenuService
                 param.Add("@compId", model.CompId);
                 param.Add("@ParentMenuId", model.ParentMenuId);
 
-                var newId = await conn.QuerySingleAsync<int>(
+                // SP returns InsertedId + Message
+                var dbResult = await conn.QuerySingleAsync<VW_Response>(
                     "sp_InsertCompanyModule",
                     param,
                     commandType: CommandType.StoredProcedure
                 );
 
-                res.StatusCode = 200; // success
-                res.Message = "Company module saved successfully. New ID: " + newId;
+                if (dbResult.Message.Contains("Duplicate"))
+                {
+                    res.StatusCode = 409; // Conflict
+                    res.Message = dbResult.Message;
+                }
+                else
+                {
+                    res.StatusCode = 200; // Success
+                    res.Message = dbResult.Message;
+                }
             }
         }
         catch (Exception ex)
         {
-            res.StatusCode = 500; // server error
+            res.StatusCode = 500;
             res.Message = "Error while saving company module: " + ex.Message;
         }
 
         return res;
     }
+
+    public async Task<VW_Response> SaveCompanyMenuEligibilityMultiple(int compId, int roleId, List<int> menuIds)
+    {
+        VW_Response res = new VW_Response();
+
+        try
+        {
+            using (var conn = new SqlConnection(_connectionString))
+            {
+                var parameters = new DynamicParameters();
+                parameters.Add("@compId", compId);
+                parameters.Add("@roleId", roleId);
+                parameters.Add("@menuIds", string.Join(',', menuIds));
+
+                await conn.ExecuteAsync(
+                    "sp_InsertEligMenuMultiple",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                res.StatusCode = 200;
+                res.Message = "Eligibility saved successfully for " + menuIds.Count + " menu(s).";
+            }
+        }
+        catch (Exception ex)
+        {
+            res.StatusCode = 500;
+            res.Message = "Error while saving eligibility: " + ex.Message;
+        }
+
+        return res;
+    }
+
 }

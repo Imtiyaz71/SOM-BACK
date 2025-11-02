@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Som_Models.Models;
 using Som_Models.VW_Models;
 using Som_Service.Interface;
+using Som_Service.Service;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -27,9 +28,9 @@ public class MenuController : ControllerBase
     }
     [HttpGet("childmenu")]
     [Authorize]  // Require login for menu fetching (optional)
-    public async Task<IActionResult> GetChildMenus(string roleName)
+    public async Task<IActionResult> GetChildMenus(int parentid)
     {
-        var menus = await _menuService.GetMenusByRoleAsync(roleName);
+        var menus = await _menuService.GetMenusByParent(parentid);
 
         if (menus == null || menus.Count == 0)
             return NotFound("No menus found for this role.");
@@ -51,8 +52,15 @@ public class MenuController : ControllerBase
 
         var result = await _menuService.SaveCompanyModule(model);
 
-        return StatusCode(result.StatusCode, result);
+        // Map SP result to proper HTTP response
+        return result.StatusCode switch
+        {
+            200 => Ok(result),         // Inserted successfully
+            409 => Conflict(result),   // Duplicate
+            _ => StatusCode(500, result) // Server error
+        };
     }
+
     [HttpPost("save-menu-eligibility")]
     [Authorize]
     public async Task<IActionResult> SaveEligibility([FromBody] EligMenu model)
@@ -70,7 +78,29 @@ public class MenuController : ControllerBase
 
         return StatusCode(result.StatusCode, result);
     }
-    [HttpGet("get-child-menus-byrole")]
+    [HttpPost("save-menu-eligibility-request")]
+    [Authorize]
+    public async Task<IActionResult> SaveEligibility([FromBody] SaveMenuEligibilityRequest model)
+    {
+        if (model == null || model.MenuIds == null || model.MenuIds.Count == 0)
+        {
+            return BadRequest(new VW_Response
+            {
+                StatusCode = 400,
+                Message = "Invalid Request! No menu selected."
+            });
+        }
+
+        var result = await _menuService.SaveCompanyMenuEligibilityMultiple(
+            model.CompId,
+            model.RoleId,
+            model.MenuIds
+        );
+
+        return StatusCode(result.StatusCode, result);
+    }
+
+[HttpGet("get-child-menus-byrole")]
     [Authorize]
     public async Task<IActionResult> GetChildMenusByRole(int compId, int parentId, string roleName)
     {
@@ -87,5 +117,15 @@ public class MenuController : ControllerBase
         }
 
         return Ok(menus);
+    }
+    [Authorize]
+    [HttpGet("modules")]
+    public async Task<IActionResult> GetModule()
+    {
+        var info = await _menuService.GetModule();
+        if (info == null)
+            return Unauthorized("Invalid credentials");
+
+        return Ok(new { info });
     }
 }

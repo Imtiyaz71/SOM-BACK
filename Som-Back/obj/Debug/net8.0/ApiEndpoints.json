@@ -440,6 +440,74 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Som_Back.Controllers.AdminPanelCtrl",
+    "Method": "Login",
+    "RelativePath": "api/AdminPanelCtrl/admin-login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.AdminPanel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AdminPanelCtrl",
+    "Method": "DeleteModule",
+    "RelativePath": "api/AdminPanelCtrl/delete-company-module",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AdminPanelCtrl",
+    "Method": "GetComapnyMenu",
+    "RelativePath": "api/AdminPanelCtrl/getcompanymenu",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AdminPanelCtrl",
+    "Method": "GetComapnyMenuById",
+    "RelativePath": "api/AdminPanelCtrl/getcompanymenubyid",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AdminPanelCtrl",
+    "Method": "GetComapnyModule",
+    "RelativePath": "api/AdminPanelCtrl/getcompanymodule",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Som_Back.Controllers.AdvisoryCtrl",
     "Method": "AddAdvisory",
     "RelativePath": "api/AdvisoryCtrl/add-advisory",
@@ -1003,6 +1071,16 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.LogController",
+    "Method": "AllCompanyInfo",
+    "RelativePath": "api/Log/allcominfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.LogController",
     "Method": "CompanyInfo",
     "RelativePath": "api/Log/cominfo",
     "HttpMethod": "GET",
@@ -1335,8 +1413,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "roleName",
-        "Type": "System.String",
+        "Name": "parentid",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],
@@ -1370,6 +1448,16 @@
   },
   {
     "ContainingType": "MenuController",
+    "Method": "GetModule",
+    "RelativePath": "api/Menu/modules",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MenuController",
     "Method": "GetParentMenu",
     "RelativePath": "api/Menu/parentmenu",
     "HttpMethod": "GET",
@@ -1395,6 +1483,22 @@
       {
         "Name": "model",
         "Type": "Som_Models.Models.EligMenu",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MenuController",
+    "Method": "SaveEligibility",
+    "RelativePath": "api/Menu/save-menu-eligibility-request",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.VW_Models.SaveMenuEligibilityRequest",
         "IsRequired": true
       }
     ],
