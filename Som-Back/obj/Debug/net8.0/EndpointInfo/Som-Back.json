@@ -786,6 +786,49 @@
         }
       }
     },
+    "/api/AdminPanelCtrl/edit-client-status": {
+      "put": {
+        "tags": [
+          "AdminPanelCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientStatus"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientStatus"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ClientStatus"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/AdminPanelCtrl/get-client-status": {
+      "get": {
+        "tags": [
+          "AdminPanelCtrl"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/AdvisoryCtrl/get-advisory-role": {
       "get": {
         "tags": [
@@ -3438,6 +3481,34 @@
           "wBy": {
             "type": "string",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ClientStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "clientId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "eDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "cStatus": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false

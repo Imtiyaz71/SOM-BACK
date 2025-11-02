@@ -473,6 +473,32 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.AdminPanelCtrl",
+    "Method": "EditClientStatus",
+    "RelativePath": "api/AdminPanelCtrl/edit-client-status",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.ClientStatus",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AdminPanelCtrl",
+    "Method": "GetClientStatus",
+    "RelativePath": "api/AdminPanelCtrl/get-client-status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.AdminPanelCtrl",
     "Method": "GetComapnyMenu",
     "RelativePath": "api/AdminPanelCtrl/getcompanymenu",
     "HttpMethod": "GET",

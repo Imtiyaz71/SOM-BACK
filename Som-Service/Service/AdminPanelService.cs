@@ -58,6 +58,52 @@ namespace Som_Service.Service
             return res;
         }
 
+        public async Task<VW_Response> EditClientStatus(ClientStatus model)
+        {
+            try
+            {
+                using (var connection = new SqlConnection(_connectionString))
+                {
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@Id", model.Id, DbType.Int32);
+                    parameters.Add("@PDate", model.PDate, DbType.Date);
+                    parameters.Add("@EDate", model.EDate, DbType.Date);
+
+                    int rowsAffected = await connection.ExecuteAsync(
+                        "sp_UpdateClientStatus",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    return new VW_Response
+                    {
+                        StatusCode = rowsAffected > 0 ? 1 : 0,
+                        Message = rowsAffected > 0 ? "ClientStatus updated successfully." : "No record found with given Id."
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                return new VW_Response
+                {
+                    StatusCode = 0,
+                    Message = $"Error: {ex.Message}"
+                };
+            }
+        }
+
+        public async Task<List<VW_ClientStatus>> GetClientStatus()
+        {
+            using (var connection = new SqlConnection(_connectionString))
+            {
+                var result = await connection.QueryAsync<VW_ClientStatus>(
+                    "sp_GetClientStatusWithCompany",
+                    commandType: CommandType.StoredProcedure
+                );
+                return result.ToList();
+            }
+        }
+
         public async Task<List<VW_ShowCompanyMenu>> GetCompanyMenu()
         {
             var result = new List<VW_ShowCompanyMenu>();

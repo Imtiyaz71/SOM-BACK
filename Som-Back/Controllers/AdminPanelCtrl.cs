@@ -91,5 +91,36 @@ namespace Som_Back.Controllers
 
             return Ok(mem);
         }
+        [HttpPut("edit-client-status")]
+        [Authorize]
+        public async Task<IActionResult> EditClientStatus([FromBody] ClientStatus model)
+        {
+            if (model == null || model.Id <= 0)
+            {
+                return BadRequest(new VW_Response
+                {
+                    StatusCode = 0,
+                    Message = "Invalid ClientStatus data."
+                });
+            }
+
+            var response = await _adminpanelservice.EditClientStatus(model);
+
+            if (response.StatusCode == 1)
+                return Ok(response);
+            else
+                return NotFound(response);
+        }
+        [HttpGet("get-client-status")]
+        [Authorize]
+        public async Task<IActionResult> GetClientStatus()
+        {
+            var mem = await _adminpanelservice.GetClientStatus();
+
+            if (mem == null)
+                return NotFound("No Data found.");
+
+            return Ok(mem);
+        }
     }
 }
