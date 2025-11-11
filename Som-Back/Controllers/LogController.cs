@@ -16,15 +16,50 @@ namespace Som_Back.Controllers
             _authService = authService;
         }
 
+        //[HttpPost("login")]
+        //public async Task<IActionResult> Login([FromBody] Login model)
+        //{
+        //    var token = await _authService.LoginAsync(model);
+        //    if (token == null)
+        //        return Unauthorized("Invalid credentials");
+
+        //    return Ok(new { token });
+        //}
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] Login model)
         {
-            var token = await _authService.LoginAsync(model);
-            if (token == null)
-                return Unauthorized("Invalid credentials");
+            var response = await _authService.LoginAsync(model);
 
-            return Ok(new { token });
+            // 1️⃣ Null check
+            if (response == null)
+                return Unauthorized(new { message = "Invalid credentials" });
+
+            // 2️⃣ Expired subscription check
+            if (!string.IsNullOrEmpty(response.Message) &&
+                response.Message.Contains("expired", StringComparison.OrdinalIgnoreCase))
+            {
+                return Unauthorized(new { message = response.Message });
+            }
+
+            // 3️⃣ Invalid login check (no token)
+            if (string.IsNullOrEmpty(response.Token))
+            {
+                return Unauthorized(new { message = response.Message ?? "Invalid login attempt" });
+            }
+
+            // 4️⃣ Success response
+            return Ok(new
+            {
+                token = response.Token,
+                role = response.Role,
+                fullname = response.Fullname,
+                username = response.Username,
+                cname = response.cName,
+                cid = response.cId,
+                message = response.Message
+            });
         }
+
         [Authorize]
         [HttpGet("cominfo")]
         public async Task<IActionResult> CompanyInfo(int cid)

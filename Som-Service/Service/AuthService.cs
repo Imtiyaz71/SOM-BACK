@@ -38,67 +38,117 @@ namespace Som_Service.Service
             return builder.ToString();
         }
 
-        public async Task<LoginResponse> LoginAsync(Login model)
+      public async Task<LoginResponse> LoginAsync(Login model)
+{
+    try
+    {
+        // 🔹 Hash password
+        var passwordHash = ComputeSha256Hash(model.password);
+
+        using var connection = new SqlConnection(_connectionString);
+
+        // 🔹 Step 1: Login check
+        var count = await connection.ExecuteScalarAsync<int>(
+            "sp_Logsys",
+            new { username = model.username, passwordHash = passwordHash },
+            commandType: CommandType.StoredProcedure);
+
+        if (count == 0)
         {
-            var passwordHash = ComputeSha256Hash(model.password);
-
-            using var connection = new SqlConnection(_connectionString);
-
-            // 1. Login check
-            var count = await connection.ExecuteScalarAsync<int>(
-                "sp_Logsys",
-                new { username = model.username, passwordHash = passwordHash },
-                commandType: CommandType.StoredProcedure);
-
-            if (count == 0)
-                return null;
-
-            // 2. Role fetch
-     
-            var userInfo = await connection.QueryFirstOrDefaultAsync<LoginResponse>(
-              "sp_roleck",
-              new { username = model.username },
-              commandType: CommandType.StoredProcedure
-          );
-
-            var role = userInfo?.Role ?? "User";
-        
-            var fullname = userInfo?.Fullname ?? "Unknown";
-  
-            var username = userInfo?.Username ?? "Unknown";
-            var cname = userInfo?.cName ?? "Unknown";
-            var cid = Convert.ToInt32(userInfo?.cId ?? 0);
-            // 3. JWT Token generate
-            var claims = new[]
-            {
-        new Claim(ClaimTypes.Role, role)
-    
-
-    };
-
-            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
-            var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
-            var token = new JwtSecurityToken(
-                issuer: _configuration["Jwt:Issuer"],
-                audience: _configuration["Jwt:Audience"],
-                claims: claims,
-                expires: DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["Jwt:ExpireMinutes"])),
-                signingCredentials: creds);
-
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
-
-            // 4. Return token + role
             return new LoginResponse
             {
-                Token = tokenString,
-                Role = role,
-                Fullname=fullname,
-                Username=username,
-                cName=cname,
-                cId=cid
+                Token = null,
+                Role = null,
+                Message = "Invalid username or password"
             };
         }
+
+        // 🔹 Step 2: Role fetch
+        var userInfo = await connection.QueryFirstOrDefaultAsync<LoginResponse>(
+            "sp_roleck",
+            new { username = model.username },
+            commandType: CommandType.StoredProcedure
+        );
+
+        if (userInfo == null)
+        {
+            return new LoginResponse
+            {
+                Token = null,
+                Role = null,
+                Message = "User information not found"
+            };
+        }
+
+        int cid = Convert.ToInt32(userInfo.cId);
+
+        // 🔹 Step 3: Check client status
+        var status = await connection.QueryFirstOrDefaultAsync<int>(
+            "SELECT cStatus FROM ClientStatus WHERE clientId = @clientId",
+            new { clientId = cid },
+            commandType: CommandType.Text
+        );
+
+        if (status == 0)
+        {
+            return new LoginResponse
+            {
+                Token = null,
+                Role = null,
+                Fullname = userInfo.Fullname,
+                Username = userInfo.Username,
+                cName = userInfo.cName,
+                cId = cid,
+                Message = "Your subscription validity has expired"
+            };
+        }
+
+        // 🔹 Step 4: Prepare JWT claims
+        var claims = new[]
+        {
+            new Claim(ClaimTypes.Name, userInfo.Username ?? "Unknown"),
+            new Claim(ClaimTypes.Role, userInfo.Role ?? "User"),
+            new Claim("Fullname", userInfo.Fullname ?? "Unknown"),
+            new Claim("ClientName", userInfo.cName ?? "Unknown"),
+            new Claim("ClientId", cid.ToString())
+        };
+
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+
+        var token = new JwtSecurityToken(
+            issuer: _configuration["Jwt:Issuer"],
+            audience: _configuration["Jwt:Audience"],
+            claims: claims,
+            expires: DateTime.Now.AddMinutes(Convert.ToDouble(_configuration["Jwt:ExpireMinutes"])),
+            signingCredentials: creds
+        );
+
+        var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+
+        // 🔹 Step 5: Return success response
+        return new LoginResponse
+        {
+            Token = tokenString,
+            Role = userInfo.Role,
+            Fullname = userInfo.Fullname,
+            Username = userInfo.Username,
+            cName = userInfo.cName,
+            cId = cid,
+            Message = "Login successful"
+        };
+    }
+    catch (Exception ex)
+    {
+        // 🔹 Step 6: Handle unexpected errors
+        return new LoginResponse
+        {
+            Token = null,
+            Role = null,
+            Message = "Login failed: " + ex.Message
+        };
+    }
+}
 
         public async Task<CompanyInfo> CompanyInfo(int cid)
         {

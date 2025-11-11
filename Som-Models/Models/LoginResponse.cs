@@ -8,5 +8,6 @@
         public string Role { get; set; }
         public string cName { get; set; }
         public int cId { get; set; }
+        public string Message { get; set; }
     }
 }

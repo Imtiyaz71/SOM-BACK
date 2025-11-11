@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "E:\\My Projects\\Som-Back\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\service\\adminpanelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\adminpanelservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\logcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\logcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\adminpanelctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\adminpanelctrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\interface\\iadminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\interface\\iadminpanel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A128EEE0-3FD7-47FB-A3F6-83F8E241378C}|Som-Models\\Som-Models.csproj|e:\\my projects\\som-back\\som-models\\models\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A128EEE0-3FD7-47FB-A3F6-83F8E241378C}|Som-Models\\Som-Models.csproj|solutionrelative:som-models\\models\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,8 +22,34 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LogController.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\LogController.cs",
+              "RelativeDocumentMoniker": "Som-Back\\Controllers\\LogController.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\LogController.cs",
+              "RelativeToolTip": "Som-Back\\Controllers\\LogController.cs",
+              "ViewState": "AgIAABgAAAAAAAAAAAAiwD0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T15:21:10.269Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LoginResponse.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Models\\Models\\LoginResponse.cs",
+              "RelativeDocumentMoniker": "Som-Models\\Models\\LoginResponse.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Models\\Models\\LoginResponse.cs",
+              "RelativeToolTip": "Som-Models\\Models\\LoginResponse.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-10T15:18:56.44Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
@@ -36,48 +58,9 @@
               "RelativeDocumentMoniker": "Som-Service\\Service\\AuthService.cs",
               "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\AuthService.cs",
               "RelativeToolTip": "Som-Service\\Service\\AuthService.cs",
-              "ViewState": "AgIAAHwAAAAAAAAAAAApwI8AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAEoAAAAAAAAAAAAqwFIAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T09:19:56.342Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdminPanelCtrl.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\AdminPanelCtrl.cs",
-              "RelativeDocumentMoniker": "Som-Back\\Controllers\\AdminPanelCtrl.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\AdminPanelCtrl.cs",
-              "RelativeToolTip": "Som-Back\\Controllers\\AdminPanelCtrl.cs",
-              "ViewState": "AgIAAGEAAAAAAAAAAAAmwHAAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T09:19:13.961Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AdminPanelService.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\AdminPanelService.cs",
-              "RelativeDocumentMoniker": "Som-Service\\Service\\AdminPanelService.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\AdminPanelService.cs",
-              "RelativeToolTip": "Som-Service\\Service\\AdminPanelService.cs",
-              "ViewState": "AgIAADwAAAAAAAAAAIA7wD0AAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T09:13:34.121Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IAdminPanel.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IAdminPanel.cs",
-              "RelativeDocumentMoniker": "Som-Service\\Interface\\IAdminPanel.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\IAdminPanel.cs",
-              "RelativeToolTip": "Som-Service\\Interface\\IAdminPanel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-02T09:12:47.751Z",
+              "WhenOpened": "2025-11-10T08:01:21.849Z",
               "EditorCaption": ""
             }
           ]
