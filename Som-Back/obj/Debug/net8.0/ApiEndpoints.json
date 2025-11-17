@@ -810,6 +810,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Som_Back.Controllers.FinanceCtrl",
+    "Method": "GetSavingAccountList",
+    "RelativePath": "api/FinanceCtrl/get-saving-account",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.FinanceCtrl",
+    "Method": "SaveSavingAccount",
+    "RelativePath": "api/FinanceCtrl/save-saving-account",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.SavingsAccount",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Som_Back.Controllers.KistiCtrl",
     "Method": "GetCrType",
     "RelativePath": "api/KistiCtrl/crtype",

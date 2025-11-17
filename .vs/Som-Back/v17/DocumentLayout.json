@@ -3,16 +3,32 @@
   "WorkspaceRootPath": "E:\\My Projects\\Som-Back\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\logcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\logcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\userinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\userinfocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\service\\savingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\savingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A128EEE0-3FD7-47FB-A3F6-83F8E241378C}|Som-Models\\Som-Models.csproj|e:\\my projects\\som-back\\som-models\\models\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A128EEE0-3FD7-47FB-A3F6-83F8E241378C}|Som-Models\\Som-Models.csproj|solutionrelative:som-models\\models\\loginresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\financectrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\financectrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\interface\\isavingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\interface\\isavingservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|e:\\my projects\\som-back\\som-back\\controllers\\expensectrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{071C6A4A-1F3B-4C26-8D19-DDCCB7C6A743}|Som-Back\\Som-Back.csproj|solutionrelative:som-back\\controllers\\expensectrl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\service\\projectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\projectservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|e:\\my projects\\som-back\\som-service\\service\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C9355F6F-A816-4B83-8720-CED52D6D0B2E}|Som-Service\\Som-Service.csproj|solutionrelative:som-service\\service\\accountservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,40 +43,91 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LogController.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\LogController.cs",
-              "RelativeDocumentMoniker": "Som-Back\\Controllers\\LogController.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\LogController.cs",
-              "RelativeToolTip": "Som-Back\\Controllers\\LogController.cs",
-              "ViewState": "AgIAABgAAAAAAAAAAAAiwD0AAAAAAAAAAAAAAA==",
+              "Title": "UserInfoController.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\UserInfoController.cs",
+              "RelativeDocumentMoniker": "Som-Back\\Controllers\\UserInfoController.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\UserInfoController.cs",
+              "RelativeToolTip": "Som-Back\\Controllers\\UserInfoController.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAApwDgAAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T15:21:10.269Z",
+              "WhenOpened": "2025-11-17T05:47:20.328Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LoginResponse.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Models\\Models\\LoginResponse.cs",
-              "RelativeDocumentMoniker": "Som-Models\\Models\\LoginResponse.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Models\\Models\\LoginResponse.cs",
-              "RelativeToolTip": "Som-Models\\Models\\LoginResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAIAAAARAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "ISavingService.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\ISavingService.cs",
+              "RelativeDocumentMoniker": "Som-Service\\Interface\\ISavingService.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Interface\\ISavingService.cs",
+              "RelativeToolTip": "Som-Service\\Interface\\ISavingService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T15:18:56.44Z",
+              "WhenOpened": "2025-11-17T05:53:25.253Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ExpenseCtrl.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\ExpenseCtrl.cs",
+              "RelativeDocumentMoniker": "Som-Back\\Controllers\\ExpenseCtrl.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\ExpenseCtrl.cs",
+              "RelativeToolTip": "Som-Back\\Controllers\\ExpenseCtrl.cs",
+              "ViewState": "AgIAADYAAAAAAAAAAAA7wEYAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T15:41:44.477Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FinanceCtrl.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\FinanceCtrl.cs",
+              "RelativeDocumentMoniker": "Som-Back\\Controllers\\FinanceCtrl.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Back\\Controllers\\FinanceCtrl.cs",
+              "RelativeToolTip": "Som-Back\\Controllers\\FinanceCtrl.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAYwBMAAAAkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T15:41:40.182Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "AuthService.cs",
-              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\AuthService.cs",
-              "RelativeDocumentMoniker": "Som-Service\\Service\\AuthService.cs",
-              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\AuthService.cs",
-              "RelativeToolTip": "Som-Service\\Service\\AuthService.cs",
-              "ViewState": "AgIAAEoAAAAAAAAAAAAqwFIAAAAuAAAAAAAAAA==",
+              "Title": "SavingService.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\SavingService.cs",
+              "RelativeDocumentMoniker": "Som-Service\\Service\\SavingService.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\SavingService.cs",
+              "RelativeToolTip": "Som-Service\\Service\\SavingService.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAlwDAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-10T08:01:21.849Z",
+              "WhenOpened": "2025-11-16T15:29:08.264Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AccountService.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\AccountService.cs",
+              "RelativeDocumentMoniker": "Som-Service\\Service\\AccountService.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\AccountService.cs",
+              "RelativeToolTip": "Som-Service\\Service\\AccountService.cs",
+              "ViewState": "AgIAAHABAAAAAAAAAAAMwIIBAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:36:06.537Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ProjectService.cs",
+              "DocumentMoniker": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\ProjectService.cs",
+              "RelativeDocumentMoniker": "Som-Service\\Service\\ProjectService.cs",
+              "ToolTip": "E:\\My Projects\\Som-Back\\Som-Service\\Service\\ProjectService.cs",
+              "RelativeToolTip": "Som-Service\\Service\\ProjectService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-16T13:36:06.552Z",
               "EditorCaption": ""
             }
           ]
