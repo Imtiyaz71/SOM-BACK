@@ -59,6 +59,49 @@ namespace Som_Back.Controllers
                
             });
         }
+        [HttpPost("save-account-operation")]
+        [Authorize]
+        public async Task<IActionResult> SaveAccountOperation([FromBody] VM_AccountOperation model)
+        {
+            if (model == null)
+            {
+                return BadRequest(new
+                {
+                    Status = false,
+                    Message = "Invalid request payload."
+                });
+            }
+
+            try
+            {
+                var result = await _savingservice.SaveAccountOperation(model);
+
+                if (result.StatusCode==1)
+                {
+                    return Ok(new
+                    {
+                        Status = true,
+                        Message = result.Message
+                    });
+                }
+                else
+                {
+                    return BadRequest(new
+                    {
+                        Status = false,
+                        Message = result.Message
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    Status = false,
+                    Message = "Server Error: " + ex.Message
+                });
+            }
+        }
 
     }
 }

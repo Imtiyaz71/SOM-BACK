@@ -1312,6 +1312,37 @@
         }
       }
     },
+    "/api/FinanceCtrl/save-account-operation": {
+      "post": {
+        "tags": [
+          "FinanceCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VM_AccountOperation"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/VM_AccountOperation"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/VM_AccountOperation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/KistiCtrl/crtype": {
       "get": {
         "tags": [
@@ -4427,6 +4458,36 @@
             "nullable": true
           },
           "updateDate": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "VM_AccountOperation": {
+        "type": "object",
+        "properties": {
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "parentId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "tType": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "amount": {
+            "type": "number",
+            "format": "double"
+          },
+          "dates": {
+            "type": "string",
+            "nullable": true
+          },
+          "createBy": {
             "type": "string",
             "nullable": true
           }

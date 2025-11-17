@@ -44,6 +44,41 @@ namespace Som_Service.Service
             return list;
         }
 
+        public async Task<VW_Response> SaveAccountOperation(VM_AccountOperation model)
+        {
+            var response = new VW_Response();
+
+            try
+            {
+                using (var con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        await con.OpenAsync();
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@compId", model.CompId);
+                    parameters.Add("@parentId", model.ParentId);
+                    parameters.Add("@ttype", model.TType);
+                    parameters.Add("@amount", model.Amount);
+                    parameters.Add("@dates", model.Dates);
+                    parameters.Add("@createBy", model.CreateBy);
+
+                    await con.ExecuteAsync("sp_AccountOperation",
+                        parameters,
+                        commandType: CommandType.StoredProcedure);
+
+                    response.StatusCode = 1;
+                    response.Message = "Account operation saved successfully.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.StatusCode = 0;
+                response.Message = "Error: " + ex.Message;
+            }
+
+            return response;
+        }
 
         public async Task<VW_Response> SaveSavingAccount(SavingsAccount model)
         {

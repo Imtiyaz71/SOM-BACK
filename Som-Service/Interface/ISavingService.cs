@@ -7,5 +7,6 @@ namespace Som_Service.Interface
     {
         public Task<VW_Response> SaveSavingAccount(SavingsAccount model);
         public Task<List<VM_SavingAccount>> GetSavingsAccountList(int compId);
+        public Task<VW_Response> SaveAccountOperation(VM_AccountOperation model);
     }
 }
