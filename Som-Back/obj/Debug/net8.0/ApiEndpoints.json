@@ -858,6 +858,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "Som_Back.Controllers.FinanceCtrl",
+    "Method": "GetTotalRevenue",
+    "RelativePath": "api/FinanceCtrl/totalrevenue",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "Som_Back.Controllers.KistiCtrl",
     "Method": "GetCrType",
     "RelativePath": "api/KistiCtrl/crtype",

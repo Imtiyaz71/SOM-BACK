@@ -12,10 +12,35 @@ namespace Som_Back.Controllers
     public class FinanceCtrl : ControllerBase
     {
         private readonly ISavingService _savingservice;
-
-        public FinanceCtrl(ISavingService savingService)
+        private readonly IRevenueService _revenueservice;
+        public FinanceCtrl(ISavingService savingService, IRevenueService revenueservice)
         {
             _savingservice = savingService;
+            _revenueservice = revenueservice;
+        }
+        [HttpGet("totalrevenue")]
+        [Authorize]
+        public async Task<IActionResult> GetTotalRevenue(int compId)
+        {
+            try
+            {
+                var total = await _revenueservice.TotalRevenue(compId);
+
+                return Ok(new
+                {
+                    status = "success",
+                    compId = compId,
+                    totalRevenue = total
+                });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new
+                {
+                    status = "error",
+                    message = ex.Message
+                });
+            }
         }
         [HttpGet("get-saving-account")]
         [Authorize]

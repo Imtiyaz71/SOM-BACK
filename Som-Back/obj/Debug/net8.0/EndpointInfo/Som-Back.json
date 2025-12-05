@@ -1259,6 +1259,28 @@
         }
       }
     },
+    "/api/FinanceCtrl/totalrevenue": {
+      "get": {
+        "tags": [
+          "FinanceCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/FinanceCtrl/get-saving-account": {
       "get": {
         "tags": [
