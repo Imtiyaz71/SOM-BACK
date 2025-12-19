@@ -16,6 +16,63 @@ namespace Som_Service.Service
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
+
+        public async Task<List<RevenueDisburse>> RevenueList(int compId)
+        {
+            using (var con = new SqlConnection(_connectionString))
+            {
+                if (con.State == ConnectionState.Closed)
+                    con.Open();
+
+                var parameters = new DynamicParameters();
+                parameters.Add("@compId", compId);
+
+                var result = await con.QueryAsync<RevenueDisburse>(
+                    "sp_revDisburseList",
+                    parameters,
+                    commandType: CommandType.StoredProcedure
+                );
+
+                return result.ToList();
+            }
+        }
+
+
+        public async Task<VW_Response> SaveDisburseRevenue(RevenueDisburse disburse)
+        {
+            var response = new VW_Response();
+
+            try
+            {
+                using (var con = new SqlConnection(_connectionString))
+                {
+                    if (con.State == ConnectionState.Closed)
+                        con.Open();
+
+                    var parameters = new DynamicParameters();
+                    parameters.Add("@compId", disburse.compId);
+                    parameters.Add("@disamount", disburse.DisRev);
+                    parameters.Add("@createby", disburse.CreateBy);
+
+                    await con.ExecuteAsync(
+                        "sp_revDisburse",
+                        parameters,
+                        commandType: CommandType.StoredProcedure
+                    );
+
+                    response.StatusCode = 200;
+                    response.Message = "Revenue disburse successfully completed.";
+                }
+            }
+            catch (Exception ex)
+            {
+                response.StatusCode = 500;
+                response.Message = "Error: " + ex.Message;
+            }
+
+            return response;
+        }
+
         public async Task<decimal> TotalRevenue(int compId)
         {
             try

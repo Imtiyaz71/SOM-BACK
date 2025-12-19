@@ -827,6 +827,22 @@
   },
   {
     "ContainingType": "Som_Back.Controllers.FinanceCtrl",
+    "Method": "GetRevenueList",
+    "RelativePath": "api/FinanceCtrl/revenue-list",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.FinanceCtrl",
     "Method": "SaveAccountOperation",
     "RelativePath": "api/FinanceCtrl/save-account-operation",
     "HttpMethod": "POST",
@@ -836,6 +852,22 @@
       {
         "Name": "model",
         "Type": "Som_Models.VW_Models.VM_AccountOperation",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Som_Back.Controllers.FinanceCtrl",
+    "Method": "SaveDisburse",
+    "RelativePath": "api/FinanceCtrl/save-revenue-disburse",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "model",
+        "Type": "Som_Models.Models.RevenueDisburse",
         "IsRequired": true
       }
     ],

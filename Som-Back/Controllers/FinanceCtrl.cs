@@ -127,6 +127,36 @@ namespace Som_Back.Controllers
                 });
             }
         }
+        [HttpGet("revenue-list")]
+        [Authorize]
+        public async Task<IActionResult> GetRevenueList(int compId)
+        {
+            var data = await _revenueservice.RevenueList(compId);
+            return Ok(data);
+        }
 
-    }
+        [HttpPost("save-revenue-disburse")]
+        [Authorize]
+        public async Task<IActionResult> SaveDisburse([FromBody] RevenueDisburse model)
+        {
+            if (model == null)
+            {
+                return BadRequest(new VW_Response
+                {
+                    StatusCode = 400,
+                    Message = "Invalid input data."
+                });
+            }
+
+            var result = await _revenueservice.SaveDisburseRevenue(model);
+
+            if (result.StatusCode == 200)
+            {
+                return Ok(result);
+            }
+
+            return StatusCode(500, result);
+        }
+    
+}
 }

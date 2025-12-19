@@ -1365,6 +1365,59 @@
         }
       }
     },
+    "/api/FinanceCtrl/revenue-list": {
+      "get": {
+        "tags": [
+          "FinanceCtrl"
+        ],
+        "parameters": [
+          {
+            "name": "compId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/FinanceCtrl/save-revenue-disburse": {
+      "post": {
+        "tags": [
+          "FinanceCtrl"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevenueDisburse"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevenueDisburse"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RevenueDisburse"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/api/KistiCtrl/crtype": {
       "get": {
         "tags": [
@@ -4181,6 +4234,48 @@
           "withdrwalID": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RevenueDisburse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "compId": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "currRev": {
+            "type": "number",
+            "format": "double"
+          },
+          "disRev": {
+            "type": "number",
+            "format": "double"
+          },
+          "avail": {
+            "type": "number",
+            "format": "double"
+          },
+          "createDate": {
+            "type": "string",
+            "nullable": true
+          },
+          "createMonth": {
+            "type": "string",
+            "nullable": true
+          },
+          "createYear": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "createBy": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
