@@ -8,6 +8,7 @@ E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\Som-Service.staticwebassets.en
 E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\Som-Service.exe
 E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\appsettings.Development.json
 E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\appsettings.json
+E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\Som-Back.staticwebassets.runtime.json
 E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\Som-Back.staticwebassets.endpoints.json
 E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\Som-Back.exe
 E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\Som-Back.deps.json
@@ -99,4 +100,3 @@ E:\My Projects\Som-Back\Som-Back\obj\Debug\net8.0\refint\Som-Back.dll
 E:\My Projects\Som-Back\Som-Back\obj\Debug\net8.0\Som-Back.pdb
 E:\My Projects\Som-Back\Som-Back\obj\Debug\net8.0\Som-Back.genruntimeconfig.cache
 E:\My Projects\Som-Back\Som-Back\obj\Debug\net8.0\ref\Som-Back.dll
-E:\My Projects\Som-Back\Som-Back\bin\Debug\net8.0\Som-Back.staticwebassets.runtime.json

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Som-Models")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46f9bebbbdd499cd87f3078ef59857bd0d741953")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+776919af0304c8a1af6590c91857b38ecea65905")]
 [assembly: System.Reflection.AssemblyProductAttribute("Som-Models")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Som-Models")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

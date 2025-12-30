@@ -11,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 // Configure CORS to allow Angular frontend running on localhost:4200
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularClient", policy =>
